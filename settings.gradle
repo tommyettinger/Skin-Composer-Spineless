@@ -1,2 +1,2 @@
-include 'core', 'installer', 'uninstaller'
-rootProject.name = 'Skin Composer'
+include 'core'
+rootProject.name = 'Skin Composer Spineless'
