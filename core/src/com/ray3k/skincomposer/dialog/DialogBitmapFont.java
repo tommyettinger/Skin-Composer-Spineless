@@ -76,20 +76,23 @@ public class DialogBitmapFont extends Dialog {
     private Color previewBGcolor;
     private boolean automaticBgColor;
     private Table previewTable;
-    private SpineDrawable arrowDrawable;
-    private Image arrowImage;
+    private TextureRegionDrawable arrowLeft, arrowRight;
+    private Image arrowImageLeft, arrowImageRight;
     private static Vector2 temp = new Vector2();
     private Actor previousArrowTarget;
 
     public DialogBitmapFont() {
         super("Create new Bitmap Font", skin, "bg");
-        arrowDrawable = new SpineDrawable(skeletonRenderer, arrowSkeletonData, arrowAnimationStateData);
-        arrowDrawable.getAnimationState().setAnimation(0, "animation", true);
-        arrowDrawable.setCrop(-10, -10, 20, 20);
-        arrowImage = new Image(arrowDrawable);
-        arrowImage.setTouchable(Touchable.disabled);
-        addActor(arrowImage);
-        arrowImage.pack();
+        arrowLeft = new TextureRegionDrawable(skin.getAtlas().findRegion("move-frame-right"));
+        arrowRight = new TextureRegionDrawable(skin.getAtlas().findRegion("move-frame-left"));
+        arrowImageLeft = new Image(arrowLeft);
+        arrowImageLeft.setTouchable(Touchable.disabled);
+        arrowImageRight = new Image(arrowRight);
+        arrowImageRight.setTouchable(Touchable.disabled);
+        addActor(arrowImageLeft);
+        addActor(arrowImageRight);
+        arrowImageLeft.pack();
+        arrowImageRight.pack();
         previewBGcolor = new Color(Color.BLACK);
         automaticBgColor = true;
 
@@ -180,7 +183,6 @@ public class DialogBitmapFont extends Dialog {
     @Override
     public void act(float delta) {
         super.act(delta);
-        arrowDrawable.update(delta);
     }
     
     @Override
@@ -1374,15 +1376,17 @@ public class DialogBitmapFont extends Dialog {
             }
         }
     
-        if (arrowTarget == null) arrowImage.setVisible(false);
+        if (arrowTarget == null) {
+            arrowImageLeft.setVisible(false);
+            arrowImageRight.setVisible(false);
+        }
         else {
-            if (previousArrowTarget != arrowTarget) arrowDrawable.getAnimationState().setAnimation(0, "animation", true);
-            arrowImage.setVisible(true);
+            arrowImageLeft.setVisible(true);
+            arrowImageRight.setVisible(true);
             temp.set(arrowTarget.getWidth() / 2, arrowTarget.getHeight() / 2);
             arrowTarget.localToActorCoordinates(this, temp);
-            arrowDrawable.getSkeleton().findBone("left-arrow").setPosition(-arrowTarget.getWidth() / 2, 0);
-            arrowDrawable.getSkeleton().findBone("right-arrow").setPosition(arrowTarget.getWidth() / 2, 0);
-            arrowImage.setPosition(temp.x, temp.y, Align.center);
+            arrowImageLeft.setPosition(temp.x - arrowTarget.getWidth() / 2, temp.y, Align.center);
+            arrowImageRight.setPosition(temp.x + arrowTarget.getWidth() / 2, temp.y, Align.center);
             previousArrowTarget = arrowTarget;
         }
     }

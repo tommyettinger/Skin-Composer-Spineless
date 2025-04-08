@@ -110,8 +110,6 @@ public class Main extends ApplicationAdapter {
     private String[] args;
     public static Main main;
     public static SkeletonRenderer skeletonRenderer;
-    public static SkeletonData uiScaleSkeletonData;
-    public static AnimationStateData uiScaleAnimationStateData;
     public static SkeletonData arrowSkeletonData;
     public static AnimationStateData arrowAnimationStateData;
     public static TinyVGAssetLoader tinyVGAssetLoader;
@@ -142,8 +140,6 @@ public class Main extends ApplicationAdapter {
         
         skeletonRenderer = new SkeletonRenderer();
         var skeletonJson = new SkeletonJson(Main.skin.getAtlas());
-        uiScaleSkeletonData = skeletonJson.readSkeletonData(Gdx.files.internal("spineless/uiscale.json"));
-        uiScaleAnimationStateData = new AnimationStateData(uiScaleSkeletonData);
         arrowSkeletonData = skeletonJson.readSkeletonData(Gdx.files.internal("spineless/arrow-animation.json"));
         arrowAnimationStateData = new AnimationStateData(arrowSkeletonData);
     

@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Colors;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -24,8 +23,6 @@ import com.github.tommyettinger.textra.Font.FontFamily;
 import com.github.tommyettinger.textra.KnownFonts;
 import com.github.tommyettinger.textra.TypingAdapter;
 import com.github.tommyettinger.textra.TypingLabel;
-import com.ray3k.skincomposer.Main;
-import com.ray3k.skincomposer.SpineDrawable;
 import com.ray3k.skincomposer.dialog.textratypist.PopTextraEffects.PopEffectsListener;
 import com.ray3k.skincomposer.dialog.textratypist.PopTextraEmoji.PopEmojiListener;
 import com.ray3k.stripe.PopColorPicker;
@@ -48,7 +45,6 @@ public class PopTextraTypist extends PopTable {
         STANDARD, SKIN
     }
     private FontMode fontMode = FontMode.STANDARD;
-    private SpineDrawable spine;
     public static PopColorPickerStyle ttColorPickerStyle;
     private TypingAdapter typingAdapter;
     private static String codeText = "";
