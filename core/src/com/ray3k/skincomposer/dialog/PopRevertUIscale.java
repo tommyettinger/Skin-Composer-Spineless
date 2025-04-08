@@ -3,33 +3,26 @@ package com.ray3k.skincomposer.dialog;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.scenes.scene2d.*;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.esotericsoftware.spine.AnimationState;
-import com.esotericsoftware.spine.AnimationState.AnimationStateAdapter;
-import com.esotericsoftware.spine.AnimationState.TrackEntry;
-import com.ray3k.skincomposer.SpineDrawable;
+import com.badlogic.gdx.utils.Timer;
 import com.ray3k.stripe.PopTable;
 
 import static com.ray3k.skincomposer.Main.*;
 
 public class PopRevertUIscale extends PopTable {
-    private SpineDrawable drawable;
-    
+
     public PopRevertUIscale() {
-        drawable = new SpineDrawable(skeletonRenderer, uiScaleSkeletonData, uiScaleAnimationStateData);
-        drawable.getAnimationState().setAnimation(0, "animation", false);
-        var image = new Image(drawable);
+        var image = new Image(skin.getAtlas().findRegion("tt-icon-emoji"));
         add(image);
         setModal(true);
-        
-        drawable.getAnimationState().addListener(new AnimationStateAdapter() {
+
+        Timer.schedule(new Timer.Task() {
             @Override
-            public void complete(TrackEntry entry) {
+            public void run() {
                 hide();
                 fire(new PopRevertEvent(false));
             }
-        });
+        }, 5f);
     }
     
     @Override
@@ -40,7 +33,6 @@ public class PopRevertUIscale extends PopTable {
     @Override
     public void act(float delta) {
         super.act(delta);
-        drawable.update(delta);
         if (Gdx.input.isButtonJustPressed(Buttons.LEFT)) {
             hide();
             fire(new PopRevertEvent(true));
