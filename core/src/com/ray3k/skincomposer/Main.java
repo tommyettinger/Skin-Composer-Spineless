@@ -110,12 +110,8 @@ public class Main extends ApplicationAdapter {
     private String[] args;
     public static Main main;
     public static SkeletonRenderer skeletonRenderer;
-    public static SkeletonData floppySkeletonData;
-    public static AnimationStateData floppyAnimationStateData;
     public static SkeletonData uiScaleSkeletonData;
     public static AnimationStateData uiScaleAnimationStateData;
-    public static SkeletonData textraTypistLogoSkeletonData;
-    public static AnimationStateData textraTypistLogoAnimationStateData;
     public static SkeletonData arrowSkeletonData;
     public static AnimationStateData arrowAnimationStateData;
     public static TinyVGAssetLoader tinyVGAssetLoader;
@@ -146,12 +142,8 @@ public class Main extends ApplicationAdapter {
         
         skeletonRenderer = new SkeletonRenderer();
         var skeletonJson = new SkeletonJson(Main.skin.getAtlas());
-        floppySkeletonData = skeletonJson.readSkeletonData(Gdx.files.internal("spineless/floppy.json"));
-        floppyAnimationStateData = new AnimationStateData(floppySkeletonData);
         uiScaleSkeletonData = skeletonJson.readSkeletonData(Gdx.files.internal("spineless/uiscale.json"));
         uiScaleAnimationStateData = new AnimationStateData(uiScaleSkeletonData);
-        textraTypistLogoSkeletonData = skeletonJson.readSkeletonData(Gdx.files.internal("spineless/TextraTypist Logo.json"));
-        textraTypistLogoAnimationStateData = new AnimationStateData(textraTypistLogoSkeletonData);
         arrowSkeletonData = skeletonJson.readSkeletonData(Gdx.files.internal("spineless/arrow-animation.json"));
         arrowAnimationStateData = new AnimationStateData(arrowSkeletonData);
     

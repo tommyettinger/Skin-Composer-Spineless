@@ -6,25 +6,19 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
-import com.ray3k.skincomposer.SpineDrawable;
 import com.ray3k.stripe.PopTable;
 
 import static com.ray3k.skincomposer.Main.*;
 import static com.ray3k.skincomposer.utils.Utils.onChange;
-import static com.ray3k.skincomposer.utils.Utils.onEnter;
 
 public class PopFloppy extends PopTable {
-    private SpineDrawable drawable;
     private String message;
     private String option;
     private String cancel;
     private PopTable bubblePop;
     
     public PopFloppy(String message, String option, String cancel) {
-        drawable = new SpineDrawable(skeletonRenderer, floppySkeletonData, floppyAnimationStateData);
-        drawable.getAnimationState().setAnimation(0, "show", false);
-        drawable.getAnimationState().addAnimation(0, "raise-brows", true, 0);
-        var image = new Image(drawable);
+        var image = new Image(skin.getAtlas().findRegion("floppy-body"));
         add(image);
         this.message = message;
         this.option = option;
@@ -47,7 +41,6 @@ public class PopFloppy extends PopTable {
             hide();
             fire(new PopFloppyEvent(true));
         });
-        onEnter(textButton, () -> drawable.getAnimationState().setAnimation(0, "happy", true));
         textButton.addListener(handListener);
     
         bubblePop.row();
@@ -57,7 +50,6 @@ public class PopFloppy extends PopTable {
             hide();
             fire(new PopFloppyEvent(false));
         });
-        onEnter(textButton, () -> drawable.getAnimationState().setAnimation(0, "sad", true));
         textButton.addListener(handListener);
         
         bubblePop.setTouchable(Touchable.disabled);
@@ -77,7 +69,6 @@ public class PopFloppy extends PopTable {
     @Override
     public void act(float delta) {
         super.act(delta);
-        drawable.update(delta);
     }
     
     @Override
