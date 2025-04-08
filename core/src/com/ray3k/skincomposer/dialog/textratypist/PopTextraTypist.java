@@ -52,9 +52,9 @@ public class PopTextraTypist extends PopTable {
     
     public PopTextraTypist() {
         super(new PopTableStyle());
-    
+        KnownFonts.setAssetPrefix("textra/");
+
         ttColorPickerStyle = createColorPickerStyle();
-        
         masterFont = KnownFonts.getStandardFamily();
         
         typingAdapter = new TypingAdapter() {
