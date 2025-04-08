@@ -1,0 +1,2 @@
+include 'core', 'installer', 'uninstaller'
+rootProject.name = 'Skin Composer'

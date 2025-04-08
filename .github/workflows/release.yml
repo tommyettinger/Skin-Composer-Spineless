@@ -1,0 +1,130 @@
+name: Build skin-composer and create a draft release
+
+on:
+  create
+
+
+jobs:
+  jar:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up JDK 14
+      uses: actions/setup-java@v1
+      with:
+        java-version: 14
+
+    - name: Fix gradlew file permissions
+      run: chmod +x gradlew
+
+    - name: Build jar
+      run: ./gradlew core:dist
+
+    - name: Upload jar artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: SkinComposer.jar
+        path: core/build/lib/SkinComposer.jar
+
+
+  linux-tar:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up JDK 14
+      uses: actions/setup-java@v1
+      with:
+        java-version: 14
+
+    - name: Fix gradlew file permissions
+      run: chmod +x gradlew
+
+    - name: Build tar.gz
+      run: ./gradlew core:jpackageTar
+
+    - name: Upload deb artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: skin-composer-linux.tar.gz
+        path: core/build/jpackage/skin-composer-linux.tar.gz
+
+
+
+
+  windows-zip:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up JDK 14
+      uses: actions/setup-java@v1
+      with:
+        java-version: 14
+
+    - name: Install dependencies
+      run: choco install -y winrar & choco install windows-sdk-10-version-2004-all
+
+    - name: Build exe
+      run: ./gradlew.bat installer:jpackageZip
+
+    - name: Upload zip artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: skin-composer-windows.zip
+        path: installer/build/winrar/skin-composer-windows.zip
+
+
+
+
+  release:
+    needs: [jar, linux-tar, windows-zip]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v2
+        
+      - name: Display structure of downloaded files
+        run: ls -R
+          
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Skin Composer ver. ${{ github.ref }}
+          draft: true
+          prerelease: false
+
+      - name: Upload jar release artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: SkinComposer.jar/SkinComposer.jar
+          asset_name: SkinComposer.jar
+          asset_content_type: application/x-java-archive
+
+      - name: Upload linux tar.gz release artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: skin-composer-linux.tar.gz/skin-composer-linux.tar.gz
+          asset_name: skin-composer-linux.tar.gz
+          asset_content_type: application/gzip
+
+      - name: Upload windows exe release artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: skin-composer-windows.zip/skin-composer-windows.zip
+          asset_name: skin-composer-windows.zip
+          asset_content_type: application/zip
