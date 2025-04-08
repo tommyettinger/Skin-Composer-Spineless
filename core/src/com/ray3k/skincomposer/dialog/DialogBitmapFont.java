@@ -41,7 +41,6 @@ import com.badlogic.gdx.utils.*;
 import com.ray3k.skincomposer.FilesDroppedListener;
 import com.ray3k.skincomposer.LeadingTruncateLabel;
 import com.ray3k.skincomposer.Main;
-import com.ray3k.skincomposer.SpineDrawable;
 import com.ray3k.skincomposer.data.ColorData;
 import com.ray3k.skincomposer.data.FreeTypeFontData;
 import com.ray3k.skincomposer.data.StyleProperty;

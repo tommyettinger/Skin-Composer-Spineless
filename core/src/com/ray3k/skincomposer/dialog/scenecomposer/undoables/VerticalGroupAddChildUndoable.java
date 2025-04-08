@@ -4,7 +4,6 @@ import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposer;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerEvents;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.SimActor;
-import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.SimHorizontalGroup;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.SimVerticalGroup;
 
 public class VerticalGroupAddChildUndoable implements SceneComposerUndoable {

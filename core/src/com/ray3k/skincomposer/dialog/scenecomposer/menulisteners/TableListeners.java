@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.ray3k.stripe.PopTable;
-import com.ray3k.stripe.PopTable.KeyListener;
 import com.ray3k.stripe.PopTableClickListener;
 import com.ray3k.stripe.Spinner;
 import com.ray3k.skincomposer.data.StyleProperty;

@@ -29,7 +29,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.MathUtils;
@@ -42,8 +41,6 @@ import com.ray3k.skincomposer.Main;
 import com.ray3k.skincomposer.data.DrawableData.DrawableType;
 import com.ray3k.skincomposer.utils.Utils;
 import com.ray3k.tenpatch.TenPatchDrawable;
-import com.ray3k.tenpatch.TenPatchDrawable.InvalidPatchException;
-import dev.lyze.gdxtinyvg.TinyVG;
 import dev.lyze.gdxtinyvg.scene2d.TinyVGDrawable;
 
 import java.io.File;

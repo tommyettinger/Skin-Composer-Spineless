@@ -38,7 +38,6 @@ import com.ray3k.skincomposer.data.DrawableData.DrawableType;
 import com.ray3k.skincomposer.data.FontData;
 import com.ray3k.skincomposer.data.FreeTypeFontData;
 import com.ray3k.skincomposer.data.JsonData.ExportFormat;
-import com.ray3k.skincomposer.utils.Utils;
 
 import java.nio.file.Paths;
 

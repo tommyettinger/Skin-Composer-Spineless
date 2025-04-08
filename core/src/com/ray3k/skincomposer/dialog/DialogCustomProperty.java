@@ -33,7 +33,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.ray3k.skincomposer.data.CustomProperty;
 import com.ray3k.skincomposer.data.CustomProperty.PropertyType;
-import com.ray3k.skincomposer.data.CustomStyle;
 
 import static com.ray3k.skincomposer.Main.*;
 

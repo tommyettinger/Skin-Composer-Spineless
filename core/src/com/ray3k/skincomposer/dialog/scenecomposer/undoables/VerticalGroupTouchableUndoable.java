@@ -2,7 +2,6 @@ package com.ray3k.skincomposer.dialog.scenecomposer.undoables;
 
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposer;
-import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.SimButton;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.SimVerticalGroup;
 
 public class VerticalGroupTouchableUndoable implements SceneComposerUndoable {

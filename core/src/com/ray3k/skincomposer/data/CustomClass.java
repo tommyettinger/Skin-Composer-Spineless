@@ -26,7 +26,6 @@ package com.ray3k.skincomposer.data;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
-import com.ray3k.skincomposer.Main;
 
 public class CustomClass implements Json.Serializable {
     private String fullyQualifiedName;

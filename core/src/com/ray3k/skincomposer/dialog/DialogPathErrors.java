@@ -33,12 +33,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
-import com.ray3k.skincomposer.DesktopWorker;
 import com.ray3k.skincomposer.Main;
 import com.ray3k.skincomposer.data.DrawableData;
 import com.ray3k.skincomposer.data.FontData;
 import com.ray3k.skincomposer.data.FreeTypeFontData;
-import com.ray3k.skincomposer.utils.Utils;
 
 import static com.ray3k.skincomposer.Main.*;
 

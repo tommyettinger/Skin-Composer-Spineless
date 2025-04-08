@@ -49,7 +49,6 @@ import com.ray3k.skincomposer.dialog.DialogFactory;
 import com.ray3k.skincomposer.dialog.DialogListener;
 import com.ray3k.skincomposer.dialog.PopWelcome.WelcomeListener;
 import com.ray3k.stripe.DraggableSelectBox;
-import com.ray3k.stripe.DraggableTextList;
 import com.ray3k.stripe.Spinner;
 import com.ray3k.skincomposer.utils.Utils;
 

@@ -25,7 +25,6 @@ package com.ray3k.skincomposer.data;
 
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
-import com.ray3k.skincomposer.Main;
 
 import static com.ray3k.skincomposer.Main.atlasData;
 import static com.ray3k.skincomposer.Main.jsonData;

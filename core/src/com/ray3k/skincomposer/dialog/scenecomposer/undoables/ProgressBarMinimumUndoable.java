@@ -1,6 +1,5 @@
 package com.ray3k.skincomposer.dialog.scenecomposer.undoables;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposer;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel;
 

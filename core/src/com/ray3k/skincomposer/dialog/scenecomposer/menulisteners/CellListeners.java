@@ -11,7 +11,6 @@ import com.ray3k.skincomposer.Main;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.SimTable;
 import com.ray3k.stripe.PopTableClickListener;
 import com.ray3k.stripe.Spinner;
-import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposer;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerEvents;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.SimActor;

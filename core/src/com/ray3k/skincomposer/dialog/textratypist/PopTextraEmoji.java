@@ -1,7 +1,6 @@
 package com.ray3k.skincomposer.dialog.textratypist;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
@@ -11,12 +10,8 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.JsonReader;
 import com.github.tommyettinger.textra.Font;
-import com.ray3k.skincomposer.Main;
 import com.ray3k.stripe.PopTable;
 import com.ray3k.stripe.PopTableHoverListener;
-import com.ray3k.stripe.PopTableTooltipListener;
-
-import java.util.Comparator;
 
 import static com.ray3k.skincomposer.Main.*;
 import static com.ray3k.skincomposer.utils.Utils.onChange;

@@ -33,8 +33,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
 import com.ray3k.skincomposer.FilesDroppedListener;
-import com.ray3k.skincomposer.Main;
-import com.ray3k.skincomposer.utils.Utils;
 
 import java.nio.file.Paths;
 import java.util.Locale;

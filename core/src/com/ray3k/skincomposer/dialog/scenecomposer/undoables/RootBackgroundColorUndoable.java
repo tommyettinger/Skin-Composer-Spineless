@@ -3,8 +3,6 @@ package com.ray3k.skincomposer.dialog.scenecomposer.undoables;
 import com.badlogic.gdx.graphics.Color;
 import com.ray3k.skincomposer.data.ColorData;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposer;
-import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel;
-import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.SimRootGroup;
 
 import static com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.rootActor;
 

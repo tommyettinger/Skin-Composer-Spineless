@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.*;
-import com.badlogic.gdx.utils.Json.Serializer;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
 import com.ray3k.skincomposer.Main;
@@ -17,8 +16,6 @@ import com.ray3k.skincomposer.data.DrawableData;
 import com.ray3k.skincomposer.data.StyleData;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposer.View;
 import com.ray3k.skincomposer.dialog.scenecomposer.undoables.SceneComposerUndoable;
-import com.ray3k.stripe.scenecomposer.SimMultipleChildren;
-import com.ray3k.stripe.scenecomposer.SimSingleChild;
 
 import java.util.Locale;
 import java.util.regex.Matcher;

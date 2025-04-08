@@ -2,7 +2,6 @@ package com.ray3k.skincomposer.dialog.scenecomposer.undoables;
 
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposer;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel;
-import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.SimActor;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.SimMultipleChildren;
 
 public class ActorDeleteUndoable implements SceneComposerUndoable {

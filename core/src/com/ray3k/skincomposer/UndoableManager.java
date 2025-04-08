@@ -32,7 +32,6 @@ import com.ray3k.skincomposer.data.CustomProperty.PropertyType;
 import java.util.Iterator;
 
 import static com.ray3k.skincomposer.Main.*;
-import static com.ray3k.skincomposer.Main.atlasData;
 
 public class UndoableManager {
     private final Array<Undoable> undoables;

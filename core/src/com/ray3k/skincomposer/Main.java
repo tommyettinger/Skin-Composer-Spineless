@@ -109,9 +109,6 @@ public class Main extends ApplicationAdapter {
     public static FileHandle appFolder;
     private String[] args;
     public static Main main;
-    public static SkeletonRenderer skeletonRenderer;
-    public static SkeletonData arrowSkeletonData;
-    public static AnimationStateData arrowAnimationStateData;
     public static TinyVGAssetLoader tinyVGAssetLoader;
     private static final int SPINE_MAX_VERTS = 32767;
     private static TinyVGDrawable drawable;
@@ -137,12 +134,7 @@ public class Main extends ApplicationAdapter {
         graphDrawer = new GraphDrawer(shapeDrawer);
         
         tinyVGAssetLoader = new TinyVGAssetLoader();
-        
-        skeletonRenderer = new SkeletonRenderer();
-        var skeletonJson = new SkeletonJson(Main.skin.getAtlas());
-        arrowSkeletonData = skeletonJson.readSkeletonData(Gdx.files.internal("spineless/arrow-animation.json"));
-        arrowAnimationStateData = new AnimationStateData(arrowSkeletonData);
-    
+
         popColorPickerStyle = new PopColorPickerStyle();
         popColorPickerStyle.background = skin.getDrawable("cp-bg-10");
         popColorPickerStyle.stageBackground = skin.getDrawable("stage-background");

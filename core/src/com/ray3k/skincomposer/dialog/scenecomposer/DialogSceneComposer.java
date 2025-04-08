@@ -15,7 +15,6 @@ import com.badlogic.gdx.utils.Array;
 import com.ray3k.skincomposer.Main;
 import com.ray3k.skincomposer.data.StyleProperty;
 import com.ray3k.skincomposer.dialog.DialogListener;
-import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.*;
 import com.ray3k.skincomposer.dialog.scenecomposer.menulisteners.*;
 import com.ray3k.skincomposer.utils.IntPair;
 import com.ray3k.stripe.PopTable;

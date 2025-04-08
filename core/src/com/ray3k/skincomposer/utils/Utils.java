@@ -62,8 +62,6 @@ import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import static com.ray3k.skincomposer.Main.*;
-
 public class Utils {
     public static String os;
     public static Color averageColor(FileHandle file) {
