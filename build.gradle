@@ -7,14 +7,34 @@ buildscript {
     dependencies {
     }
 }
+allprojects {
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+
+    // This allows you to "Build and run using IntelliJ IDEA", an option in IDEA's Settings.
+    idea {
+        module {
+            outputDir file('build/classes/java/main')
+            testOutputDir file('build/classes/java/test')
+        }
+    }
+}
 
 allprojects {
+    apply plugin: 'eclipse'
     apply plugin: "idea"
 
-    version = '59-spineless'
+    version = "$projectVersion"
     ext {
-        appName = "SkinComposer"
-        gdxVersion = '1.13.1'
+        appName = "SkinComposerSpineless"
+    }
+
+    // This allows you to "Build and run using IntelliJ IDEA", an option in IDEA's Settings.
+    idea {
+        module {
+            outputDir file('build/classes/java/main')
+            testOutputDir file('build/classes/java/test')
+        }
     }
 
     repositories {
@@ -26,38 +46,32 @@ allprojects {
     }
 }
 
-project(":core") {
-    apply plugin: "java"
 
-    dependencies {
-        implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
-        implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
-        implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        implementation "org.lwjgl:lwjgl:3.3.1"
-        implementation "org.lwjgl:lwjgl-nfd:3.3.1"
-        implementation "org.lwjgl:lwjgl-nfd:3.3.1:natives-windows"
-        implementation "org.lwjgl:lwjgl-nfd:3.3.1:natives-linux"
-        implementation "org.lwjgl:lwjgl-nfd:3.3.1:natives-macos"
-        implementation "org.lwjgl:lwjgl-nfd:3.3.1:natives-macos-arm64"
-        implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        implementation "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
-        implementation ("com.badlogicgames.gdx:gdx-tools:$gdxVersion") {
-            exclude group: 'com.badlogicgames.gdx', module: 'gdx-backend-lwjgl'
+configure(subprojects) {
+    apply plugin: 'java-library'
+    sourceCompatibility = 11
+
+    // From https://lyze.dev/2021/04/29/libGDX-Internal-Assets-List/
+    // The article can be helpful when using assets.txt in your project.
+    tasks.register('generateAssetList') {
+        inputs.dir("${project.rootDir}/assets/")
+        // projectFolder/assets
+        File assetsFolder = new File("${project.rootDir}/assets/")
+        // projectFolder/assets/assets.txt
+        File assetsFile = new File(assetsFolder, "assets.txt")
+        // delete that file in case we've already created it
+        assetsFile.delete()
+
+        // iterate through all files inside that folder
+        // convert it to a relative path
+        // and append it to the file assets.txt
+        fileTree(assetsFolder).collect { assetsFolder.relativePath(it) }.sort().each {
+            assetsFile.append(it + "\n")
         }
-        implementation "com.github.raeleus.TenPatch:tenpatch:5.2.3"
-        implementation "space.earlygrey:shapedrawer:2.6.0"
-        implementation 'com.squareup:javapoet:1.12.1'
-        implementation 'com.github.raeleus.stripe:stripe:1.4.2'
-        implementation ('com.github.raeleus.stripe:colorpicker:1.4.2') {
-            exclude group: 'com.github.tommyettinger', module: 'textratypist'
-        }
-        implementation 'com.github.raeleus.stripe:freetype:1.1.0'
-        implementation 'com.github.lyze237:gdx-TinyVG:9a5a6ae9ae'
-//        implementation "com.github.tommyettinger:textratypist:2.0.1"
-        implementation("com.github.tommyettinger:freetypist:2.0.1.0") {
-            exclude group: 'com.github.tommyettinger', module: 'textratypist'
-        }
-//        implementation "com.github.tommyettinger:textratypist:e5155e06c5"
-        implementation "com.github.tommyettinger:textratypist:084a51455b"
+    }
+    processResources.dependsOn 'generateAssetList'
+
+    compileJava {
+        options.incremental = true
     }
 }
