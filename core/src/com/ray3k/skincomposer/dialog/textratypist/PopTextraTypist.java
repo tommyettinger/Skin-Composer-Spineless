@@ -55,7 +55,7 @@ public class PopTextraTypist extends PopTable {
         KnownFonts.setAssetPrefix("textra/");
 
         ttColorPickerStyle = createColorPickerStyle();
-        masterFont = KnownFonts.getStandardFamily();
+        masterFont = KnownFonts.getFamily(DistanceFieldType.SDF);
         
         typingAdapter = new TypingAdapter() {
             @Override
@@ -553,7 +553,7 @@ public class PopTextraTypist extends PopTable {
         items.add("Select a font...");
         items.add("Default");
         
-        masterFont = KnownFonts.getStandardFamily();
+        masterFont = KnownFonts.getFamily(DistanceFieldType.SDF);
         for (var font : masterFont.family.connected) {
             if (font != null) {
                 items.add(font.name);
