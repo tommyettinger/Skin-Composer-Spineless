@@ -471,6 +471,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
         config.useVsync(true);
         config.setWindowedMode(800, 800);
         config.setBackBufferConfig(8, 8, 8, 8, 16, 2, 10);
+        config.disableAudio(true);
         var desktopLauncher = new DesktopLauncher();
         config.setWindowListener(desktopLauncher);
         config.setTitle("Skin Composer - New Project*");

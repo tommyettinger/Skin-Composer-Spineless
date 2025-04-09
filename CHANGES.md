@@ -1,3 +1,8 @@
+### Skin Composer *Spineless* Version 59 ###
+* Removed Spine! Now using only FLOSS dependencies.
+* Updated TextraTypist to a JitPack commit from after 2.0.1 .
+* Massively updated Gradle files and project structure.
+
 ### Skin Composer Version 58 ###
 * Added fix for Mac users. Thanks TEttinger!
 

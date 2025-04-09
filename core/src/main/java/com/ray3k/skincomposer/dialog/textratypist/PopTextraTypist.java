@@ -23,6 +23,7 @@ import com.github.tommyettinger.textra.Font.FontFamily;
 import com.github.tommyettinger.textra.KnownFonts;
 import com.github.tommyettinger.textra.TypingAdapter;
 import com.github.tommyettinger.textra.TypingLabel;
+import com.ray3k.skincomposer.StageResizeListener;
 import com.ray3k.skincomposer.dialog.textratypist.PopTextraEffects.PopEffectsListener;
 import com.ray3k.skincomposer.dialog.textratypist.PopTextraEmoji.PopEmojiListener;
 import com.ray3k.stripe.PopColorPicker;
@@ -49,6 +50,7 @@ public class PopTextraTypist extends PopTable {
     private TypingAdapter typingAdapter;
     private static String codeText = "";
     private boolean playAnimation = true;
+    private StageResizeListener stageResizeListener;
     
     public PopTextraTypist() {
         super(new PopTableStyle());
@@ -56,7 +58,16 @@ public class PopTextraTypist extends PopTable {
 
         ttColorPickerStyle = createColorPickerStyle();
         masterFont = KnownFonts.getFamily(DistanceFieldType.SDF);
-        
+
+        stageResizeListener = new StageResizeListener() {
+            @Override
+            public void resized(int width, int height) {
+                masterFont.family.resizeDistanceFields(width, height, stage.getViewport());
+            }
+        };
+        stage.addListener(stageResizeListener);
+
+
         typingAdapter = new TypingAdapter() {
             @Override
             public void event(String event) {
@@ -69,7 +80,7 @@ public class PopTextraTypist extends PopTable {
                         Interpolation.fastSlow)), Actions.removeActor()));
             }
         };
-        
+
         setFillParent(true);
         setBackground(skin.getDrawable("tt-bg"));
         
@@ -553,13 +564,14 @@ public class PopTextraTypist extends PopTable {
         items.add("Select a font...");
         items.add("Default");
         
-        masterFont = KnownFonts.getFamily(DistanceFieldType.SDF);
+        masterFont = KnownFonts.getFamily(DistanceFieldType.STANDARD);
         for (var font : masterFont.family.connected) {
             if (font != null) {
                 items.add(font.name);
                 KnownFonts.addEmoji(font);
             }
         }
+        masterFont.family.resizeDistanceFields(stage.getWidth(), stage.getHeight(), stage.getViewport());
 
         fontSelectBox.setItems(items);
         
@@ -619,7 +631,8 @@ public class PopTextraTypist extends PopTable {
             if(font != null)
                 KnownFonts.addEmoji(font);
         }
-    
+        masterFont.family.resizeDistanceFields(stage.getWidth(), stage.getHeight(), stage.getViewport());
+
         previewTypingLabel = new TypingLabel(previewTypingLabel.getOriginalText().toString(), masterFont);
         previewTypingLabel.setWrap(true);
         previewTypingLabel.setAlignment(Align.topLeft);
@@ -629,6 +642,9 @@ public class PopTextraTypist extends PopTable {
     @Override
     public void hide() {
         stage.setKeyboardFocus(null);
+        stage.removeListener(stageResizeListener);
         super.hide();
     }
+
+
 }
