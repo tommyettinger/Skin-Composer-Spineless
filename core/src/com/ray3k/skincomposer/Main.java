@@ -55,6 +55,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Null;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.github.tommyettinger.freetypist.FreeTypistSkin;
 import com.ray3k.skincomposer.data.AtlasData;
 import com.ray3k.skincomposer.data.JsonData;
 import com.ray3k.skincomposer.data.ProjectData;
@@ -123,7 +124,7 @@ public class Main extends ApplicationAdapter {
     public void create() {
         appFolder = Gdx.files.external(".skincomposer/");
         
-        skin = new FreeTypeSkin(Gdx.files.internal("skin-composer-ui/skin-composer-ui.json"));
+        skin = new FreeTypistSkin(Gdx.files.internal("skin-composer-ui/skin-composer-ui.json"));
         viewport = new ScreenViewport();
 //        viewport.setUnitsPerPixel(.5f);
         var batch = new PolygonSpriteBatch(SPINE_MAX_VERTS);
