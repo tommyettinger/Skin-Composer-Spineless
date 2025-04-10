@@ -57,7 +57,7 @@ public class PopTextraTypist extends PopTable {
         KnownFonts.setAssetPrefix("textra/");
 
         ttColorPickerStyle = createColorPickerStyle();
-        masterFont = KnownFonts.getFamily(DistanceFieldType.STANDARD);
+        masterFont = KnownFonts.getFamily(DistanceFieldType.SDF);
 
         stageResizeListener = new StageResizeListener() {
             @Override
