@@ -65,8 +65,8 @@ dependencies {
     implementation("com.github.tommyettinger:freetypist:2.0.1.0") {
         exclude group: 'com.github.tommyettinger', module: 'textratypist'
     }
-//        implementation "com.github.tommyettinger:textratypist:e5155e06c5"
-    implementation "com.github.tommyettinger:textratypist:084a51455b"
+        implementation "com.github.tommyettinger:textratypist:af2f1b5b40"
+//    implementation "com.github.tommyettinger:textratypist:084a51455b"
 
     if (enableGraalNative == 'true') {
         implementation "io.github.berstanio:gdx-svmhelper-backend-lwjgl3:$graalHelperVersion"

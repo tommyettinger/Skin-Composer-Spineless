@@ -564,7 +564,7 @@ public class PopTextraTypist extends PopTable {
         items.add("Select a font...");
         items.add("Default");
         
-        masterFont = KnownFonts.getFamily(DistanceFieldType.STANDARD);
+        masterFont = KnownFonts.getFamily(DistanceFieldType.SDF);
         for (var font : masterFont.family.connected) {
             if (font != null) {
                 items.add(font.name);
