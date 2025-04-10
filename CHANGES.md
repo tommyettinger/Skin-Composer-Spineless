@@ -1,7 +1,10 @@
 ### Skin Composer *Spineless* Version 59 ###
 * Removed Spine! Now using only FLOSS dependencies.
 * Updated TextraTypist to a JitPack commit from after 2.0.1 .
+* TextraTypist Playground defaults to SDF fonts, which look sharper at large sizes and allow an auto-outlined mode.
+* The Standard Family of fonts uses the names that are agnostic to SDF or Standard distance fields, so users can switch.
 * Massively updated Gradle files and project structure.
+* Audio is disabled because we don't use it, and we can save a tiny bit of JAR size by omitting audio dependencies.
 
 ### Skin Composer Version 58 ###
 * Added fix for Mac users. Thanks TEttinger!
