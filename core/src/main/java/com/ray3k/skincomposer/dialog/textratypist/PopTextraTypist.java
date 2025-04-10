@@ -565,11 +565,29 @@ public class PopTextraTypist extends PopTable {
         items.add("Default");
         
         masterFont = KnownFonts.getFamily(DistanceFieldType.SDF);
-        for (var font : masterFont.family.connected) {
-            if (font != null) {
-                items.add(font.name);
-                KnownFonts.addEmoji(font);
-            }
+        
+        var aliases = new String[]{
+                "Serif",
+                "Sans",
+                "Mono",
+                "Condensed",
+                "Humanist",
+                "Fantasy",
+                "Slab",
+                "Handwriting",
+                "Dark",
+                "Script",
+                "Iosevka",
+                "Medieval",
+                "Future",
+                "Console",
+                "Code",
+                "Geometric",
+        };
+        int index = 0;
+        for (var alias : aliases) {
+                items.add(alias);
+                KnownFonts.addEmoji(masterFont.family.connected[index++]);
         }
         masterFont.family.resizeDistanceFields(stage.getWidth(), stage.getHeight(), stage.getViewport());
 
