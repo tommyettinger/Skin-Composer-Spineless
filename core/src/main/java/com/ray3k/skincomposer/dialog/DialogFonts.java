@@ -1046,10 +1046,12 @@ public class DialogFonts extends Dialog {
                 }
             }
 
-            List<File> files = desktopWorker.openMultipleDialog("Choose font file(s)...", defaultPath, "fnt", "Font files (*.fnt)");
-            if (files != null && files.size() > 0) {
+            File picked = desktopWorker.openDialog("Choose font file...", defaultPath, "fnt", "Font files (*.fnt)");
+
+            if (picked != null) {
+                List<File> files = List.of(picked);
                 Gdx.app.postRunnable(() -> {
-                    FileHandle fileHandle = new FileHandle(files.get(0).getParentFile());
+                    FileHandle fileHandle = new FileHandle(picked.getParentFile());
                     projectData.setLastFontPath(fileHandle.path() + "/");
                     checkExistingDrawablesDialog(files, () -> {
                         fontSettingsDialog(files, 0);
