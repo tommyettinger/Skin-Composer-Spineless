@@ -217,8 +217,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
             var result = showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
             return result.size() > 0 ? result : null;
         }
-    
-        NFDPathSet outPaths =NFDPathSet.calloc();
+        NFDPathSet outPaths = NFDPathSet.calloc();
     
         //fix file path characters
         if (Utils.isWindows()) {
@@ -458,10 +457,10 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
         }
         
         //setting a flag for use JFileChooser if "-swingfd" arg is in commandline 
-        useSwing=false;
+        useSwing=true;
         for (var arg: args){
-            if (arg.equals("-swingfd")){
-                useSwing=true;
+            if ("-nfd".equals(arg)){
+                useSwing=false;
                 break;
             }
         }
