@@ -276,7 +276,7 @@ public class ImageButtonListeners {
                 label = new Label("Left:", skin, "scene-label-colored");
                 popTable.add(label);
                 
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-left");
                 spinner.setValue(simImageButton.padLeft);
                 popTable.add(spinner);
@@ -290,7 +290,7 @@ public class ImageButtonListeners {
                 label = new Label("Right:", skin, "scene-label-colored");
                 popTable.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-right");
                 spinner.setValue(simImageButton.padRight);
                 popTable.add(spinner);
@@ -304,7 +304,7 @@ public class ImageButtonListeners {
                 label = new Label("Top:", skin, "scene-label-colored");
                 popTable.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-top");
                 spinner.setValue(simImageButton.padTop);
                 popTable.add(spinner);
@@ -318,7 +318,7 @@ public class ImageButtonListeners {
                 label = new Label("Bottom:", skin, "scene-label-colored");
                 popTable.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-bottom");
                 spinner.setValue(simImageButton.padBottom);
                 popTable.add(spinner);

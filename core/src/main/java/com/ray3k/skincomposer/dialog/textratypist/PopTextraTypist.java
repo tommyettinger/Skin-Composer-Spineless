@@ -373,9 +373,13 @@ public class PopTextraTypist extends PopTable {
                         insertTag("[#" + color.toString() + "]", "{CLEARCOLOR}");
                         stage.setKeyboardFocus(codeTextArea);
                     }
-                
+
                     @Override
-                    public void cancelled() {
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
                         stage.setKeyboardFocus(codeTextArea);
                     }
                 });
@@ -458,9 +462,13 @@ public class PopTextraTypist extends PopTable {
                     previewTable.setColor(color);
                     stage.setKeyboardFocus(codeTextArea);
                 }
-            
+
                 @Override
-                public void cancelled() {
+                public void updated(Color color) {
+                }
+
+                @Override
+                public void cancelled(Color oldColor) {
                     stage.setKeyboardFocus(codeTextArea);
                 }
             });

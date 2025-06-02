@@ -590,7 +590,7 @@ public class TextFieldListeners {
                 var label = new Label("Max Length:", skin, "scene-label-colored");
                 table.add(label).right();
                 
-                var valueSpinner = new Spinner(simTextField.maxLength, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var valueSpinner = new Spinner(simTextField.maxLength, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 valueSpinner.setMinimum(0);
                 table.add(valueSpinner).width(100).left();
                 valueSpinner.getTextField().addListener(ibeamListener);

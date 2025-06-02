@@ -213,7 +213,7 @@ public class TableListeners {
                 label = new Label("Left:", skin, "scene-label-colored");
                 popTable.add(label);
     
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-left");
                 spinner.setValue(simTable.padLeft);
                 spinner.setTouchable(simTable.paddingEnabled ? Touchable.enabled : Touchable.disabled);
@@ -231,7 +231,7 @@ public class TableListeners {
                 label = new Label("Right:", skin, "scene-label-colored");
                 popTable.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-right");
                 spinner.setValue(simTable.padRight);
                 spinner.setTouchable(simTable.paddingEnabled ? Touchable.enabled : Touchable.disabled);
@@ -249,7 +249,7 @@ public class TableListeners {
                 label = new Label("Top:", skin, "scene-label-colored");
                 popTable.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-top");
                 spinner.setValue(simTable.padTop);
                 spinner.setTouchable(simTable.paddingEnabled ? Touchable.enabled : Touchable.disabled);
@@ -267,7 +267,7 @@ public class TableListeners {
                 label = new Label("Bottom:", skin, "scene-label-colored");
                 popTable.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-bottom");
                 spinner.setValue(simTable.padBottom);
                 spinner.setTouchable(simTable.paddingEnabled ? Touchable.enabled : Touchable.disabled);

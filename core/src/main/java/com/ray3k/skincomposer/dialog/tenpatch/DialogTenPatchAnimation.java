@@ -130,7 +130,7 @@ public class DialogTenPatchAnimation extends Dialog {
         label = new Label("Frame Duration:", skin);
         table.add(label);
         
-        var spinner = new Spinner(0, .01f, false, Spinner.Orientation.HORIZONTAL, skin);
+        var spinner = new Spinner(0, .01f, 2, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setMinimum(0.0f);
         spinner.setValue(workingData.tenPatchData.frameDuration);
         table.add(spinner).minWidth(150);

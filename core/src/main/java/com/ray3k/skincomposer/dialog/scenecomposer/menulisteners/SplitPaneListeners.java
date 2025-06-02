@@ -176,13 +176,13 @@ public class SplitPaneListeners {
                 var label = new Label("Split:", skin, "scene-label-colored");
                 popTable.add(label).spaceRight(5);
                 
-                var splitSpinner = new Spinner(0, .1f, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
-                var splitMinSpinner = new Spinner(0, .1f, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
-                var splitMaxSpinner = new Spinner(0, .1f, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var splitSpinner = new Spinner(0, .1f, 1, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var splitMinSpinner = new Spinner(0, .1f, 1, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var splitMaxSpinner = new Spinner(0, .1f, 1, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 splitSpinner.setName("pad-left");
                 splitSpinner.setValue(simSplitPane.split);
-                splitSpinner.setMinimum((double) simSplitPane.splitMin);
-                splitSpinner.setMaximum((double) simSplitPane.splitMax);
+                splitSpinner.setMinimum(simSplitPane.splitMin);
+                splitSpinner.setMaximum(simSplitPane.splitMax);
                 popTable.add(splitSpinner);
                 splitSpinner.getTextField().addListener(ibeamListener);
                 splitSpinner.getButtonMinus().addListener(handListener);

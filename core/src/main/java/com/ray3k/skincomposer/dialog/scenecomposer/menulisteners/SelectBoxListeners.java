@@ -211,7 +211,7 @@ public class SelectBoxListeners {
                 var label = new Label("Max List Count:", skin, "scene-label-colored");
                 table.add(label).right();
                 
-                var valueSpinner = new Spinner(simSelectBox.maxListCount, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var valueSpinner = new Spinner(simSelectBox.maxListCount, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 valueSpinner.setMinimum(0);
                 table.add(valueSpinner).width(100).left();
                 valueSpinner.getTextField().addListener(ibeamListener);

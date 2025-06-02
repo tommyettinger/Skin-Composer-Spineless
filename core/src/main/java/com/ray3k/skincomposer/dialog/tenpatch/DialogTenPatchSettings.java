@@ -109,7 +109,7 @@ public class DialogTenPatchSettings extends PopTable {
         label = new Label("Min Width:", skin);
         table.add(label).right();
         
-        var spinner = new Spinner(0, 1, true, Spinner.Orientation.HORIZONTAL, skin);
+        var spinner = new Spinner(0, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setValue(workingData.minWidth);
         table.add(spinner).minWidth(100).spaceRight(15);
         spinner.getButtonMinus().addListener(handListener);
@@ -126,7 +126,7 @@ public class DialogTenPatchSettings extends PopTable {
         label = new Label("Min Height:", skin);
         table.add(label).right();
     
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setValue(workingData.minHeight);
         table.add(spinner).minWidth(100).spaceRight(15);
         spinner.getButtonMinus().addListener(handListener);
@@ -330,7 +330,7 @@ public class DialogTenPatchSettings extends PopTable {
         textTooltip = (Main.makeTooltip("Only relevant if Tiling is enabled.", tooltipManager, skin));
         label.addListener(textTooltip);
     
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setValue(workingData.tenPatchData.offsetX);
         table.add(spinner).minWidth(100).spaceRight(15);
         spinner.addListener(textTooltip);
@@ -349,7 +349,7 @@ public class DialogTenPatchSettings extends PopTable {
         table.add(label).right();
         label.addListener(textTooltip);
     
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setValue(workingData.tenPatchData.offsetY);
         table.add(spinner).minWidth(100).spaceRight(15);
         spinner.addListener(textTooltip);
@@ -369,7 +369,7 @@ public class DialogTenPatchSettings extends PopTable {
         table.add(label).right();
         label.addListener(textTooltip);
     
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setValue(workingData.tenPatchData.offsetXspeed);
         table.add(spinner).minWidth(100).spaceRight(15);
         spinner.addListener(textTooltip);
@@ -388,7 +388,7 @@ public class DialogTenPatchSettings extends PopTable {
         table.add(label).right();
         label.addListener(textTooltip);
     
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setValue(workingData.tenPatchData.offsetYspeed);
         table.add(spinner).minWidth(100).spaceRight(15);
         spinner.addListener(textTooltip);

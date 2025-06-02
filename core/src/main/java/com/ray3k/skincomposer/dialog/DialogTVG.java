@@ -110,7 +110,7 @@ public class DialogTVG extends PopTable {
 //        label = new Label("Origin X:", skin);
 //        table.add(label);
 //
-//        var originXspinner = new Spinner(0, 1, true, Orientation.HORIZONTAL, skin);
+//        var originXspinner = new Spinner(0, 1, 0, Orientation.HORIZONTAL, skin);
 //        originXspinner.setValue(drawableData.tvgData.originX);
 //        table.add(originXspinner);
 //        onChange(originXspinner, () -> {
@@ -124,7 +124,7 @@ public class DialogTVG extends PopTable {
 //        label = new Label("Origin Y:", skin);
 //        table.add(label);
 //
-//        var originYspinner = new Spinner(0, 1, true, Orientation.HORIZONTAL, skin);
+//        var originYspinner = new Spinner(0, 1, 0, Orientation.HORIZONTAL, skin);
 //        originYspinner.setValue(drawableData.tvgData.originY);
 //        table.add(originYspinner);
 //        onChange(originYspinner, () -> {

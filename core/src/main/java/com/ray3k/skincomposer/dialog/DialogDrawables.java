@@ -1286,7 +1286,7 @@ public class DialogDrawables extends Dialog {
         label = new Label("minWidth:", getSkin());
         table.add(label);
         
-        var spinner = new Spinner(drawable.minWidth, 1, true, Spinner.Orientation.HORIZONTAL, getSkin());
+        var spinner = new Spinner(drawable.minWidth, 1, 0, Spinner.Orientation.HORIZONTAL, getSkin());
         spinner.setMinimum(-1);
         spinner.setName("minWidth");
         table.add(spinner).width(100);
@@ -1298,7 +1298,7 @@ public class DialogDrawables extends Dialog {
         label = new Label("minHeight:", getSkin());
         table.add(label);
         
-        spinner = new Spinner(drawable.minHeight, 1, true, Spinner.Orientation.HORIZONTAL, getSkin());
+        spinner = new Spinner(drawable.minHeight, 1, 0, Spinner.Orientation.HORIZONTAL, getSkin());
         spinner.setMinimum(-1);
         spinner.setName("minHeight");
         table.add(spinner).width(100);
@@ -1328,8 +1328,8 @@ public class DialogDrawables extends Dialog {
     }
     
     private void tiledDrawableSettingsDialog(String title, DrawableData drawable, boolean newDrawable) {
-        final Spinner minWidthSpinner = new Spinner(0.0f, 1.0f, true, Spinner.Orientation.HORIZONTAL, getSkin());
-        final Spinner minHeightSpinner = new Spinner(0.0f, 1.0f, true, Spinner.Orientation.HORIZONTAL, getSkin());
+        final Spinner minWidthSpinner = new Spinner(0.0f, 1.0f, 0, Spinner.Orientation.HORIZONTAL, getSkin());
+        final Spinner minHeightSpinner = new Spinner(0.0f, 1.0f, 0, Spinner.Orientation.HORIZONTAL, getSkin());
         TextField textField = new TextField("", getSkin()) {
             @Override
             public void next(boolean up) {

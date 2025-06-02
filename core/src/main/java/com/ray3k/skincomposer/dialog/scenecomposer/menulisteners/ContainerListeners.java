@@ -175,7 +175,7 @@ public class ContainerListeners {
                 label = new Label("Width:", skin, "scene-label-colored");
                 table.add(label);
                 
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("minimum-width");
                 spinner.setValue(simContainer.minWidth);
                 table.add(spinner);
@@ -189,7 +189,7 @@ public class ContainerListeners {
                 label = new Label("Height:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("minimum-height");
                 spinner.setValue(simContainer.minHeight);
                 table.add(spinner);
@@ -213,7 +213,7 @@ public class ContainerListeners {
                 label = new Label("Width:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("maximum-width");
                 spinner.setValue(simContainer.maxWidth);
                 table.add(spinner);
@@ -227,7 +227,7 @@ public class ContainerListeners {
                 label = new Label("Height:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("maximum-height");
                 spinner.setValue(simContainer.maxHeight);
                 table.add(spinner);
@@ -251,7 +251,7 @@ public class ContainerListeners {
                 label = new Label("Width:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("preferred-width");
                 spinner.setValue(simContainer.preferredWidth);
                 table.add(spinner);
@@ -265,7 +265,7 @@ public class ContainerListeners {
                 label = new Label("Height:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("preferred-height");
                 spinner.setValue(simContainer.preferredHeight);
                 table.add(spinner);
@@ -325,7 +325,7 @@ public class ContainerListeners {
                 label = new Label("Left:", skin, "scene-label-colored");
                 table.add(label);
                 
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simContainer.padLeft);
                 spinner.setName("padding-left");
                 table.add(spinner);
@@ -339,7 +339,7 @@ public class ContainerListeners {
                 label = new Label("Right:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simContainer.padRight);
                 spinner.setName("padding-right");
                 table.add(spinner);
@@ -353,7 +353,7 @@ public class ContainerListeners {
                 label = new Label("Top:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simContainer.padTop);
                 spinner.setName("padding-top");
                 table.add(spinner);
@@ -367,7 +367,7 @@ public class ContainerListeners {
                 label = new Label("Bottom:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simContainer.padBottom);
                 spinner.setName("padding-bottom");
                 table.add(spinner);

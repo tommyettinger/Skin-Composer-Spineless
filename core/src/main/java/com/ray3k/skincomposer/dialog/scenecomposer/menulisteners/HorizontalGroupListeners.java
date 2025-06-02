@@ -203,7 +203,7 @@ public class HorizontalGroupListeners {
                 label = new Label("Left:", skin, "scene-label-colored");
                 table.add(label);
                 
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simHorizontalGroup.padLeft);
                 table.add(spinner);
                 spinner.getTextField().addListener(ibeamListener);
@@ -221,7 +221,7 @@ public class HorizontalGroupListeners {
                 label = new Label("Right:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simHorizontalGroup.padRight);
                 spinner.setName("padding-right");
                 table.add(spinner);
@@ -240,7 +240,7 @@ public class HorizontalGroupListeners {
                 label = new Label("Top:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simHorizontalGroup.padTop);
                 spinner.setName("padding-top");
                 table.add(spinner);
@@ -259,7 +259,7 @@ public class HorizontalGroupListeners {
                 label = new Label("Bottom:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simHorizontalGroup.padBottom);
                 spinner.setName("padding-bottom");
                 table.add(spinner);
@@ -284,7 +284,7 @@ public class HorizontalGroupListeners {
                 label = new Label("Spacing:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simHorizontalGroup.space);
                 spinner.setName("spacing-left");
                 table.add(spinner);
@@ -345,7 +345,7 @@ public class HorizontalGroupListeners {
                 var label = new Label("Wrap Space:", skin, "scene-label-colored");
                 table.add(label);
     
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simHorizontalGroup.padRight);
                 spinner.setName("padding-right");
                 table.add(spinner);

@@ -506,7 +506,7 @@ public class CellListeners {
                 label = new Label("Width:", skin, "scene-label-colored");
                 table.add(label);
     
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("minimum-width");
                 spinner.setValue(simCell.minWidth);
                 table.add(spinner);
@@ -520,7 +520,7 @@ public class CellListeners {
                 label = new Label("Height:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("minimum-height");
                 spinner.setValue(simCell.minHeight);
                 table.add(spinner);
@@ -544,7 +544,7 @@ public class CellListeners {
                 label = new Label("Width:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("maximum-width");
                 spinner.setValue(simCell.maxWidth);
                 table.add(spinner);
@@ -558,7 +558,7 @@ public class CellListeners {
                 label = new Label("Height:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("maximum-height");
                 spinner.setValue(simCell.maxHeight);
                 table.add(spinner);
@@ -582,7 +582,7 @@ public class CellListeners {
                 label = new Label("Width:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("preferred-width");
                 spinner.setValue(simCell.preferredWidth);
                 table.add(spinner);
@@ -596,7 +596,7 @@ public class CellListeners {
                 label = new Label("Height:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("preferred-height");
                 spinner.setValue(simCell.preferredHeight);
                 table.add(spinner);
@@ -980,7 +980,7 @@ public class CellListeners {
                 
                 table.row();
                 
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simCell.colSpan);
                 spinner.setMinimum(1);
                 table.add(spinner);
@@ -1079,7 +1079,7 @@ public class CellListeners {
                 label = new Label("Left:", skin, "scene-label-colored");
                 table.add(label);
     
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simCell.padLeft);
                 spinner.setName("padding-left");
                 table.add(spinner);
@@ -1093,7 +1093,7 @@ public class CellListeners {
                 label = new Label("Right:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simCell.padRight);
                 spinner.setName("padding-right");
                 table.add(spinner);
@@ -1107,7 +1107,7 @@ public class CellListeners {
                 label = new Label("Top:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simCell.padTop);
                 spinner.setName("padding-top");
                 table.add(spinner);
@@ -1121,7 +1121,7 @@ public class CellListeners {
                 label = new Label("Bottom:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simCell.padBottom);
                 spinner.setName("padding-bottom");
                 table.add(spinner);
@@ -1153,7 +1153,7 @@ public class CellListeners {
                 label = new Label("Left:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simCell.spaceLeft);
                 spinner.setName("spacing-left");
                 spinner.setMinimum(0);
@@ -1168,7 +1168,7 @@ public class CellListeners {
                 label = new Label("Right:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simCell.spaceRight);
                 spinner.setName("spacing-right");
                 spinner.setMinimum(0);
@@ -1183,7 +1183,7 @@ public class CellListeners {
                 label = new Label("Top:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simCell.spaceTop);
                 spinner.setName("spacing-top");
                 spinner.setMinimum(0);
@@ -1198,7 +1198,7 @@ public class CellListeners {
                 label = new Label("Bottom:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simCell.spaceBottom);
                 spinner.setName("spacing-bottom");
                 spinner.setMinimum(0);

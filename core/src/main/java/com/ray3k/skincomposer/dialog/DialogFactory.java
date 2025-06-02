@@ -566,8 +566,8 @@ public class DialogFactory {
             imageButton.setUserObject(colorData);
         }
     
-        var widthSpinner = new Spinner(modifyDrawable == null ? -1 : modifyDrawable.minWidth, 1, true, Orientation.HORIZONTAL, skin);
-        var heightSpinner = new Spinner(modifyDrawable == null ? -1 : modifyDrawable.minHeight, 1, true, Orientation.HORIZONTAL, skin);
+        var widthSpinner = new Spinner(modifyDrawable == null ? -1 : modifyDrawable.minWidth, 1, 0, Orientation.HORIZONTAL, skin);
+        var heightSpinner = new Spinner(modifyDrawable == null ? -1 : modifyDrawable.minHeight, 1, 0, Orientation.HORIZONTAL, skin);
         
         Dialog dialog = new Dialog("New Pixel Drawable", skin, "bg") {
             @Override
@@ -725,7 +725,7 @@ public class DialogFactory {
         label = new Label("minWidth:", skin);
         root.add(label);
         
-        var spinner = new Spinner(drawable.minWidth, 1, true, Spinner.Orientation.HORIZONTAL, skin);
+        var spinner = new Spinner(drawable.minWidth, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setMinimum(-1);
         spinner.setName("minWidth");
         root.add(spinner).width(100);
@@ -737,7 +737,7 @@ public class DialogFactory {
         label = new Label("minHeight:", skin);
         root.add(label);
         
-        spinner = new Spinner(drawable.minHeight, 1, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(drawable.minHeight, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setMinimum(-1);
         spinner.setName("minHeight");
         root.add(spinner).width(100);

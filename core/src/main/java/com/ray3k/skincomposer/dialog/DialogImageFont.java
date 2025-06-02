@@ -434,7 +434,7 @@ public class DialogImageFont extends Dialog {
         fadables.add(label);
         width = label.getWidth();
         
-        var spinner = new Spinner(settings.gap, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        var spinner = new Spinner(settings.gap, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("gap");
         spinner.setMinimum(0);
         content.add(spinner).left().minWidth(100.0f);
@@ -482,7 +482,7 @@ public class DialogImageFont extends Dialog {
         fadables.add(label);
         width = label.getWidth();
         
-        spinner = new Spinner(settings.kerning, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(settings.kerning, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("kerning");
         content.add(spinner).left().minWidth(100.0f);
         fadables.add(spinner);
@@ -504,7 +504,7 @@ public class DialogImageFont extends Dialog {
         content.add(label).right();
         fadables.add(label);
         
-        spinner = new Spinner(settings.leading, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(settings.leading, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("leading");
         content.add(spinner).expandX().left().minWidth(100.0f);
         fadables.add(spinner);
@@ -530,7 +530,7 @@ public class DialogImageFont extends Dialog {
         fadables.add(label);
         width = label.getWidth();
         
-        spinner = new Spinner(settings.baseline, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(settings.baseline, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("baseline");
         content.add(spinner).expandX().left().minWidth(100.0f).colspan(3);
         fadables.add(spinner);
@@ -556,7 +556,7 @@ public class DialogImageFont extends Dialog {
         fadables.add(label);
         width = label.getWidth();
         
-        spinner = new Spinner(settings.spaceWidth, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(settings.spaceWidth, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("space width");
         spinner.setMinimum(0);
         content.add(spinner).left().minWidth(100.0f);
@@ -579,7 +579,7 @@ public class DialogImageFont extends Dialog {
         content.add(label).right();
         fadables.add(label);
         
-        spinner = new Spinner(settings.tabSpace, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(settings.tabSpace, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("tab space count");
         spinner.setMinimum(0);
         content.add(spinner).expandX().left().minWidth(100.0f);
@@ -949,7 +949,7 @@ public class DialogImageFont extends Dialog {
         label = new Label("Offset", skin);
         table.add(label).right();
         
-        var spinner = new Spinner(settings.kerningPairsOffset, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        var spinner = new Spinner(settings.kerningPairsOffset, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         table.add(spinner).left();
         spinner.getButtonMinus().addListener(handListener);
         spinner.getTextField().addListener(ibeamListener);

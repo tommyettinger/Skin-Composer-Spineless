@@ -117,7 +117,7 @@ public class ProgressBarListeners {
                 var label = new Label("Value:", skin, "scene-label-colored");
                 table.add(label);
                 
-                var valueSpinner = new Spinner(simProgressBar.value, simProgressBar.increment, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var valueSpinner = new Spinner(simProgressBar.value, simProgressBar.increment, 2, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 valueSpinner.setMinimum(simProgressBar.minimum);
                 valueSpinner.setMaximum(simProgressBar.maximum);
                 table.add(valueSpinner).width(100).uniformX();
@@ -136,9 +136,9 @@ public class ProgressBarListeners {
                 label = new Label("Minimum:", skin, "scene-label-colored");
                 table.add(label);
     
-                var minimumSpinner = new Spinner(simProgressBar.minimum, 1, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var minimumSpinner = new Spinner(simProgressBar.minimum, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 minimumSpinner.setMaximum(simProgressBar.maximum);
-                var maximumSpinner = new Spinner(simProgressBar.maximum, 1, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var maximumSpinner = new Spinner(simProgressBar.maximum, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 maximumSpinner.setMinimum(simProgressBar.minimum);
                 table.add(minimumSpinner).uniformX().fillX();
                 minimumSpinner.getTextField().addListener(ibeamListener);
@@ -181,9 +181,9 @@ public class ProgressBarListeners {
                 label = new Label("Increment:", skin, "scene-label-colored");
                 table.add(label);
     
-                var incrementSpinner = new Spinner(0, 1, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var incrementSpinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 incrementSpinner.setValue(simProgressBar.increment);
-                incrementSpinner.setMinimum(.0000000001);
+                incrementSpinner.setMinimum(.00001f);
                 table.add(incrementSpinner).uniformX().fillX();
                 incrementSpinner.getTextField().addListener(ibeamListener);
                 incrementSpinner.getButtonMinus().addListener(handListener);
@@ -286,7 +286,7 @@ public class ProgressBarListeners {
                 var label = new Label("Animation Duration:", skin, "scene-label-colored");
                 table.add(label).right();
                 
-                var durationSpinner = new Spinner(simProgressBar.animationDuration, 1, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var durationSpinner = new Spinner(simProgressBar.animationDuration, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 durationSpinner.setMinimum(0);
                 table.add(durationSpinner).left();
                 durationSpinner.getTextField().addListener(ibeamListener);

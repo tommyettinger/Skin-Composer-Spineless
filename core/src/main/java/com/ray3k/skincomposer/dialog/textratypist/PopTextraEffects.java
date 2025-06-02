@@ -377,10 +377,13 @@ public class PopTextraEffects extends PopTable {
                         color1.set(color);
                         runnable.run();
                     }
-    
+
                     @Override
-                    public void cancelled() {
-        
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
                     }
                 });
                 color2pop.addListener(new PopColorPickerListener() {
@@ -389,10 +392,13 @@ public class PopTextraEffects extends PopTable {
                         color2.set(color);
                         runnable.run();
                     }
-        
+
                     @Override
-                    public void cancelled() {
-            
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
                     }
                 });
                 onChange(frequencyField, runnable);
@@ -428,10 +434,13 @@ public class PopTextraEffects extends PopTable {
                         color1.set(color);
                         runnable.run();
                     }
-        
+
                     @Override
-                    public void cancelled() {
-            
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
                     }
                 });
                 color2pop.addListener(new PopColorPickerListener() {
@@ -440,10 +449,13 @@ public class PopTextraEffects extends PopTable {
                         color2.set(color);
                         runnable.run();
                     }
-        
+
                     @Override
-                    public void cancelled() {
-            
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
                     }
                 });
                 onChange(durationField, runnable);
@@ -482,10 +494,13 @@ public class PopTextraEffects extends PopTable {
                         color1.set(color);
                         runnable.run();
                     }
-        
+
                     @Override
-                    public void cancelled() {
-            
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
                     }
                 });
                 color2pop.addListener(new PopColorPickerListener() {
@@ -494,10 +509,13 @@ public class PopTextraEffects extends PopTable {
                         color2.set(color);
                         runnable.run();
                     }
-        
+
                     @Override
-                    public void cancelled() {
-            
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
                     }
                 });
                 onChange(distanceField, runnable);
@@ -584,10 +602,13 @@ public class PopTextraEffects extends PopTable {
                         color1.set(color);
                         runnable.run();
                     }
-        
+
                     @Override
-                    public void cancelled() {
-            
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
                     }
                 });
                 color2pop.addListener(new PopColorPickerListener() {
@@ -596,10 +617,13 @@ public class PopTextraEffects extends PopTable {
                         color2.set(color);
                         runnable.run();
                     }
-        
+
                     @Override
-                    public void cancelled() {
-            
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
                     }
                 });
                 break;
@@ -873,10 +897,13 @@ public class PopTextraEffects extends PopTable {
                         color1.set(color);
                         runnable.run();
                     }
-        
+
                     @Override
-                    public void cancelled() {
-            
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
                     }
                 });
                 break;
@@ -1339,10 +1366,13 @@ public class PopTextraEffects extends PopTable {
             public void picked(Color color) {
                 imageButton.getImage().setColor(color);
             }
-    
+
             @Override
-            public void cancelled() {
-        
+            public void updated(Color color) {
+            }
+
+            @Override
+            public void cancelled(Color oldColor) {
             }
         });
         onChange(imageButton, () -> pop.show(stage));

@@ -113,7 +113,7 @@ public class TreeListeners {
                 var label = new Label("Left:", skin, "scene-label-colored");
                 table.add(label);
                 
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simTree.padLeft);
                 table.add(spinner);
                 spinner.getTextField().addListener(ibeamListener);
@@ -131,7 +131,7 @@ public class TreeListeners {
                 label = new Label("Right:", skin, "scene-label-colored");
                 table.add(label);
                 
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simTree.padRight);
                 table.add(spinner);
                 spinner.getTextField().addListener(ibeamListener);
@@ -170,7 +170,7 @@ public class TreeListeners {
                 var label = new Label("Icon Space Left:", skin, "scene-label-colored");
                 table.add(label);
                 
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simTree.iconSpaceLeft);
                 table.add(spinner);
                 spinner.getTextField().addListener(ibeamListener);
@@ -188,7 +188,7 @@ public class TreeListeners {
                 label = new Label("Icon Space Right:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simTree.iconSpaceRight);
                 table.add(spinner);
                 spinner.getTextField().addListener(ibeamListener);
@@ -206,7 +206,7 @@ public class TreeListeners {
                 label = new Label("Indent Spacing:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simTree.indentSpacing);
                 table.add(spinner);
                 spinner.getTextField().addListener(ibeamListener);
@@ -224,7 +224,7 @@ public class TreeListeners {
                 label = new Label("Y Spacing:", skin, "scene-label-colored");
                 table.add(label);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simTree.ySpacing);
                 table.add(spinner);
                 spinner.getTextField().addListener(ibeamListener);

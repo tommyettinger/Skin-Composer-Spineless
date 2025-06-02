@@ -118,7 +118,7 @@ public class SliderListeners {
                 var label = new Label("Value:", skin, "scene-label-colored");
                 table.add(label);
                 
-                var valueSpinner = new Spinner(simSlider.value, simSlider.increment, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var valueSpinner = new Spinner(simSlider.value, simSlider.increment, 2, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 valueSpinner.setMinimum(simSlider.minimum);
                 valueSpinner.setMaximum(simSlider.maximum);
                 table.add(valueSpinner).width(100).uniformX();
@@ -137,9 +137,9 @@ public class SliderListeners {
                 label = new Label("Minimum:", skin, "scene-label-colored");
                 table.add(label);
                 
-                var minimumSpinner = new Spinner(simSlider.minimum, 1, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var minimumSpinner = new Spinner(simSlider.minimum, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 minimumSpinner.setMaximum(simSlider.maximum);
-                var maximumSpinner = new Spinner(simSlider.maximum, 1, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var maximumSpinner = new Spinner(simSlider.maximum, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 maximumSpinner.setMinimum(simSlider.minimum);
                 table.add(minimumSpinner).uniformX().fillX();
                 minimumSpinner.getTextField().addListener(ibeamListener);
@@ -182,9 +182,9 @@ public class SliderListeners {
                 label = new Label("Increment:", skin, "scene-label-colored");
                 table.add(label);
                 
-                var incrementSpinner = new Spinner(0, 1, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var incrementSpinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 incrementSpinner.setValue(simSlider.increment);
-                incrementSpinner.setMinimum(.0000000001);
+                incrementSpinner.setMinimum(.00001f);
                 table.add(incrementSpinner).uniformX().fillX();
                 incrementSpinner.getTextField().addListener(ibeamListener);
                 incrementSpinner.getButtonMinus().addListener(handListener);
@@ -288,7 +288,7 @@ public class SliderListeners {
                 var label = new Label("Animation Duration:", skin, "scene-label-colored");
                 table.add(label).right();
                 
-                var durationSpinner = new Spinner(simSlider.animationDuration, 1, false, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var durationSpinner = new Spinner(simSlider.animationDuration, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 durationSpinner.setMinimum(0);
                 table.add(durationSpinner).left();
                 durationSpinner.getTextField().addListener(ibeamListener);

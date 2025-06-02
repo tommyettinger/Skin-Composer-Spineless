@@ -235,9 +235,9 @@ public class PopSettings extends PopTable {
         label = new Label("Max Number of Undos: ", skin);
         table.add(label);
         
-        var spinner = new Spinner(projectData.getMaxUndos(), 1.0, true, Orientation.HORIZONTAL, getSkin());
-        spinner.setMinimum(1.0);
-        spinner.setMaximum(100.0);
+        var spinner = new Spinner(projectData.getMaxUndos(), 1, 0, Orientation.HORIZONTAL, getSkin());
+        spinner.setMinimum(1f);
+        spinner.setMaximum(100f);
         spinner.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeListener.ChangeEvent event, Actor actor) {

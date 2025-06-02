@@ -240,7 +240,7 @@ public class Dialog9Patch extends Dialog {
           var table = new Table();
         top.add(table).growX();
 
-          var spinner = new Spinner(0, 1, true, Spinner.Orientation.HORIZONTAL, getSkin());
+          var spinner = new Spinner(0, 1, 0, Spinner.Orientation.HORIZONTAL, getSkin());
         spinner.setName("spinner-padding-left");
         spinner.setValue(ninePatchLeft);
         spinner.setMinimum(0);
@@ -269,7 +269,7 @@ public class Dialog9Patch extends Dialog {
         var label = new Label("STRETCH REGION", getSkin());
         table.add(label);
         
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.HORIZONTAL_FLIPPED, getSkin(), "horizontal-reversed");
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.HORIZONTAL_FLIPPED, getSkin(), "horizontal-reversed");
         spinner.setName("spinner-padding-right");
         spinner.setValue(ninePatchRight);
         spinner.setMinimum(0);
@@ -302,7 +302,7 @@ public class Dialog9Patch extends Dialog {
           var subTable = new Table();
         table.add(subTable).growY();
 
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.VERTICAL_FLIPPED, getSkin(), "vertical-reversed");
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.VERTICAL_FLIPPED, getSkin(), "vertical-reversed");
         spinner.setName("spinner-padding-top");
         spinner.setValue(ninePatchTop);
         spinner.setMinimum(0);
@@ -339,7 +339,7 @@ public class Dialog9Patch extends Dialog {
         group.rotateBy(90.0f);
 
         subTable.row();
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.VERTICAL, getSkin(), "vertical");
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.VERTICAL, getSkin(), "vertical");
         spinner.setName("spinner-padding-bottom");
         spinner.setValue(ninePatchBottom);
         spinner.setMinimum(0);
@@ -467,7 +467,7 @@ public class Dialog9Patch extends Dialog {
         subTable = new Table();
         table.add(subTable).growY();
 
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.VERTICAL_FLIPPED, getSkin(), "vertical-reversed");
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.VERTICAL_FLIPPED, getSkin(), "vertical-reversed");
         spinner.setName("spinner-content-top");
         spinner.setValue(ninePatchContentTop);
         spinner.setMinimum(0);
@@ -504,7 +504,7 @@ public class Dialog9Patch extends Dialog {
         group.rotateBy(-90);
 
         subTable.row();
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.VERTICAL, getSkin(), "vertical");
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.VERTICAL, getSkin(), "vertical");
         spinner.setName("spinner-content-bottom");
         spinner.setValue(ninePatchContentBottom);
         spinner.setMinimum(0);
@@ -534,7 +534,7 @@ public class Dialog9Patch extends Dialog {
         table = new Table();
         top.add(table).growX();
 
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.HORIZONTAL, getSkin());
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.HORIZONTAL, getSkin());
         spinner.setName("spinner-content-left");
         spinner.setValue(ninePatchContentLeft);
         spinner.setMinimum(0);
@@ -563,7 +563,7 @@ public class Dialog9Patch extends Dialog {
         label = new Label("CONTENT", getSkin());
         table.add(label);
 
-        spinner = new Spinner(0, 1, true, Spinner.Orientation.HORIZONTAL_FLIPPED, getSkin(), "horizontal-reversed");
+        spinner = new Spinner(0, 1, 0, Spinner.Orientation.HORIZONTAL_FLIPPED, getSkin(), "horizontal-reversed");
         spinner.setName("spinner-content-right");
         spinner.setValue(ninePatchContentRight);
         spinner.setMinimum(0);

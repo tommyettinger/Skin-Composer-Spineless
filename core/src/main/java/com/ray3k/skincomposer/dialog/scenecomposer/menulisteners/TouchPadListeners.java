@@ -117,7 +117,7 @@ public class TouchPadListeners {
                 var label = new Label("Dead Zone:", skin, "scene-label-colored");
                 table.add(label);
                 
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setValue(simTouchPad.deadZone);
                 table.add(spinner);
                 spinner.getTextField().addListener(ibeamListener);

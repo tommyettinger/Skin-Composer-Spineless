@@ -328,7 +328,7 @@ public class ScrollPaneListeners {
                 var label = new Label("Fling Time:", skin, "scene-label-colored");
                 subTable.add(label).space(5);
                 
-                var spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                var spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-left");
                 spinner.setValue(simScrollPane.flingTime);
                 subTable.add(spinner);
@@ -376,7 +376,7 @@ public class ScrollPaneListeners {
                 label = new Label("Overscroll Distance:", skin, "scene-label-colored");
                 subTable.add(label).spaceRight(5);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-left");
                 spinner.setValue(simScrollPane.overScrollDistance);
                 subTable.add(spinner);
@@ -395,7 +395,7 @@ public class ScrollPaneListeners {
                 label = new Label("Overscroll Speed Min:", skin, "scene-label-colored");
                 subTable.add(label).spaceRight(5);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-left");
                 spinner.setValue(simScrollPane.overScrollSpeedMin);
                 subTable.add(spinner);
@@ -414,7 +414,7 @@ public class ScrollPaneListeners {
                 label = new Label("Overscroll Speed Max:", skin, "scene-label-colored");
                 subTable.add(label).spaceRight(5);
     
-                spinner = new Spinner(0, 1, true, Spinner.Orientation.RIGHT_STACK, skin, "scene");
+                spinner = new Spinner(0, 1, 0, Spinner.Orientation.RIGHT_STACK, skin, "scene");
                 spinner.setName("pad-left");
                 spinner.setValue(simScrollPane.overScrollSpeedMax);
                 subTable.add(spinner);

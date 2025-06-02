@@ -441,7 +441,7 @@ public class DialogBitmapFont extends Dialog {
         label = new Label("Size:", skin);
         bottom.add(label).right();
 
-        Spinner spinner = new Spinner(data.size, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        Spinner spinner = new Spinner(data.size, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("size");
         spinner.setMinimum(5);
         bottom.add(spinner).left().minWidth(100.0f);
@@ -551,7 +551,7 @@ public class DialogBitmapFont extends Dialog {
         label = new Label("Gamma:", skin);
         bottom.add(label).right();
 
-        spinner = new Spinner(Double.parseDouble(df.format(data.gamma)), .1, false, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(Float.parseFloat(df.format(data.gamma)), .1f, 1, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("gamma");
         bottom.add(spinner).left().minWidth(100.0f);
 
@@ -574,7 +574,7 @@ public class DialogBitmapFont extends Dialog {
         label = new Label("Render Count:", skin);
         bottom.add(label).right();
 
-        spinner = new Spinner(data.renderCount, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(data.renderCount, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("renderCount");
         bottom.add(spinner).left().minWidth(100.0f);
 
@@ -598,7 +598,7 @@ public class DialogBitmapFont extends Dialog {
         label = new Label("Border Width:", skin);
         bottom.add(label).right();
 
-        spinner = new Spinner(data.borderWidth, 1.0, false, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(data.borderWidth, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("borderWidth");
         bottom.add(spinner).left().minWidth(100.0f);
 
@@ -679,7 +679,7 @@ public class DialogBitmapFont extends Dialog {
         label = new Label("Border Gamma:", skin);
         bottom.add(label).right();
 
-        spinner = new Spinner(Double.parseDouble(df.format(data.borderGamma)), 1.0, false, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(Float.parseFloat(df.format(data.borderGamma)), 0.1f, 1, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("borderGamma");
         bottom.add(spinner).left().minWidth(100.0f);
 
@@ -703,7 +703,7 @@ public class DialogBitmapFont extends Dialog {
         label = new Label("Shadow Offset X:", skin);
         bottom.add(label).right();
 
-        spinner = new Spinner(data.shadowOffsetX, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(data.shadowOffsetX, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("shadowOffsetX");
         bottom.add(spinner).left().minWidth(100.0f);
 
@@ -726,7 +726,7 @@ public class DialogBitmapFont extends Dialog {
         label = new Label("Shadow Offset Y:", skin);
         bottom.add(label).right();
 
-        spinner = new Spinner(data.shadowOffsetY, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(data.shadowOffsetY, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("shadowOffsetY");
         bottom.add(spinner).left().minWidth(100.0f);
 
@@ -809,7 +809,7 @@ public class DialogBitmapFont extends Dialog {
         label = new Label("Space X:", skin);
         bottom.add(label).right();
 
-        spinner = new Spinner(data.spaceX, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(data.spaceX, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("spaceX");
         bottom.add(spinner).left().minWidth(100.0f);
 
@@ -832,7 +832,7 @@ public class DialogBitmapFont extends Dialog {
         label = new Label("Space Y:", skin);
         bottom.add(label).right();
 
-        spinner = new Spinner(data.spaceY, 1.0, true, Spinner.Orientation.HORIZONTAL, skin);
+        spinner = new Spinner(data.spaceY, 1, 0, Spinner.Orientation.HORIZONTAL, skin);
         spinner.setName("spaceY");
         bottom.add(spinner).left().minWidth(100.0f);
 

@@ -54,19 +54,20 @@ dependencies {
     implementation "com.github.raeleus.TenPatch:tenpatch:5.2.3"
     implementation "space.earlygrey:shapedrawer:2.6.0"
     implementation 'com.squareup:javapoet:1.12.1'
-    implementation 'com.github.raeleus.stripe:stripe:1.4.2'
-    implementation ('com.github.raeleus.stripe:colorpicker:1.4.2') {
+    implementation "com.github.raeleus.stripe:stripe:2.0.0"
+    implementation ('com.github.raeleus.stripe:colorpicker:2.0.0') {
         exclude group: 'com.github.tommyettinger', module: 'textratypist'
     }
-    implementation 'com.github.raeleus.stripe:freetype:1.1.0'
+    implementation 'com.github.raeleus.stripe:freetype:2.0.0'
     implementation 'com.github.lyze237:gdx-TinyVG:41f408420c'
 //    implementation 'com.github.lyze237:gdx-TinyVG:9a5a6ae9ae'
 //        implementation "com.github.tommyettinger:textratypist:2.0.1"
     implementation("com.github.tommyettinger:freetypist:2.0.1.0") {
         exclude group: 'com.github.tommyettinger', module: 'textratypist'
     }
-        implementation "com.github.tommyettinger:textratypist:af2f1b5b40"
-//    implementation "com.github.tommyettinger:textratypist:084a51455b"
+    implementation "com.github.tommyettinger:textratypist:fb76f540f7"
+    implementation "com.github.tommyettinger:regexodus:0.1.19"
+//    implementation "com.github.tommyettinger:textratypist:af2f1b5b40"
 
     if (enableGraalNative == 'true') {
         implementation "io.github.berstanio:gdx-svmhelper-backend-lwjgl3:$graalHelperVersion"
