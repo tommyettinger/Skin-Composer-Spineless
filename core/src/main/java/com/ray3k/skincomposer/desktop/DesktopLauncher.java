@@ -63,7 +63,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
     private Array<FilesDroppedListener> filesDroppedListeners;
     private CloseListener closeListener;
 
-    //constans for showFileChooser mode param
+    //constants for showFileChooser mode param
     private static final int OPEN_MULTIPLE=1;
     private static final int OPEN=2;
     private static final int SAVE=3;

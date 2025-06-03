@@ -38,16 +38,66 @@ dependencies {
     implementation ("com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"){
         exclude group: "org.jcraft", module: "jorbis"
         exclude group: "org.lwjgl", module: "lwjgl-openal"
+        exclude group: "org.lwjgl", module: "lwjgl-glfw"
+        exclude group: "org.lwjgl", module: "lwjgl-jemalloc"
+        exclude group: "org.lwjgl", module: "lwjgl-opengl"
+        exclude group: "org.lwjgl", module: "lwjgl-stb"
+        exclude group: "org.lwjgl", module: "lwjgl"
     }
     implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-    implementation("org.lwjgl:lwjgl-nfd:3.3.1"){ exclude group: 'org.lwjgl', module: 'lwjgl' }
-    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-windows"){ exclude group: 'org.lwjgl', module: 'lwjgl' }
-    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-windows-x86"){ exclude group: 'org.lwjgl', module: 'lwjgl' }
-    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-linux"){ exclude group: 'org.lwjgl', module: 'lwjgl' }
-    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-linux-arm32"){ exclude group: 'org.lwjgl', module: 'lwjgl' }
-    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-linux-arm64"){ exclude group: 'org.lwjgl', module: 'lwjgl' }
-    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-macos"){ exclude group: 'org.lwjgl', module: 'lwjgl' }
-    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-macos-arm64"){ exclude group: 'org.lwjgl', module: 'lwjgl' }
+    implementation "org.lwjgl:lwjgl:3.3.1"
+    implementation("org.lwjgl:lwjgl:3.3.1:natives-windows")
+    implementation("org.lwjgl:lwjgl:3.3.1:natives-windows-x86")
+    implementation("org.lwjgl:lwjgl:3.3.1:natives-linux")
+    implementation("org.lwjgl:lwjgl:3.3.1:natives-linux-arm32")
+    implementation("org.lwjgl:lwjgl:3.3.1:natives-linux-arm64")
+    implementation("org.lwjgl:lwjgl:3.3.1:natives-macos")
+    implementation("org.lwjgl:lwjgl:3.3.1:natives-macos-arm64")
+
+    implementation("org.lwjgl:lwjgl-opengl:3.3.1")
+    implementation("org.lwjgl:lwjgl-opengl:3.3.1:natives-windows")
+    implementation("org.lwjgl:lwjgl-opengl:3.3.1:natives-windows-x86")
+    implementation("org.lwjgl:lwjgl-opengl:3.3.1:natives-linux")
+    implementation("org.lwjgl:lwjgl-opengl:3.3.1:natives-linux-arm32")
+    implementation("org.lwjgl:lwjgl-opengl:3.3.1:natives-linux-arm64")
+    implementation("org.lwjgl:lwjgl-opengl:3.3.1:natives-macos")
+    implementation("org.lwjgl:lwjgl-opengl:3.3.1:natives-macos-arm64")
+
+    implementation("org.lwjgl:lwjgl-stb:3.3.1")
+    implementation("org.lwjgl:lwjgl-stb:3.3.1:natives-windows")
+    implementation("org.lwjgl:lwjgl-stb:3.3.1:natives-windows-x86")
+    implementation("org.lwjgl:lwjgl-stb:3.3.1:natives-linux")
+    implementation("org.lwjgl:lwjgl-stb:3.3.1:natives-linux-arm32")
+    implementation("org.lwjgl:lwjgl-stb:3.3.1:natives-linux-arm64")
+    implementation("org.lwjgl:lwjgl-stb:3.3.1:natives-macos")
+    implementation("org.lwjgl:lwjgl-stb:3.3.1:natives-macos-arm64")
+
+    implementation("org.lwjgl:lwjgl-glfw:3.3.1")
+    implementation("org.lwjgl:lwjgl-glfw:3.3.1:natives-windows")
+    implementation("org.lwjgl:lwjgl-glfw:3.3.1:natives-windows-x86")
+    implementation("org.lwjgl:lwjgl-glfw:3.3.1:natives-linux")
+    implementation("org.lwjgl:lwjgl-glfw:3.3.1:natives-linux-arm32")
+    implementation("org.lwjgl:lwjgl-glfw:3.3.1:natives-linux-arm64")
+    implementation("org.lwjgl:lwjgl-glfw:3.3.1:natives-macos")
+    implementation("org.lwjgl:lwjgl-glfw:3.3.1:natives-macos-arm64")
+
+    implementation("org.lwjgl:lwjgl-jemalloc:3.3.1")
+    implementation("org.lwjgl:lwjgl-jemalloc:3.3.1:natives-windows")
+    implementation("org.lwjgl:lwjgl-jemalloc:3.3.1:natives-windows-x86")
+    implementation("org.lwjgl:lwjgl-jemalloc:3.3.1:natives-linux")
+    implementation("org.lwjgl:lwjgl-jemalloc:3.3.1:natives-linux-arm32")
+    implementation("org.lwjgl:lwjgl-jemalloc:3.3.1:natives-linux-arm64")
+    implementation("org.lwjgl:lwjgl-jemalloc:3.3.1:natives-macos")
+    implementation("org.lwjgl:lwjgl-jemalloc:3.3.1:natives-macos-arm64")
+
+    implementation("org.lwjgl:lwjgl-nfd:3.3.1")
+    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-windows")
+    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-windows-x86")
+    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-linux")
+    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-linux-arm32")
+    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-linux-arm64")
+    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-macos")
+    implementation("org.lwjgl:lwjgl-nfd:3.3.1:natives-macos-arm64")
     implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
     implementation "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
     implementation("com.badlogicgames.gdx:gdx-tools:$gdxVersion") { exclude group: 'com.badlogicgames.gdx', module: 'gdx-backend-lwjgl' }
