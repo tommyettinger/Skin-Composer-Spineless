@@ -599,10 +599,10 @@ public class FreeTypeFontGenerator implements Disposable {
         }
         
         String pixmapName = Integer.toString(glyph.hashCode());
-        Rectangle rect = packer.pack(pixmapName, mainPixmap);
+        PixmapPacker.PixmapPackerRectangle rect = packer.pack(pixmapName, mainPixmap);
         glyph.page = packer.getPages().indexOf(packer.getPage(pixmapName), true);
-        glyph.srcX = (int)rect.x;
-        glyph.srcY = (int)rect.y;
+        glyph.srcX = (int)rect.getX();
+        glyph.srcY = (int)rect.getY();
         
         // If a page was added, create a new texture region for the incrementally added glyph.
         if (parameter.incremental && data.regions != null && data.regions.size <= glyph.page)

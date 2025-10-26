@@ -11,8 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.CharArray;
 import com.badlogic.gdx.utils.Null;
-import com.badlogic.gdx.utils.StringBuilder;
 
 public class OpenLabel extends Widget {
     static private final Color tempColor = new Color();
@@ -21,7 +21,7 @@ public class OpenLabel extends Widget {
     protected Label.LabelStyle style;
     protected final GlyphLayout layout = new GlyphLayout();
     protected final Vector2 prefSize = new Vector2();
-    protected final StringBuilder text = new StringBuilder();
+    protected final CharArray text = new CharArray();
     protected int intValue = Integer.MIN_VALUE;
     protected BitmapFontCache cache;
     protected int labelAlign = Align.left;
@@ -88,12 +88,12 @@ public class OpenLabel extends Widget {
     /** @param newText If null, "" will be used. */
     public void setText (@Null CharSequence newText) {
         if (newText == null) {
-            if (text.length == 0) return;
+            if (text.isEmpty()) return;
             text.clear();
-        } else if (newText instanceof StringBuilder) {
+        } else if (newText instanceof CharArray) {
             if (text.equals(newText)) return;
             text.clear();
-            text.append((StringBuilder)newText);
+            text.append((CharArray)newText);
         } else {
             if (textEquals(newText)) return;
             text.clear();
@@ -104,15 +104,15 @@ public class OpenLabel extends Widget {
     }
     
     public boolean textEquals (CharSequence other) {
-        int length = text.length;
-        char[] chars = text.chars;
+        int length = text.length();
+        char[] chars = text.items;
         if (length != other.length()) return false;
         for (int i = 0; i < length; i++)
             if (chars[i] != other.charAt(i)) return false;
         return true;
     }
     
-    public StringBuilder getText () {
+    public CharArray getText () {
         return text;
     }
     
@@ -176,7 +176,7 @@ public class OpenLabel extends Widget {
         float textWidth, textHeight;
         if (wrap || text.indexOf("\n") != -1) {
             // If the text can span multiple lines, determine the text's actual size so it can be aligned within the label.
-            layout.setText(font, text, 0, text.length, Color.WHITE, width, lineAlign, wrap, ellipsis);
+            layout.setText(font, text, 0, text.length(), Color.WHITE, width, lineAlign, wrap, ellipsis);
             textWidth = layout.width;
             textHeight = layout.height;
             
@@ -202,7 +202,7 @@ public class OpenLabel extends Widget {
         }
         if (!cache.getFont().isFlipped()) y += textHeight;
         
-        layout.setText(font, text, 0, text.length, Color.WHITE, textWidth, lineAlign, wrap, ellipsis);
+        layout.setText(font, text, 0, text.length(), Color.WHITE, textWidth, lineAlign, wrap, ellipsis);
         cache.setText(layout, x, y);
         
         if (fontScaleChanged) font.getData().setScale(oldScaleX, oldScaleY);

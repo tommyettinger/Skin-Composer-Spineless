@@ -336,7 +336,7 @@ public class PopTextraTypist extends PopTable {
         items.add("250");
         items.add("300");
         items.add("375");
-        sizeSelectBox.setItems(items.toArray(String.class));
+        sizeSelectBox.setItems(items.toArray(String[]::new));
         onChange(sizeSelectBox, () -> {
             if (sizeSelectBox.getSelectedIndex() == 1) {
                 insertTag("[%]", "");
@@ -356,7 +356,7 @@ public class PopTextraTypist extends PopTable {
         items.insert(0, "Select a color...");
         items.insert(1, "More colors...");
         items.insert(2, "Default");
-        colorSelectBox.setItems(items.toArray(String.class));
+        colorSelectBox.setItems(items.toArray(String[]::new));
         table.add(colorSelectBox);
         colorSelectBox.addListener(handListener);
         colorSelectBox.getList().addListener(handListener);
@@ -490,7 +490,7 @@ public class PopTextraTypist extends PopTable {
     
     private void insertTag(String tag, String endTag) {
         if (endTag == null) endTag = tag;
-        var hasSelection = !codeTextArea.getSelection().equals("");
+        var hasSelection = !codeTextArea.getSelection().isEmpty();
         var originalText = codeTextArea.getText();
         var selectionStart = hasSelection ? Math.min(codeTextArea.getCursorPosition(), codeTextArea.getSelectionStart()) : codeTextArea.getCursorPosition();
         var selectionEnd = Math.max(codeTextArea.getCursorPosition(), codeTextArea.getSelectionStart());

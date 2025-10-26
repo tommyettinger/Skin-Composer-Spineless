@@ -60,7 +60,7 @@ public class LeadingTruncateLabel extends OpenLabel {
         float textWidth, textHeight;
         if (wrap || text.indexOf("\n") != -1) {
             // If the text can span multiple lines, determine the text's actual size so it can be aligned within the label.
-            layout.setText(font, text, 0, text.length, Color.WHITE, width, lineAlign, wrap, ellipsis);
+            layout.setText(font, text, 0, text.length(), Color.WHITE, width, lineAlign, wrap, ellipsis);
             textWidth = layout.width;
             textHeight = layout.height;
         

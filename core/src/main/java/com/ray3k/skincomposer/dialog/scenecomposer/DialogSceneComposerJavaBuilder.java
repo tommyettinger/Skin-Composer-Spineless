@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Tree.Node;
-import com.badlogic.gdx.utils.StringBuilder;
 import com.badlogic.gdx.utils.*;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.skincomposer.utils.Utils;
@@ -1415,7 +1414,7 @@ public class DialogSceneComposerJavaBuilder {
     }
 
     private static String alignmentToName(int align) {
-        StringBuilder buffer = new StringBuilder(13);
+        CharArray buffer = new CharArray(13);
         if ((align & Align.top) != 0)
             buffer.append("top");
         else if ((align & Align.bottom) != 0)
