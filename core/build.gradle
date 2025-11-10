@@ -112,10 +112,10 @@ dependencies {
     implementation 'com.github.lyze237:gdx-TinyVG:41f408420c'
 //    implementation 'com.github.lyze237:gdx-TinyVG:9a5a6ae9ae'
 //        implementation "com.github.tommyettinger:textratypist:2.0.1"
-    implementation("com.github.tommyettinger:freetypist:2.2.0.0") {
+    implementation("com.github.tommyettinger:freetypist:2.2.3.0") {
         exclude group: 'com.github.tommyettinger', module: 'textratypist'
     }
-    implementation "com.github.tommyettinger:textratypist:2.2.0"
+    implementation "com.github.tommyettinger:textratypist:2.2.3"
     implementation "com.github.tommyettinger:regexodus:0.1.19"
 
     if (enableGraalNative == 'true') {
