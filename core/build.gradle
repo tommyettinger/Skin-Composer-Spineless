@@ -28,9 +28,12 @@ java.sourceCompatibility = 11
 java.targetCompatibility = 11
 if (JavaVersion.current().isJava9Compatible()) {
     compileJava.options.release.set(11)
+    application.applicationDefaultJvmArgs += ["--enable-native-access=ALL-UNNAMED"]
 }
 
-application.applicationDefaultJvmArgs += ["--sun-misc-unsafe-memory-access=allow", "--enable-native-access=ALL-UNNAMED"]
+if (JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_22)) {
+    application.applicationDefaultJvmArgs += ["--sun-misc-unsafe-memory-access=allow"]
+}
 
 dependencies {
     implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
@@ -109,6 +112,8 @@ dependencies {
         exclude group: 'com.github.tommyettinger', module: 'textratypist'
     }
     implementation 'com.github.raeleus.stripe:freetype:2.0.0'
+    compileOnly 'org.projectlombok:lombok:1.18.42'
+    annotationProcessor 'org.projectlombok:lombok:1.18.42'
     implementation 'com.github.lyze237:gdx-TinyVG:41f408420c'
 //    implementation 'com.github.lyze237:gdx-TinyVG:9a5a6ae9ae'
 //        implementation "com.github.tommyettinger:textratypist:2.0.1"
@@ -203,9 +208,7 @@ construo {
     name.set(appName)
     // human-readable name, used for example in the `.app` name for macOS
     humanName.set(appName)
-
-//    roast.vmArgs.addAll("--sun-misc-unsafe-memory-access=allow", "--enable-native-access=ALL-UNNAMED")
-
+    
     targets.configure {
         create("linuxX64", Target.Linux) {
             architecture.set(Target.Architecture.X86_64)
