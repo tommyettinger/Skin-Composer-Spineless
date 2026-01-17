@@ -5,13 +5,11 @@ buildscript {
         maven { url = "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
-        classpath "io.freefair.gradle:lombok-plugin:9.2.0"
     }
 }
 allprojects {
     apply plugin: 'eclipse'
     apply plugin: 'idea'
-    apply plugin: 'io.freefair.lombok'
 
     version = "$projectVersion"
     ext {
