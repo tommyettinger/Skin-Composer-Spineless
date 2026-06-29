@@ -60,19 +60,22 @@ public class TraversalTextField extends TextField {
     }
 
     @Override
-    public void next(boolean up) {
+    public TextField next(boolean up) {
         if (up) {
             if (previousFocus != null) {
                 getStage().setKeyboardFocus(previousFocus);
+                if(previousFocus instanceof TextField) return (TextField) previousFocus;
             } else {
-                super.next(up);
+                return super.next(up);
             }
         } else {
             if (nextFocus != null) {
                 getStage().setKeyboardFocus(nextFocus);
+                if(nextFocus instanceof TextField) return (TextField) nextFocus;
             } else {
-                super.next(up);
+                return super.next(up);
             }
         }
+        return null;
     }
 }
