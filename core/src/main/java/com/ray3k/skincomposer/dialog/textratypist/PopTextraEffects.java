@@ -3,6 +3,7 @@ package com.ray3k.skincomposer.dialog.textratypist;
 import java.util.Locale;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -1279,8 +1280,11 @@ public class PopTextraEffects extends PopTable {
         
         var textField = new TextField(String.format(Locale.US, "%.1f", defaultValue), skin, "tt") {
             @Override
-            public void next(boolean up) {
-                stage.setKeyboardFocus(findActor(up?previousField:nextField));
+            public TextField next(boolean up) {
+                Actor actor = findActor(up?previousField:nextField);
+                stage.setKeyboardFocus(actor);
+                if(actor instanceof TextField) return (TextField) actor;
+                return null;
             }
         };
         textField.setName(name);
@@ -1296,7 +1300,7 @@ public class PopTextraEffects extends PopTable {
         buttonTable.add(imageButton);
         imageButton.addListener(handListener);
         onChange(imageButton, () -> {
-            if (textField.getText().length() > 0) textField.setText(
+            if (!textField.getText().isEmpty()) textField.setText(
                     String.format(Locale.US, "%.1f", Float.parseFloat(textField.getText()) + .1f));
             textField.fire(new ChangeEvent());
         });
@@ -1324,8 +1328,12 @@ public class PopTextraEffects extends PopTable {
         
         var textField = new TextField(defaultValue, skin, "tt") {
             @Override
-            public void next(boolean up) {
-                stage.setKeyboardFocus(findActor(up?previousField:nextField));
+            public TextField next(boolean up) {
+                Actor actor = findActor(up?previousField:nextField);
+                stage.setKeyboardFocus(actor);
+                if(actor instanceof TextField) return (TextField) actor;
+                return null;
+
             }
         };
         textField.setName(name);

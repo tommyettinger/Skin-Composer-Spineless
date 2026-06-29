@@ -87,9 +87,10 @@ public class DialogCustomClass extends Dialog {
         getContentTable().row();
         classField = new TextField("", getSkin()) {
             @Override
-            public void next(boolean up) {
+            public TextField next(boolean up) {
                 getStage().setKeyboardFocus(displayField);
                 displayField.selectAll();
+                return displayField;
             }
         };
         classField.setText(fullyQualifiedName);
@@ -108,9 +109,10 @@ public class DialogCustomClass extends Dialog {
         getContentTable().row();
         displayField = new TextField("", skin) {
             @Override
-            public void next(boolean up) {
+            public TextField next(boolean up) {
                 getStage().setKeyboardFocus(classField);
                 classField.selectAll();
+                return classField;
             }
         };
         displayField.setText(displayName);
