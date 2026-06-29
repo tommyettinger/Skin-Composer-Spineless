@@ -1332,17 +1332,16 @@ public class DialogDrawables extends Dialog {
         final Spinner minHeightSpinner = new Spinner(0.0f, 1.0f, 0, Spinner.Orientation.HORIZONTAL, getSkin());
         TextField textField = new TextField("", getSkin()) {
             @Override
-            public TextField next(boolean up) {
+            public void next(boolean up) {
                 if (up) {
                     getStage().setKeyboardFocus(minHeightSpinner.getTextField());
                     minHeightSpinner.getTextField().selectAll();
-                    return minHeightSpinner.getTextField();
                 } else {
                     getStage().setKeyboardFocus(minWidthSpinner.getTextField());
                     minWidthSpinner.getTextField().selectAll();
-                    return minWidthSpinner.getTextField();
                 }
             }
+
         };
         Dialog tileDialog = new Dialog(title, getSkin(), "bg") {
             @Override

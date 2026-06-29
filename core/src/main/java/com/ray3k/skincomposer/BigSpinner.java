@@ -77,29 +77,26 @@ public class BigSpinner extends Table {
         buttonPlus = new Button(style.buttonPlusStyle);
         textField = new TextField("", style.textFieldStyle) {
             @Override
-            public TextField next(boolean up) {
+            public void next(boolean up) {
                 if (up) {
                     if (transversalPrevious != null) {
                         getStage().setKeyboardFocus(transversalPrevious);
                         if (transversalPrevious instanceof TextField) {
                             ((TextField) transversalPrevious).selectAll();
-                            return (TextField) transversalPrevious;
                         }
                     } else {
-                        return super.next(up);
+                        super.next(up);
                     }
                 } else {
                     if (transversalNext != null) {
                         getStage().setKeyboardFocus(transversalNext);
                         if (transversalNext instanceof TextField) {
                             ((TextField) transversalNext).selectAll();
-                            return (TextField) transversalNext;
                         }
                     } else {
-                        return super.next(up);
+                        super.next(up);
                     }
                 }
-                return null;
             }
             
         };
