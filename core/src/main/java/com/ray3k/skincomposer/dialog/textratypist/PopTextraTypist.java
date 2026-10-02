@@ -566,7 +566,8 @@ public class PopTextraTypist extends PopTable {
     
     private void activateStandardFontFamily() {
         fontMode = FontMode.STANDARD;
-        masterFont.dispose();
+        // part of dispose(), but we don't want to dispose the shader!
+        if(masterFont.whiteBlock != null) masterFont.whiteBlock.dispose();
         var items = new Array<String>();
         items.add("Select a font...");
         items.add("Default");
@@ -611,7 +612,8 @@ public class PopTextraTypist extends PopTable {
     
     private void activateSkinFontFamily() {
         fontMode = FontMode.SKIN;
-        masterFont.dispose();
+        // part of dispose(), but we don't want to dispose the shader!
+        if(masterFont.whiteBlock != null) masterFont.whiteBlock.dispose();
         var items = new Array<String>();
         items.add("Select a font...");
         items.add("Default");
