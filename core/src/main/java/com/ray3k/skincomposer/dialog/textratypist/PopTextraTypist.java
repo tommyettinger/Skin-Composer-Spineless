@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Colors;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -63,6 +62,7 @@ public class PopTextraTypist extends PopTable {
             @Override
             public void resized(int width, int height) {
                 masterFont.family.resizeDistanceFields(width, height, stage.getViewport());
+                System.out.println("Resizing to " + width + "x" + height);
             }
         };
         stage.addListener(stageResizeListener);
@@ -595,7 +595,10 @@ public class PopTextraTypist extends PopTable {
         int index = 0;
         for (var alias : aliases) {
                 items.add(alias);
-                KnownFonts.addEmoji(masterFont.family.connected[index++]);
+                KnownFonts.addEmoji(masterFont.family.connected[index]);
+                // this doesn't seem to change anything...
+                masterFont.family.connected[index].setDistanceField(DistanceFieldType.SDF).setCrispness(10f);
+                index++;
         }
         masterFont.family.resizeDistanceFields(stage.getWidth(), stage.getHeight(), stage.getViewport());
 
@@ -619,8 +622,7 @@ public class PopTextraTypist extends PopTable {
         var fonts = new Array<Font>();
         
         for (var fontData : jsonData.getFonts()) {
-            var bitmapFont = new BitmapFont(fontData.file);
-            var font = new Font(bitmapFont, DistanceFieldType.STANDARD, 0, 0, 0, 0, true);
+            var font = new Font(fontData.file);
             names.add(fontData.getName());
             fonts.add(font);
             items.add(fontData.getName());
