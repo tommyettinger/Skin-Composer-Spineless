@@ -23,6 +23,7 @@
  ******************************************************************************/
 package com.ray3k.skincomposer;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
@@ -56,6 +57,8 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Null;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.tommyettinger.freetypist.FreeTypistSkin;
+import com.github.tommyettinger.textra.Font;
+import com.github.tommyettinger.textra.KnownFonts;
 import com.ray3k.skincomposer.data.AtlasData;
 import com.ray3k.skincomposer.data.JsonData;
 import com.ray3k.skincomposer.data.ProjectData;
@@ -121,6 +124,13 @@ public class Main extends ApplicationAdapter {
     
     @Override
     public void create() {
+        Gdx.app.setLogLevel(Application.LOG_INFO);
+
+        KnownFonts.initialize(Font.vertexShader, null,
+                Font.vertexShader, Font.sdfFragmentShader,
+                Font.vertexShader, Font.sdfBlackOutlineFragmentShader,
+                Font.vertexShader, Font.msdfFragmentShader);
+
         appFolder = Gdx.files.external(".skincomposer/");
         
         skin = new FreeTypistSkin(Gdx.files.internal("skin-composer-ui/skin-composer-ui.json"));

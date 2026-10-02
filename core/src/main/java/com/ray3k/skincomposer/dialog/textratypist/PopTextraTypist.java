@@ -596,8 +596,6 @@ public class PopTextraTypist extends PopTable {
         for (var alias : aliases) {
                 items.add(alias);
                 KnownFonts.addEmoji(masterFont.family.connected[index]);
-                // this doesn't seem to change anything...
-                masterFont.family.connected[index].setDistanceField(DistanceFieldType.SDF).setCrispness(10f);
                 index++;
         }
         masterFont.family.resizeDistanceFields(stage.getWidth(), stage.getHeight(), stage.getViewport());
@@ -608,6 +606,9 @@ public class PopTextraTypist extends PopTable {
         previewTypingLabel.setWrap(true);
         previewTypingLabel.setTypingListener(typingAdapter);
         previewTypingLabel.setAlignment(Align.topLeft);
+
+        System.out.println(previewTypingLabel.getFont().shader.getFragmentShaderSource());
+
         previewScrollPane.setActor(previewTypingLabel);
     }
     
