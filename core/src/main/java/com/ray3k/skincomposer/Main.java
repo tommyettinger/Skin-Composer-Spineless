@@ -89,7 +89,7 @@ public class Main extends ApplicationAdapter {
         TextTooltipStyle.class, TouchpadStyle.class, TreeStyle.class,
         WindowStyle.class};
     public static Stage stage;
-    public static Skin skin;
+    public static FreeTypistSkin skin;
     public static ScreenViewport viewport;
     public static TinyVGShapeDrawer shapeDrawer;
     public static GraphDrawer graphDrawer;
@@ -125,11 +125,11 @@ public class Main extends ApplicationAdapter {
     @Override
     public void create() {
         Gdx.app.setLogLevel(Application.LOG_INFO);
-
-        KnownFonts.initialize(Font.vertexShader, null,
-                Font.vertexShader, Font.sdfFragmentShader,
-                Font.vertexShader, Font.sdfBlackOutlineFragmentShader,
-                Font.vertexShader, Font.msdfFragmentShader);
+//
+//        KnownFonts.initialize(Font.vertexShader, null,
+//                Font.vertexShader, Font.sdfFragmentShader,
+//                Font.vertexShader, Font.sdfBlackOutlineFragmentShader,
+//                Font.vertexShader, Font.msdfFragmentShader);
 
         appFolder = Gdx.files.external(".skincomposer/");
         

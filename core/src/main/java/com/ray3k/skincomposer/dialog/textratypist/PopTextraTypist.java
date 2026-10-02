@@ -62,7 +62,6 @@ public class PopTextraTypist extends PopTable {
             @Override
             public void resized(int width, int height) {
                 masterFont.family.resizeDistanceFields(width, height, stage.getViewport());
-                System.out.println("Resizing to " + width + "x" + height);
             }
         };
         stage.addListener(stageResizeListener);
@@ -75,7 +74,7 @@ public class PopTextraTypist extends PopTable {
                 stage.addActor(label);
                 label.setPosition(stage.getWidth() / 2, 0, Align.bottom);
                 label.setColor(Color.RED);
-                
+
                 label.addAction(Actions.sequence(Actions.parallel(Actions.fadeOut(1f), Actions.moveBy(0f, 50f, 1f,
                         Interpolation.fastSlow)), Actions.removeActor()));
             }
@@ -594,9 +593,9 @@ public class PopTextraTypist extends PopTable {
         };
         int index = 0;
         for (var alias : aliases) {
-                items.add(alias);
-                KnownFonts.addEmoji(masterFont.family.connected[index]);
-                index++;
+            items.add(alias);
+            KnownFonts.addEmoji(masterFont.family.connected[index]);
+            index++;
         }
         masterFont.family.resizeDistanceFields(stage.getWidth(), stage.getHeight(), stage.getViewport());
 
@@ -606,8 +605,6 @@ public class PopTextraTypist extends PopTable {
         previewTypingLabel.setWrap(true);
         previewTypingLabel.setTypingListener(typingAdapter);
         previewTypingLabel.setAlignment(Align.topLeft);
-
-        System.out.println(previewTypingLabel.getFont().shader.getFragmentShaderSource());
 
         previewScrollPane.setActor(previewTypingLabel);
     }
