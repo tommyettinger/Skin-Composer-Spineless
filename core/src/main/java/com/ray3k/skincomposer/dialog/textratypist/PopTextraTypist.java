@@ -177,7 +177,7 @@ public class PopTextraTypist extends PopTable {
         textButton.getLabel().setAlignment(Align.left);
         table.add(textButton);
         textButton.addListener(handListener);
-        onChange(textButton, () -> Gdx.net.openURI("https://github.com/rafaskb/typing-label/wiki/Tokens"));
+        onChange(textButton, () -> Gdx.net.openURI("https://github.com/tommyettinger/textratypist/wiki/Tokens"));
     
         table.row();
         textButton = new TextButton("TextraTypist Playground Wiki", skin, "tt-file-bar");
@@ -567,7 +567,9 @@ public class PopTextraTypist extends PopTable {
     private void activateStandardFontFamily() {
         fontMode = FontMode.STANDARD;
         // part of dispose(), but we don't want to dispose the shader!
+        // don't use Font.dispose() on TextraTypist 2.2.13 to 2.5.0; use the next line.
         if(masterFont.whiteBlock != null) masterFont.whiteBlock.dispose();
+
         var items = new Array<String>();
         items.add("Select a font...");
         items.add("Default");
@@ -613,7 +615,9 @@ public class PopTextraTypist extends PopTable {
     private void activateSkinFontFamily() {
         fontMode = FontMode.SKIN;
         // part of dispose(), but we don't want to dispose the shader!
+        // don't use Font.dispose() on TextraTypist 2.2.13 to 2.5.0; use the next line.
         if(masterFont.whiteBlock != null) masterFont.whiteBlock.dispose();
+
         var items = new Array<String>();
         items.add("Select a font...");
         items.add("Default");

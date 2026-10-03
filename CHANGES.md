@@ -1,3 +1,6 @@
+### Skin Composer *Spineless* Version 61 ###
+* Updated TextraTypist to 2.5.0 .
+
 ### Skin Composer *Spineless* Version 60 ###
 * Updated TextraTypist to 2.2.11 .
 * TinyVG dependency changed, but the usage is the same. The difference is Construo works now!
