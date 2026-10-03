@@ -110,7 +110,7 @@ public class PopTextraEffects extends PopTable {
 
         Runnable runnable;
         TextField distanceField, intensityField, frequencyField, speedField, durationField,
-                spreadField, rotationsField, likelihoodField, thresholdField,
+                spreadField, rotationsField, likelihoodField, thresholdField, tiltField,
                 sizeXField, sizeYField, distanceXField, distanceYField, spacingField,
                 saturationField, lightnessField, rotateField;
         TextButton elasticButton, allButton;
@@ -630,6 +630,12 @@ public class PopTextraEffects extends PopTable {
                     }
                 });
                 break;
+            case "Instant":
+                tagBegin = "{INSTANT}";
+                tagEnd = "{ENDINSTANT}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+                break;
             case "Jolt":
                 tagBegin = "{JOLT}";
                 tagEnd = "{ENDJOLT}";
@@ -751,6 +757,74 @@ public class PopTextraEffects extends PopTable {
                 };
 
                 onChange(linkField, runnable);
+                break;
+            case "Lockstep":
+                tagBegin = "{LOCKSTEP}";
+                tagEnd = "{ENDLOCKSTEP}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                tokenTable.row();
+                distanceField = createNumberField(15.0f, "rotation amount", "duration", "tilt", tokenTable);
+
+                tokenTable.row();
+                tiltField = createNumberField(0.0f, "tilt", "rotation amount", "speed", tokenTable);
+
+                tokenTable.row();
+                speedField = createNumberField(1.0f, "speed", "tilt", "duration", tokenTable);
+
+                tokenTable.row();
+                durationField = createNumberField(-1.0f, "duration", "speed", "rotation amount", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 15f;
+                    float tilt = isNumeric(tiltField.getText()) ? Float.parseFloat(tiltField.getText()) : 0.0f;
+                    float speed = isNumeric(speedField.getText()) ? Float.parseFloat(speedField.getText()) : 1.0f;
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
+                    tagBegin = "{LOCKSTEP=" + distance + ";" + tilt + ";" + speed + ";" + (duration >= 0f ? duration : "_") + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(tiltField, runnable);
+                onChange(speedField, runnable);
+                onChange(durationField, runnable);
+                break;
+            case "Metronome":
+                tagBegin = "{METRONOME}";
+                tagEnd = "{ENDMETRONOME}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                tokenTable.row();
+                distanceField = createNumberField(15.0f, "rotation amount", "duration", "tilt", tokenTable);
+
+                tokenTable.row();
+                tiltField = createNumberField(0.0f, "tilt", "rotation amount", "speed", tokenTable);
+
+                tokenTable.row();
+                speedField = createNumberField(1.0f, "speed", "tilt", "duration", tokenTable);
+
+                tokenTable.row();
+                durationField = createNumberField(-1.0f, "duration", "speed", "rotation amount", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 15f;
+                    float tilt = isNumeric(tiltField.getText()) ? Float.parseFloat(tiltField.getText()) : 0.0f;
+                    float speed = isNumeric(speedField.getText()) ? Float.parseFloat(speedField.getText()) : 1.0f;
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
+                    tagBegin = "{METRONOME=" + distance + ";" + tilt + ";" + speed + ";" + (duration >= 0f ? duration : "_") + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(tiltField, runnable);
+                onChange(speedField, runnable);
+                onChange(durationField, runnable);
                 break;
             case "Rainbow":
                 tagBegin = "{RAINBOW}";
