@@ -110,7 +110,7 @@ public class PopTextraEffects extends PopTable {
 
         Runnable runnable;
         TextField distanceField, intensityField, frequencyField, speedField, durationField,
-                spreadField, sizeYField, rotationsField, likelihoodField, thresholdField,
+                spreadField, sizeXField, sizeYField, rotationsField, likelihoodField, thresholdField,
                 saturationField, lightnessField, rotateField;
         TextButton elasticButton, allButton;
         Color color1, color2;
@@ -230,89 +230,6 @@ public class PopTextraEffects extends PopTable {
                 onChange(frequencyField, runnable);
                 onChange(intensityField, runnable);
                 onChange(durationField, runnable);
-                break;
-            case "Shake":
-                tagBegin = "{SHAKE}";
-                tagEnd = "{ENDSHAKE}";
-                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                typingLabel.restart();
-    
-                distanceField = createNumberField(1.0f, "distance", "duration", "speed", tokenTable);
-    
-                tokenTable.row();
-                speedField = createNumberField(1.0f, "speed", "distance", "duration", tokenTable);
-    
-                tokenTable.row();
-                durationField = createNumberField(-1.0f, "duration", "speed", "distance", tokenTable);
-    
-                runnable = () -> {
-                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
-                    float intensity = isNumeric(speedField.getText()) ? Float.parseFloat(speedField.getText()) : 1.0f;
-                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
-                    tagBegin = "{SHAKE=" + distance + ";" + intensity + (!MathUtils.isEqual(duration, -1)? ";" + duration: "") + "}";
-        
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-    
-                onChange(distanceField, runnable);
-                onChange(speedField, runnable);
-                onChange(durationField, runnable);
-                break;
-            case "Sick":
-                tagBegin = "{SICK}";
-                tagEnd = "{ENDSICK}";
-                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                typingLabel.restart();
-    
-                distanceField = createNumberField(1.0f, "distance", "duration", "frequency", tokenTable);
-    
-                tokenTable.row();
-                intensityField = createNumberField(1.0f, "intensity", "frequency", "duration", tokenTable);
-    
-                tokenTable.row();
-                durationField = createNumberField(-1.0f, "duration", "intensity", "distance", tokenTable);
-    
-                runnable = () -> {
-                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
-                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
-                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
-                    tagBegin = "{SICK=" + distance + ";" + intensity + (!MathUtils.isEqual(duration, -1)? ";" + duration: "") + "}";
-        
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-    
-                onChange(distanceField, runnable);
-                onChange(intensityField, runnable);
-                onChange(durationField, runnable);
-                break;
-            case "Slide":
-                tagBegin = "{SLIDE}";
-                tagEnd = "{ENDSLIDE}";
-                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                typingLabel.restart();
-    
-                distanceField = createNumberField(1.0f, "distance", "intensity", "intensity", tokenTable);
-    
-                tokenTable.row();
-                intensityField = createNumberField(1.0f, "intensity", "distance", "distance", tokenTable);
-    
-                tokenTable.row();
-                elasticButton = createBooleanField(true, "elastic", tokenTable);
-    
-                runnable = () -> {
-                    float distance = isNumeric(distanceField.getText())? Float.parseFloat(distanceField.getText()) : 1.0f;
-                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
-                    tagBegin = "{SLIDE=" + distance + ";" + intensity + ";" + elasticButton.isChecked() + "}";
-        
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-    
-                onChange(distanceField, runnable);
-                onChange(intensityField, runnable);
-                onChange(elasticButton, runnable);
                 break;
             case "Blink":
                 tagBegin = "{BLINK}";
@@ -598,63 +515,6 @@ public class PopTextraEffects extends PopTable {
                     }
                 });
                 break;
-            case "Spiral":
-                tagBegin = "{SPIRAL}";
-                tagEnd = "{ENDSPIRAL}";
-                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                typingLabel.restart();
-        
-                tokenTable.row();
-                distanceField = createNumberField(1.0f, "distance", "rotations", "speed", tokenTable);
-        
-                tokenTable.row();
-                intensityField = createNumberField(1.0f, "speed", "distance", "rotations", tokenTable);
-        
-                tokenTable.row();
-                rotationsField = createNumberField(1.0f, "rotations", "speed", "distance", tokenTable);
-        
-                runnable = () -> {
-                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
-                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
-                    float rotations = isNumeric(rotationsField.getText()) ? Float.parseFloat(rotationsField.getText()) : 1.0f;
-                    tagBegin = "{SPIRAL=" + distance + ";" + intensity + ";" + rotations + "}";
-            
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-        
-                onChange(distanceField, runnable);
-                onChange(intensityField, runnable);
-                onChange(rotationsField, runnable);
-                break;
-            case "Spin":
-                tagBegin = "{SPIN}";
-                tagEnd = "{ENDSPIN}";
-                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                typingLabel.restart();
-        
-                tokenTable.row();
-                intensityField = createNumberField(1.0f, "intensity", "rotations", "rotations", tokenTable);
-        
-                tokenTable.row();
-                rotationsField = createNumberField(1.0f, "rotations", "intensity", "intensity", tokenTable);
-        
-                tokenTable.row();
-                elasticButton = createBooleanField(false, "elastic", tokenTable);
-        
-                runnable = () -> {
-                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
-                    float rotations = isNumeric(rotationsField.getText()) ? Float.parseFloat(rotationsField.getText()) : 1.0f;
-                    tagBegin = "{SPIN=" + intensity + ";" + rotations + ";" + elasticButton.isChecked() + "}";
-            
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-        
-                onChange(intensityField, runnable);
-                onChange(rotationsField, runnable);
-                onChange(elasticButton, runnable);
-                break;
             case "Crowd":
                 tagBegin = "{CROWD}";
                 tagEnd = "{ENDCROWD}";
@@ -683,34 +543,6 @@ public class PopTextraEffects extends PopTable {
                 onChange(distanceField, runnable);
                 onChange(speedField, runnable);
                 onChange(durationField, runnable);
-                break;
-            case "Shrink":
-                tagBegin = "{SHRINK}";
-                tagEnd = "{ENDSHRINK}";
-                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                typingLabel.restart();
-        
-                tokenTable.row();
-                distanceField = createNumberField(1.0f, "expansion", "extent", "extent", tokenTable);
-        
-                tokenTable.row();
-                intensityField = createNumberField(1.0f, "extent", "expansion", "expansion", tokenTable);
-        
-                tokenTable.row();
-                elasticButton = createBooleanField(false, "elastic", tokenTable);
-        
-                runnable = () -> {
-                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
-                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
-                    tagBegin = "{SHRINK=" + distance + ";" + intensity + ";" + elasticButton.isChecked() + "}";
-            
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-        
-                onChange(distanceField, runnable);
-                onChange(intensityField, runnable);
-                onChange(elasticButton, runnable);
                 break;
             case "Emerge":
                 tagBegin = "{EMERGE}";
@@ -865,6 +697,221 @@ public class PopTextraEffects extends PopTable {
                     }
                 });
                 break;
+            case "Scale":
+                tagBegin = "{SCALE}";
+                tagEnd = "{ENDSCALE}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                tokenTable.row();
+                sizeXField = createNumberField(0.75f, "sizeX", "sizeY", "sizeY", tokenTable);
+
+                tokenTable.row();
+                sizeYField = createNumberField(2.0f, "sizeY", "sizeX", "sizeX", tokenTable);
+
+                runnable = () -> {
+                    float sizeX = isNumeric(sizeXField.getText()) ? Float.parseFloat(sizeXField.getText()) : 0.75f;
+                    float sizeY = isNumeric(sizeYField.getText()) ? Float.parseFloat(sizeYField.getText()) : 2.0f;
+                    tagBegin = "{SCALE=" + sizeX + ";" + sizeY + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(sizeXField, runnable);
+                onChange(sizeYField, runnable);
+                break;
+            case "Shake":
+                tagBegin = "{SHAKE}";
+                tagEnd = "{ENDSHAKE}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                distanceField = createNumberField(1.0f, "distance", "duration", "speed", tokenTable);
+
+                tokenTable.row();
+                speedField = createNumberField(1.0f, "speed", "distance", "duration", tokenTable);
+
+                tokenTable.row();
+                durationField = createNumberField(-1.0f, "duration", "speed", "distance", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
+                    float intensity = isNumeric(speedField.getText()) ? Float.parseFloat(speedField.getText()) : 1.0f;
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
+                    tagBegin = "{SHAKE=" + distance + ";" + intensity + (!MathUtils.isEqual(duration, -1)? ";" + duration: "") + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(speedField, runnable);
+                onChange(durationField, runnable);
+                break;
+            case "Shrink":
+                tagBegin = "{SHRINK}";
+                tagEnd = "{ENDSHRINK}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                tokenTable.row();
+                distanceField = createNumberField(1.0f, "expansion", "extent", "extent", tokenTable);
+
+                tokenTable.row();
+                intensityField = createNumberField(1.0f, "extent", "expansion", "expansion", tokenTable);
+
+                tokenTable.row();
+                elasticButton = createBooleanField(false, "elastic", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
+                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    tagBegin = "{SHRINK=" + distance + ";" + intensity + ";" + elasticButton.isChecked() + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(intensityField, runnable);
+                onChange(elasticButton, runnable);
+                break;
+            case "Sick":
+                tagBegin = "{SICK}";
+                tagEnd = "{ENDSICK}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                distanceField = createNumberField(1.0f, "distance", "duration", "frequency", tokenTable);
+
+                tokenTable.row();
+                intensityField = createNumberField(1.0f, "intensity", "frequency", "duration", tokenTable);
+
+                tokenTable.row();
+                durationField = createNumberField(-1.0f, "duration", "intensity", "distance", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
+                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
+                    tagBegin = "{SICK=" + distance + ";" + intensity + (!MathUtils.isEqual(duration, -1)? ";" + duration: "") + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(intensityField, runnable);
+                onChange(durationField, runnable);
+                break;
+            case "Slide":
+                tagBegin = "{SLIDE}";
+                tagEnd = "{ENDSLIDE}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                distanceField = createNumberField(1.0f, "distance", "intensity", "intensity", tokenTable);
+
+                tokenTable.row();
+                intensityField = createNumberField(1.0f, "intensity", "distance", "distance", tokenTable);
+
+                tokenTable.row();
+                elasticButton = createBooleanField(true, "elastic", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText())? Float.parseFloat(distanceField.getText()) : 1.0f;
+                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    tagBegin = "{SLIDE=" + distance + ";" + intensity + ";" + elasticButton.isChecked() + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(intensityField, runnable);
+                onChange(elasticButton, runnable);
+                break;
+            case "Spin":
+                tagBegin = "{SPIN}";
+                tagEnd = "{ENDSPIN}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                tokenTable.row();
+                intensityField = createNumberField(1.0f, "intensity", "rotations", "rotations", tokenTable);
+
+                tokenTable.row();
+                rotationsField = createNumberField(1.0f, "rotations", "intensity", "intensity", tokenTable);
+
+                tokenTable.row();
+                elasticButton = createBooleanField(false, "elastic", tokenTable);
+
+                runnable = () -> {
+                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    float rotations = isNumeric(rotationsField.getText()) ? Float.parseFloat(rotationsField.getText()) : 1.0f;
+                    tagBegin = "{SPIN=" + intensity + ";" + rotations + ";" + elasticButton.isChecked() + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(intensityField, runnable);
+                onChange(rotationsField, runnable);
+                onChange(elasticButton, runnable);
+                break;
+            case "Spiral":
+                tagBegin = "{SPIRAL}";
+                tagEnd = "{ENDSPIRAL}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                tokenTable.row();
+                distanceField = createNumberField(1.0f, "distance", "rotations", "speed", tokenTable);
+
+                tokenTable.row();
+                intensityField = createNumberField(1.0f, "speed", "distance", "rotations", tokenTable);
+
+                tokenTable.row();
+                rotationsField = createNumberField(1.0f, "rotations", "speed", "distance", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
+                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    float rotations = isNumeric(rotationsField.getText()) ? Float.parseFloat(rotationsField.getText()) : 1.0f;
+                    tagBegin = "{SPIRAL=" + distance + ";" + intensity + ";" + rotations + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(intensityField, runnable);
+                onChange(rotationsField, runnable);
+                break;
+            case "Squash":
+                tagBegin = "{SQUASH}";
+                tagEnd = "{ENDSQUASH}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                tokenTable.row();
+                intensityField = createNumberField(1.0f, "intensity", "intensity", "intensity", tokenTable);
+
+                tokenTable.row();
+                elasticButton = createBooleanField(false, "elastic", tokenTable);
+
+                runnable = () -> {
+                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    tagBegin = "{SQUASH=" + intensity + ";" + elasticButton.isChecked() + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(intensityField, runnable);
+                onChange(elasticButton, runnable);
+                break;
             case "Stylist":
                 tagBegin = "{STYLIST}";
                 tagEnd = "{ENDSTYLIST}";
@@ -922,29 +969,6 @@ public class PopTextraEffects extends PopTable {
                 onChange(midscriptButton, runnable);
                 onChange(superscriptButton, runnable);
                 onChange(allButton, runnable);
-                break;
-            case "Squash":
-                tagBegin = "{SQUASH}";
-                tagEnd = "{ENDSQUASH}";
-                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                typingLabel.restart();
-
-                tokenTable.row();
-                intensityField = createNumberField(1.0f, "intensity", "intensity", "intensity", tokenTable);
-
-                tokenTable.row();
-                elasticButton = createBooleanField(false, "elastic", tokenTable);
-
-                runnable = () -> {
-                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
-                    tagBegin = "{SQUASH=" + intensity + ";" + elasticButton.isChecked() + "}";
-
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-
-                onChange(intensityField, runnable);
-                onChange(elasticButton, runnable);
                 break;
             case "Trigger":
                 tagBegin = "{TRIGGER}";
