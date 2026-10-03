@@ -570,16 +570,16 @@ public class PopTextraEffects extends PopTable {
                 typingLabel.restart();
     
                 tokenTable.row();
-                distanceField = createNumberField(1.0f, "distance", "likelihood", "intensity", tokenTable);
+                distanceField = createNumberField(1.0f, "shake distance", "likelihood", "shake speed", tokenTable);
     
                 tokenTable.row();
-                intensityField = createNumberField(1.0f, "intensity", "distance", "duration", tokenTable);
+                intensityField = createNumberField(1.0f, "shake speed", "shake distance", "duration", tokenTable);
     
                 tokenTable.row();
-                durationField = createNumberField(-1.0f, "duration", "intensity", "likelihood", tokenTable);
+                durationField = createNumberField(-1.0f, "duration", "shake speed", "likelihood", tokenTable);
     
                 tokenTable.row();
-                var likelihoodField = createNumberField(-1.0f, "likelihood", "duration", "distance", tokenTable);
+                var likelihoodField = createNumberField(0.05f, "likelihood", "duration", "shake distance", tokenTable);
                 
                 tokenTable.row();
                 color1 = new Color(Color.WHITE);
@@ -593,8 +593,8 @@ public class PopTextraEffects extends PopTable {
                     float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
                     float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
                     float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
-                    float likelihood = isNumeric(likelihoodField.getText()) ? Float.parseFloat(likelihoodField.getText()) : 1.0f;
-                    tagBegin = "{JOLT=" + distance + ";" + intensity + ";" + (!MathUtils.isEqual(duration, -1)? duration : "inf") + ";" + likelihood + ";" + color1 + ";" + color2 + "}";
+                    float likelihood = isNumeric(likelihoodField.getText()) ? Float.parseFloat(likelihoodField.getText()) : 0.05f;
+                    tagBegin = "{JOLT=" + distance + ";" + intensity + ";" + (duration >= 0f ? duration : "_") + ";" + likelihood + ";" + color1 + ";" + color2 + "}";
         
                     typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                     typingLabel.restart();
@@ -642,19 +642,19 @@ public class PopTextraEffects extends PopTable {
                 typingLabel.restart();
         
                 tokenTable.row();
-                distanceField = createNumberField(1.0f, "distance", "rotations", "intensity", tokenTable);
+                distanceField = createNumberField(1.0f, "distance", "rotations", "speed", tokenTable);
         
                 tokenTable.row();
-                intensityField = createNumberField(1.0f, "intensity", "distance", "rotations", tokenTable);
+                intensityField = createNumberField(1.0f, "speed", "distance", "rotations", tokenTable);
         
                 tokenTable.row();
-                var rotationsField = createNumberField(1.0f, "rotations", "intensity", "distance", tokenTable);
+                var rotationsField = createNumberField(1.0f, "rotations", "speed", "distance", tokenTable);
         
                 runnable = () -> {
                     float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
                     float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
-                    float rotations = isNumeric(rotationsField.getText()) ? Float.parseFloat(rotationsField.getText()) : -1.0f;
-                    tagBegin = "{JOLT=" + distance + ";" + intensity + ";" + rotations + "}";
+                    float rotations = isNumeric(rotationsField.getText()) ? Float.parseFloat(rotationsField.getText()) : 1.0f;
+                    tagBegin = "{SPIRAL=" + distance + ";" + intensity + ";" + rotations + "}";
             
                     typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                     typingLabel.restart();
