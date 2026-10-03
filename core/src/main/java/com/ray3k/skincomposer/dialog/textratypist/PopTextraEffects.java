@@ -516,6 +516,62 @@ public class PopTextraEffects extends PopTable {
                 onChange(frequencyField, runnable);
                 onChange(durationField, runnable);
                 break;
+            case "Hide":
+                tagBegin = "{HIDE}";
+                tagEnd = "{ENDHIDE}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                color1 = new Color(Color.CLEAR);
+                color1pop = createColorField(color1, "color1", tokenTable);
+
+                tokenTable.row();
+                color2 = new Color(Color.WHITE);
+                color2pop = createColorField(color2, "color2", tokenTable);
+
+                tokenTable.row();
+                durationField = createNumberField(1.0f, "duration", "duration", "duration", tokenTable);
+
+                runnable = () -> {
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : 1.0f;
+                    tagBegin = "{HIDE=" + color1 + ";" + color2 + ";" + duration + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                color1pop.addListener(new PopColorPickerListener() {
+                    @Override
+                    public void picked(Color color) {
+                        color1.set(color);
+                        runnable.run();
+                    }
+
+                    @Override
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
+                    }
+                });
+                color2pop.addListener(new PopColorPickerListener() {
+                    @Override
+                    public void picked(Color color) {
+                        color2.set(color);
+                        runnable.run();
+                    }
+
+                    @Override
+                    public void updated(Color color) {
+                    }
+
+                    @Override
+                    public void cancelled(Color oldColor) {
+                    }
+                });
+                onChange(durationField, runnable);
+                break;
             case "Highlight":
                 tagBegin = "{HIGHLIGHT}";
                 tagEnd = "{ENDHIGHLIGHT}";
