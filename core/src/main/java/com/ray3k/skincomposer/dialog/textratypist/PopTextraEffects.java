@@ -113,7 +113,7 @@ public class PopTextraEffects extends PopTable {
                 spreadField, rotationsField, likelihoodField, thresholdField, tiltField,
                 sizeXField, sizeYField, distanceXField, distanceYField, spacingField,
                 saturationField, lightnessField, rotateField;
-        TextButton elasticButton, allButton;
+        TextButton elasticButton, allButton, insideButton;
         Color color1, color2;
         PopColorPicker color1pop, color2pop;
 
@@ -303,18 +303,18 @@ public class PopTextraEffects extends PopTable {
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
 
-                distanceField = createNumberField(-8.0f, "distance", "intensity", "intensity", tokenTable);
+                distanceField = createNumberField(-2.0f, "distance", "extent", "extent", tokenTable);
 
                 tokenTable.row();
-                intensityField = createNumberField(2.0f, "intensity", "distance", "distance", tokenTable);
+                intensityField = createNumberField(1.0f, "extent", "distance", "distance", tokenTable);
 
                 tokenTable.row();
-                elasticButton = createBooleanField(true, "elastic", tokenTable);
+                elasticButton = createBooleanField(false, "elastic", tokenTable);
 
                 runnable = () -> {
-                    float distance = isNumeric(distanceField.getText())? Float.parseFloat(distanceField.getText()) : -8.0f;
-                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 2.0f;
-                    tagBegin = "{EASE=" + distance + ";" + intensity + ";" + elasticButton.isChecked() + "}";
+                    float distance = isNumeric(distanceField.getText())? Float.parseFloat(distanceField.getText()) : -2.0f;
+                    float extent = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    tagBegin = "{EASE=" + distance + ";" + extent + ";" + elasticButton.isChecked() + "}";
 
                     typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                     typingLabel.restart();
@@ -331,20 +331,20 @@ public class PopTextraEffects extends PopTable {
                 typingLabel.restart();
 
                 tokenTable.row();
-                intensityField = createNumberField(1.0f, "speed", "speed", "speed", tokenTable);
+                speedField = createNumberField(1.0f, "speed", "speed", "speed", tokenTable);
 
                 tokenTable.row();
                 elasticButton = createBooleanField(false, "elastic", tokenTable);
 
                 runnable = () -> {
-                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    float intensity = isNumeric(speedField.getText()) ? Float.parseFloat(speedField.getText()) : 1.0f;
                     tagBegin = "{EMERGE=" + intensity + ";" + elasticButton.isChecked() + "}";
 
                     typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                     typingLabel.restart();
                 };
 
-                onChange(intensityField, runnable);
+                onChange(speedField, runnable);
                 onChange(elasticButton, runnable);
                 break;
             case "Fade":
@@ -792,6 +792,38 @@ public class PopTextraEffects extends PopTable {
                 onChange(speedField, runnable);
                 onChange(durationField, runnable);
                 break;
+            case "Meet":
+                tagBegin = "{MEET}";
+                tagEnd = "{ENDMEET}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                tokenTable.row();
+                distanceField = createNumberField(2.0f, "distance", "extent", "extent", tokenTable);
+
+                tokenTable.row();
+                intensityField = createNumberField(1.0f, "extent", "distance", "distance", tokenTable);
+
+                tokenTable.row();
+                elasticButton = createBooleanField(false, "elastic", tokenTable);
+
+                tokenTable.row();
+                insideButton = createBooleanField(false, "inside", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 2.0f;
+                    float extent = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    tagBegin = "{MEET=" + distance + ";" + extent + ";" + elasticButton.isChecked() + ";" + insideButton.isChecked() + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(intensityField, runnable);
+                onChange(elasticButton, runnable);
+                onChange(insideButton, runnable);
+                break;
             case "Metronome":
                 tagBegin = "{METRONOME}";
                 tagEnd = "{ENDMETRONOME}";
@@ -999,7 +1031,7 @@ public class PopTextraEffects extends PopTable {
                 intensityField = createNumberField(1.0f, "intensity", "distance", "distance", tokenTable);
 
                 tokenTable.row();
-                elasticButton = createBooleanField(true, "elastic", tokenTable);
+                elasticButton = createBooleanField(false, "elastic", tokenTable);
 
                 runnable = () -> {
                     float distance = isNumeric(distanceField.getText())? Float.parseFloat(distanceField.getText()) : 1.0f;
@@ -1239,6 +1271,33 @@ public class PopTextraEffects extends PopTable {
                 onChange(spacingField, runnable);
                 onChange(intensityField, runnable);
                 onChange(durationField, runnable);
+                break;
+            case "Zipper":
+                tagBegin = "{ZIPPER}";
+                tagEnd = "{ENDZIPPER}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                distanceField = createNumberField(2.0f, "distance", "extent", "extent", tokenTable);
+
+                tokenTable.row();
+                intensityField = createNumberField(1.0f, "extent", "distance", "distance", tokenTable);
+
+                tokenTable.row();
+                elasticButton = createBooleanField(false, "elastic", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText())? Float.parseFloat(distanceField.getText()) : -8.0f;
+                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 2.0f;
+                    tagBegin = "{ZIPPER=" + distance + ";" + intensity + ";" + elasticButton.isChecked() + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(intensityField, runnable);
+                onChange(elasticButton, runnable);
                 break;
 
                 // Modes
