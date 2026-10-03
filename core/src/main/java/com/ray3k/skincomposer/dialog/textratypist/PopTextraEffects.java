@@ -50,9 +50,13 @@ public class PopTextraEffects extends PopTable {
         effectSelectBox = new SelectBox<>(skin, "tt");
         var items = new Array<>(new String[]{"Reset", "Ease", "Hang", "Jump", "Shake", "Sick", "Slide", "Wave", "Wind",
                 "Blink", "Fade", "Gradient", "Rainbow", "Jolt", "Spiral", "Spin", "Crowd", "Shrink", "Emerge",
-                "Heartbeat", "Squash", "Carousel", "Rotate", "Highlight", "Stylist", "Attention", "Black Outline",
-                "White Outline", "Shiny", "Drop Shadow", "Error", "Warn", "Note", "Jostle", "Small Caps", "Link",
-                "Trigger", "Wait", "Speed", "Slower", "Slow", "Normal", "Fast", "Faster", "Var", "Event"});
+                "Heartbeat", "Squash", "Carousel", "Rotate", "Highlight", "Stylist", "Attention", "Link",
+                "Trigger",
+
+                "Black Outline", "White Outline", "Red Outline", "Blue Outline", "Yellow Outline", "Shiny",
+                "Drop Shadow", "Neon", "Halo", "Error", "Warn", "Note", "Context", "Suggest", "Jostle", "Small Caps",
+
+                "Wait", "Speed", "Slower", "Slow", "Normal", "Fast", "Faster", "Var", "Event"});
         effectSelectBox.setItems(items);
         effectSelectBox.getList().addListener(handListener);
         table.add(effectSelectBox);
@@ -991,140 +995,98 @@ public class PopTextraEffects extends PopTable {
                 onChange(sizeYField, runnable);
                 break;
             case "Black Outline":
-                tagBegin = "[%?BLACK OUTLINE]";
-                tagEnd = "[%]";
+                tagBegin = "[#]";
+                tagEnd = "[#]";
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
-                
-                var smallCapsButton = createBooleanField(false, "small caps", tokenTable);
-    
-                runnable = () -> {
-                    if (smallCapsButton.isChecked()) tagBegin = "[%^BLACK OUTLINE]";
-                    else tagBegin = "[%?BLACK OUTLINE]";
-        
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-    
-                onChange(smallCapsButton, runnable);
                 break;
             case "White Outline":
-                tagBegin = "[%?WHITE OUTLINE]";
-                tagEnd = "[%]";
+                tagBegin = "[?WHITE OUTLINE]";
+                tagEnd = "[?][#]";
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
-    
-                smallCapsButton = createBooleanField(false, "small caps", tokenTable);
-    
-                runnable = () -> {
-                    if (smallCapsButton.isChecked()) tagBegin = "[%^WHITE OUTLINE]";
-                    else tagBegin = "[%?WHITE OUTLINE]";
-        
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-    
-                onChange(smallCapsButton, runnable);
+                break;
+            case "Red Outline":
+                tagBegin = "[?RED OUTLINE]";
+                tagEnd = "[?][#]";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+                break;
+            case "Blue Outline":
+                tagBegin = "[?BLUE OUTLINE]";
+                tagEnd = "[?][#]";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+                break;
+            case "Yellow Outline":
+                tagBegin = "[?YELLOW OUTLINE]";
+                tagEnd = "[?][#]";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
                 break;
             case "Shiny":
-                tagBegin = "[%?SHINY]";
-                tagEnd = "[%]";
+                tagBegin = "[?SHINY]";
+                tagEnd = "[?]";
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
-    
-                smallCapsButton = createBooleanField(false, "small caps", tokenTable);
-    
-                runnable = () -> {
-                    if (smallCapsButton.isChecked()) tagBegin = "[%^SHINY]";
-                    else tagBegin = "[%?SHINY]";
-        
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-    
-                onChange(smallCapsButton, runnable);
                 break;
             case "Drop Shadow":
-                tagBegin = "[%?SHADOW]";
-                tagEnd = "[%]";
+                tagBegin = "[?SHADOW]";
+                tagEnd = "[?]";
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
-    
-                smallCapsButton = createBooleanField(false, "small caps", tokenTable);
-    
-                runnable = () -> {
-                    if (smallCapsButton.isChecked()) tagBegin = "[%^SHADOW]";
-                    else tagBegin = "[%?SHADOW]";
-        
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-    
-                onChange(smallCapsButton, runnable);
+                break;
+            case "Neon":
+                tagBegin = "[?NEON]";
+                tagEnd = "[?]";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+                break;
+            case "Halo":
+                tagBegin = "[?HALO]";
+                tagEnd = "[?]";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
                 break;
             case "Error":
-                tagBegin = "[%?ERROR]";
-                tagEnd = "[%]";
+                tagBegin = "[?ERROR]";
+                tagEnd = "[?]";
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
-    
-                smallCapsButton = createBooleanField(false, "small caps", tokenTable);
-    
-                runnable = () -> {
-                    if (smallCapsButton.isChecked()) tagBegin = "[%^ERROR]";
-                    else tagBegin = "[%?ERROR]";
-        
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-    
-                onChange(smallCapsButton, runnable);
                 break;
             case "Warn":
-                tagBegin = "[%?WARN]";
-                tagEnd = "[%]";
+                tagBegin = "[?WARN]";
+                tagEnd = "[?]";
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
-    
-                smallCapsButton = createBooleanField(false, "small caps", tokenTable);
-    
-                runnable = () -> {
-                    if (smallCapsButton.isChecked()) tagBegin = "[%^WARN]";
-                    else tagBegin = "[%?WARN]";
-        
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-    
-                onChange(smallCapsButton, runnable);
                 break;
             case "Note":
-                tagBegin = "[%?NOTE]";
-                tagEnd = "[%]";
+                tagBegin = "[?NOTE]";
+                tagEnd = "[?]";
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
-    
-                smallCapsButton = createBooleanField(false, "small caps", tokenTable);
-    
-                runnable = () -> {
-                    if (smallCapsButton.isChecked()) tagBegin = "[%^NOTE]";
-                    else tagBegin = "[%?NOTE]";
-        
-                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
-                    typingLabel.restart();
-                };
-    
-                onChange(smallCapsButton, runnable);
+                break;
+            case "Context":
+                tagBegin = "[?CONTEXT]";
+                tagEnd = "[?]";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+                break;
+            case "Suggest":
+                tagBegin = "[?SUGGEST]";
+                tagEnd = "[?]";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
                 break;
             case "Jostle":
-                tagBegin = "[%?JOSTLE]";
-                tagEnd = "[%]";
+                tagBegin = "[?JOSTLE]";
+                tagEnd = "[?]";
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
                 break;
             case "Small Caps":
-                tagBegin = "[%^SMALLCAPS]";
-                tagEnd = "[%]";
+                tagBegin = "[?SMALLCAPS]";
+                tagEnd = "[?]";
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
                 break;
