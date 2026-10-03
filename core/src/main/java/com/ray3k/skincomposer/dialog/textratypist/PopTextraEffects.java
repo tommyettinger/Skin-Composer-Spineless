@@ -48,10 +48,13 @@ public class PopTextraEffects extends PopTable {
         table.add(label);
         
         effectSelectBox = new SelectBox<>(skin, "tt");
-        var items = new Array<>(new String[]{"Reset", "Ease", "Hang", "Jump", "Shake", "Sick", "Slide", "Wave", "Wind",
-                "Blink", "Fade", "Gradient", "Rainbow", "Jolt", "Spiral", "Spin", "Crowd", "Shrink", "Emerge",
-                "Heartbeat", "Squash", "Carousel", "Rotate", "Highlight", "Stylist", "Attention", "Link",
-                "Trigger",
+        var items = new Array<>(new String[]{"Reset",
+
+                "Attention", "Blink", "Cannon", "Carousel", "Crowd", "Ease", "Emerge", "Fade", "Gradient", "Hang",
+                "Heartbeat", "Hide", "Highlight", "Instant", "Jolt", "Jump", "Link", "Lockstep", "Meet", "Metronome",
+                "Ocean", "Pinch", "Rainbow", "Rotate", "Scale", "Shake", "Shoot", "Shrink", "Sick", "Slam", "Slide",
+                "Slip", "Spin", "Spiral", "Sputter", "Squash", "Stylist", "Thinking", "Throb", "Trigger", "Wave",
+                "Wind", "Zipper",
 
                 "Black Outline", "White Outline", "Red Outline", "Blue Outline", "Yellow Outline", "Shiny",
                 "Drop Shadow", "Neon", "Halo", "Error", "Warn", "Note", "Context", "Suggest", "Jostle", "Small Caps",
@@ -200,17 +203,17 @@ public class PopTextraEffects extends PopTable {
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
     
-                distanceField = createNumberField(1.0f, "distance", "duration", "frequency", tokenTable);
+                distanceField = createNumberField(1.0f, "distance", "duration", "speed", tokenTable);
     
                 tokenTable.row();
-                intensityField = createNumberField(1.0f, "intensity", "frequency", "duration", tokenTable);
+                var speedField = createNumberField(1.0f, "speed", "distance", "duration", tokenTable);
     
                 tokenTable.row();
-                durationField = createNumberField(-1.0f, "duration", "intensity", "distance", tokenTable);
+                durationField = createNumberField(-1.0f, "duration", "speed", "distance", tokenTable);
     
                 runnable = () -> {
                     float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
-                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    float intensity = isNumeric(speedField.getText()) ? Float.parseFloat(speedField.getText()) : 1.0f;
                     float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
                     tagBegin = "{SHAKE=" + distance + ";" + intensity + (!MathUtils.isEqual(duration, -1)? ";" + duration: "") + "}";
         
@@ -219,7 +222,7 @@ public class PopTextraEffects extends PopTable {
                 };
     
                 onChange(distanceField, runnable);
-                onChange(intensityField, runnable);
+                onChange(speedField, runnable);
                 onChange(durationField, runnable);
                 break;
             case "Sick":
@@ -1148,7 +1151,7 @@ public class PopTextraEffects extends PopTable {
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
     
-                var speedField = createNumberField(1f, "speed", "speed", "speed", tokenTable);
+                speedField = createNumberField(1f, "speed", "speed", "speed", tokenTable);
     
                 runnable = () -> {
                     float speed = isNumeric(speedField.getText())? Float.parseFloat(speedField.getText()) : 1f;
