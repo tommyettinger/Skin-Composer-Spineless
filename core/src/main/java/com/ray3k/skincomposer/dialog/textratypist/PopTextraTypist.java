@@ -152,6 +152,8 @@ public class PopTextraTypist extends PopTable {
     private void showFileTable() {
         contentTable.clearChildren();
         contentTable.defaults().reset();
+
+        skin.get("tt", Font.class).setUnderlineMetrics(-0.125f, 0f, 0.2f, 0f);
         
         var table = new Table();
         table.setBackground(skin.getDrawable("tt-file"));
