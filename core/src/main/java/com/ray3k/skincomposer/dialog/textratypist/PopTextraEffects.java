@@ -185,8 +185,8 @@ public class PopTextraEffects extends PopTable {
                     float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
                     float frequency = isNumeric(frequencyField.getText()) ? Float.parseFloat(frequencyField.getText()) : 1.0f;
                     float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
-                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
-                    tagBegin = "{JUMP=" + distance + ";" + frequency + ";" + intensity + (!MathUtils.isEqual(duration, -1)? ";" + duration: "") + "}";
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1f;
+                    tagBegin = "{JUMP=" + distance + ";" + frequency + ";" + intensity + ";" + (duration >= 0f ? duration : "_") + "}";
         
                     typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                     typingLabel.restart();
@@ -699,26 +699,26 @@ public class PopTextraEffects extends PopTable {
                 typingLabel.restart();
         
                 tokenTable.row();
-                distanceField = createNumberField(1.0f, "distance", "duration", "intensity", tokenTable);
+                distanceField = createNumberField(15.0f, "rotation amount", "duration", "speed", tokenTable);
         
                 tokenTable.row();
-                intensityField = createNumberField(1.0f, "intensity", "distance", "duration", tokenTable);
+                speedField = createNumberField(1.0f, "speed", "rotation amount", "duration", tokenTable);
         
                 tokenTable.row();
-                durationField = createNumberField(1.0f, "duration", "intensity", "distance", tokenTable);
+                durationField = createNumberField(-1.0f, "duration", "speed", "rotation amount", tokenTable);
         
                 runnable = () -> {
-                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
-                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 15f;
+                    float speed = isNumeric(speedField.getText()) ? Float.parseFloat(speedField.getText()) : 1.0f;
                     float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
-                    tagBegin = "{CROWD=" + distance + ";" + intensity + ";" + duration + "}";
+                    tagBegin = "{CROWD=" + distance + ";" + speed + ";" + (duration >= 0f ? duration : "_") + "}";
             
                     typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                     typingLabel.restart();
                 };
         
                 onChange(distanceField, runnable);
-                onChange(intensityField, runnable);
+                onChange(speedField, runnable);
                 onChange(durationField, runnable);
                 break;
             case "Shrink":
@@ -826,17 +826,22 @@ public class PopTextraEffects extends PopTable {
                 typingLabel.restart();
         
                 tokenTable.row();
-                frequencyField = createNumberField(1.0f, "frequency", "frequency", "frequency", tokenTable);
-        
+                frequencyField = createNumberField(1.0f, "frequency", "duration", "duration", tokenTable);
+
+                tokenTable.row();
+                durationField = createNumberField(1.0f, "duration", "frequency", "frequency", tokenTable);
+
                 runnable = () -> {
                     float frequency = isNumeric(frequencyField.getText()) ? Float.parseFloat(frequencyField.getText()) : 1.0f;
-                    tagBegin = "{CAROUSEL=" + frequency + "}";
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
+                    tagBegin = "{CAROUSEL=" + frequency + ";" + (duration >= 0f ? duration : "_") + "}";
             
                     typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                     typingLabel.restart();
                 };
         
                 onChange(frequencyField, runnable);
+                onChange(durationField, runnable);
                 break;
             case "Rotate":
                 tagBegin = "{ROTATE}";
