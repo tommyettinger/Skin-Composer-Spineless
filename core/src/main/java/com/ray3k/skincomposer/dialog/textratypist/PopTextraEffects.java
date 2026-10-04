@@ -112,7 +112,7 @@ public class PopTextraEffects extends PopTable {
         TextField distanceField, intensityField, frequencyField, speedField, durationField,
                 spreadField, rotationsField, likelihoodField, thresholdField, tiltField,
                 sizeXField, sizeYField, distanceXField, distanceYField, spacingField,
-                saturationField, lightnessField, rotateField;
+                hueField, saturationField, lightnessField, rotateField;
         TextButton elasticButton, allButton, insideButton;
         Color color1, color2;
         PopColorPicker color1pop, color2pop;
@@ -857,6 +857,44 @@ public class PopTextraEffects extends PopTable {
                 onChange(tiltField, runnable);
                 onChange(speedField, runnable);
                 onChange(durationField, runnable);
+                break;
+            case "Ocean":
+                tagBegin = "{OCEAN}";
+                tagEnd = "{ENDOCEAN}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                tokenTable.row();
+                distanceField = createNumberField(1.0f, "distance", "frequency", "frequency", tokenTable);
+
+                tokenTable.row();
+                frequencyField = createNumberField(0.25f, "frequency", "distance", "distance", tokenTable);
+
+                tokenTable.row();
+                hueField = createNumberField(0.5f, "hue", "frequency", "saturation", tokenTable);
+
+                tokenTable.row();
+                saturationField = createNumberField(0.8f, "saturation", "hue", "lightness", tokenTable);
+
+                tokenTable.row();
+                lightnessField = createNumberField(.25f, "lightness", "saturation", "distance", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
+                    float frequency = isNumeric(frequencyField.getText()) ? Float.parseFloat(frequencyField.getText()) : 0.25f;
+                    float hue = isNumeric(hueField.getText()) ? Float.parseFloat(hueField.getText()) : 0.25f;
+                    float saturation = isNumeric(saturationField.getText()) ? Float.parseFloat(saturationField.getText()) : 0.25f;
+                    float lightness = isNumeric(lightnessField.getText()) ? Float.parseFloat(lightnessField.getText()) : 0.25f;
+                    tagBegin = "{OCEAN=" + distance + ";" + frequency + ";" + hue + ";" + saturation + ";" + lightness + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+                onChange(distanceField, runnable);
+                onChange(frequencyField, runnable);
+                onChange(hueField, runnable);
+                onChange(saturationField, runnable);
+                onChange(lightnessField, runnable);
                 break;
             case "Rainbow":
                 tagBegin = "{RAINBOW}";
