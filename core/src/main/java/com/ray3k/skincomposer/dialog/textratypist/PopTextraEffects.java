@@ -1271,6 +1271,39 @@ public class PopTextraEffects extends PopTable {
                 onChange(intensityField, runnable);
                 onChange(rotationsField, runnable);
                 break;
+            case "Sputter":
+                tagBegin = "{SPUTTER}";
+                tagEnd = "{ENDSPUTTER}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                sizeXField = createNumberField(0.25f, "widen", "duration", "heighten", tokenTable);
+
+                tokenTable.row();
+                sizeYField = createNumberField(0.25f, "heighten", "widen", "speed", tokenTable);
+
+                tokenTable.row();
+                speedField = createNumberField(1.0f, "speed", "heighten", "duration", tokenTable);
+
+                tokenTable.row();
+                durationField = createNumberField(-1.0f, "duration", "speed", "widen", tokenTable);
+
+                runnable = () -> {
+                    float widen = isNumeric(sizeXField.getText()) ? Float.parseFloat(sizeXField.getText()) : 0.25f;
+                    float heighten = isNumeric(sizeYField.getText()) ? Float.parseFloat(sizeYField.getText()) : 0.25f;
+                    float speed = isNumeric(speedField.getText()) ? Float.parseFloat(speedField.getText()) : 1.0f;
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1f;
+                    tagBegin = "{SPUTTER=" + widen + ";" + heighten + ";" + speed + ";" + (duration >= 0f ? duration : "_") + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(sizeXField, runnable);
+                onChange(sizeYField, runnable);
+                onChange(speedField, runnable);
+                onChange(durationField, runnable);
+                break;
             case "Squash":
                 tagBegin = "{SQUASH}";
                 tagEnd = "{ENDSQUASH}";
