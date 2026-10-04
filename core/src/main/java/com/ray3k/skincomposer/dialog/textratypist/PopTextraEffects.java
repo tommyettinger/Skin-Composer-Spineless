@@ -113,7 +113,7 @@ public class PopTextraEffects extends PopTable {
                 spreadField, rotationsField, likelihoodField, thresholdField, tiltField,
                 sizeXField, sizeYField, distanceXField, distanceYField, spacingField,
                 hueField, saturationField, lightnessField, rotateField;
-        TextButton elasticButton, allButton, insideButton;
+        TextButton elasticButton, allButton, insideButton, underlineButton, strikethroughButton;
         Color color1, color2;
         PopColorPicker color1pop, color2pop;
 
@@ -1033,6 +1033,37 @@ public class PopTextraEffects extends PopTable {
                 onChange(speedField, runnable);
                 onChange(durationField, runnable);
                 break;
+            case "Shoot":
+                tagBegin = "{SHOOT}";
+                tagEnd = "{ENDSHOOT}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                underlineButton = createBooleanField(true, "underline", tokenTable);
+
+                tokenTable.row();
+                strikethroughButton = createBooleanField(false, "strikethrough", tokenTable);
+
+                tokenTable.row();
+                distanceField = createNumberField(0.3f, "distance", "frequency", "frequency", tokenTable);
+
+                tokenTable.row();
+                frequencyField = createNumberField(1.0f, "frequency", "distance", "distance", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 0.3f;
+                    float frequency = isNumeric(frequencyField.getText()) ? Float.parseFloat(frequencyField.getText()) : 1.0f;
+                    tagBegin = "{SHOOT=" + underlineButton.isChecked()+ ";" + strikethroughButton.isChecked() + ";" + distance + ";" + frequency + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(underlineButton, runnable);
+                onChange(strikethroughButton, runnable);
+                onChange(distanceField, runnable);
+                onChange(frequencyField, runnable);
+                break;
             case "Shrink":
                 tagBegin = "{SHRINK}";
                 tagEnd = "{ENDSHRINK}";
@@ -1209,10 +1240,10 @@ public class PopTextraEffects extends PopTable {
                 var obliqueButton = createBooleanField(false, "oblique", tokenTable);
     
                 tokenTable.row();
-                var underlineButton = createBooleanField(false, "underline", tokenTable);
+                underlineButton = createBooleanField(false, "underline", tokenTable);
     
                 tokenTable.row();
-                var strikethroughButton = createBooleanField(false, "strikethrough", tokenTable);
+                strikethroughButton = createBooleanField(false, "strikethrough", tokenTable);
                 
                 tokenTable.row();
                 Table table = new Table();
