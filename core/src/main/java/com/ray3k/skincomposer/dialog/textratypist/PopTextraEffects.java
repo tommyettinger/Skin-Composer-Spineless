@@ -896,6 +896,38 @@ public class PopTextraEffects extends PopTable {
                 onChange(saturationField, runnable);
                 onChange(lightnessField, runnable);
                 break;
+            case "Pinch":
+                tagBegin = "{PINCH}";
+                tagEnd = "{ENDPINCH}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                intensityField = createNumberField(0.5f, "strength", "duration", "likelihood", tokenTable);
+
+                tokenTable.row();
+                durationField = createNumberField(-1.0f, "duration", "strength", "likelihood", tokenTable);
+
+                tokenTable.row();
+                likelihoodField = createNumberField(0.1f, "likelihood", "duration", "strength", tokenTable);
+
+                tokenTable.row();
+                elasticButton = createBooleanField(false, "elastic", tokenTable);
+
+                runnable = () -> {
+                    float strength = isNumeric(intensityField.getText())? Float.parseFloat(intensityField.getText()) : 0.5f;
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1f;
+                    float likelihood = isNumeric(likelihoodField.getText()) ? Float.parseFloat(likelihoodField.getText()) : 0.1f;
+                    tagBegin = "{PINCH=" + strength + ";" + (duration >= 0f ? duration : "_") + ";" + likelihood + ";" + elasticButton.isChecked() + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(intensityField, runnable);
+                onChange(durationField, runnable);
+                onChange(likelihoodField, runnable);
+                onChange(elasticButton, runnable);
+                break;
             case "Rainbow":
                 tagBegin = "{RAINBOW}";
                 tagEnd = "{ENDRAINBOW}";
