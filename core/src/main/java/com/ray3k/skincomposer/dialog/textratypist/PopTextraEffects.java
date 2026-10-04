@@ -230,8 +230,8 @@ public class PopTextraEffects extends PopTable {
                     float initialStretch = isNumeric(spreadField.getText()) ? Float.parseFloat(spreadField.getText()) : 1.0f;
                     float extent = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
                     float height = isNumeric(sizeYField.getText()) ? Float.parseFloat(sizeYField.getText()) : 1.0f;
-                    float duration = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 2.0f;
-                    float power = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : 1.0f;
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : 2.0f;
+                    float power = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
                     tagBegin = "{CANNON=" + initialStretch + ";" + extent + ";" + height + ";" + duration + ";" + power + "}";
 
                     typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
@@ -1119,6 +1119,45 @@ public class PopTextraEffects extends PopTable {
                 onChange(distanceField, runnable);
                 onChange(intensityField, runnable);
                 onChange(durationField, runnable);
+                break;
+            case "Slam":
+                tagBegin = "{SLAM}";
+                tagEnd = "{ENDSLAM}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                //hangTime;extent;height;shakeDuration;shakePower
+                spreadField = createNumberField(0.25f, "hang time", "shake power", "extent", tokenTable);
+
+                tokenTable.row();
+                distanceField = createNumberField(1.0f, "extent", "hang time", "height", tokenTable);
+
+                tokenTable.row();
+                sizeYField = createNumberField(1.0f, "height", "extent", "shake duration", tokenTable);
+
+                tokenTable.row();
+                durationField = createNumberField(2.0f, "shake duration", "height", "shake power", tokenTable);
+
+                tokenTable.row();
+                intensityField = createNumberField(1.0f, "shake power", "shake duration", "hang time", tokenTable);
+
+                runnable = () -> {
+                    float hangTime = isNumeric(spreadField.getText()) ? Float.parseFloat(spreadField.getText()) : 0.25f;
+                    float extent = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
+                    float height = isNumeric(sizeYField.getText()) ? Float.parseFloat(sizeYField.getText()) : 1.0f;
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : 2.0f;
+                    float power = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    tagBegin = "{SLAM=" + hangTime + ";" + extent + ";" + height + ";" + duration + ";" + power + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(spreadField, runnable);
+                onChange(distanceField, runnable);
+                onChange(sizeYField, runnable);
+                onChange(durationField, runnable);
+                onChange(intensityField, runnable);
                 break;
             case "Slide":
                 tagBegin = "{SLIDE}";
