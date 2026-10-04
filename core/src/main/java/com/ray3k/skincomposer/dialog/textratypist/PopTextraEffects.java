@@ -1098,26 +1098,26 @@ public class PopTextraEffects extends PopTable {
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
 
-                distanceField = createNumberField(1.0f, "distance", "duration", "frequency", tokenTable);
+                distanceField = createNumberField(1.0f, "distance", "duration", "speed", tokenTable);
 
                 tokenTable.row();
-                intensityField = createNumberField(1.0f, "intensity", "frequency", "duration", tokenTable);
+                speedField = createNumberField(1.0f, "speed", "distance", "duration", tokenTable);
 
                 tokenTable.row();
-                durationField = createNumberField(-1.0f, "duration", "intensity", "distance", tokenTable);
+                durationField = createNumberField(-1.0f, "duration", "speed", "distance", tokenTable);
 
                 runnable = () -> {
                     float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
-                    float intensity = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    float speed = isNumeric(speedField.getText()) ? Float.parseFloat(speedField.getText()) : 1.0f;
                     float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
-                    tagBegin = "{SICK=" + distance + ";" + intensity + (!MathUtils.isEqual(duration, -1)? ";" + duration: "") + "}";
+                    tagBegin = "{SICK=" + distance + ";" + speed + ";" + (duration >= 0f ? duration : "_") + "}";
 
                     typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                     typingLabel.restart();
                 };
 
                 onChange(distanceField, runnable);
-                onChange(intensityField, runnable);
+                onChange(speedField, runnable);
                 onChange(durationField, runnable);
                 break;
             case "Slam":
@@ -1185,6 +1185,34 @@ public class PopTextraEffects extends PopTable {
                 onChange(distanceField, runnable);
                 onChange(intensityField, runnable);
                 onChange(elasticButton, runnable);
+                break;
+            case "Slip":
+                tagBegin = "{SLIP}";
+                tagEnd = "{ENDSLIP}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                distanceField = createNumberField(5.0f, "distance", "speed", "duration", tokenTable);
+
+                tokenTable.row();
+                speedField = createNumberField(1.0f, "speed", "distance", "duration", tokenTable);
+
+                tokenTable.row();
+                durationField = createNumberField(-1.0f, "duration", "speed", "distance", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 5.0f;
+                    float speed = isNumeric(speedField.getText()) ? Float.parseFloat(speedField.getText()) : 1.0f;
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1.0f;
+                    tagBegin = "{SLIP=" + distance + ";" + speed +  ";" + (duration >= 0f ? duration : "_") + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(speedField, runnable);
+                onChange(durationField, runnable);
                 break;
             case "Spin":
                 tagBegin = "{SPIN}";
