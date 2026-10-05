@@ -1385,6 +1385,39 @@ public class PopTextraEffects extends PopTable {
                 onChange(superscriptButton, runnable);
                 onChange(allButton, runnable);
                 break;
+            case "Thinking":
+                tagBegin = "{THINKING}";
+                tagEnd = "{ENDTHINKING}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                tokenTable.row();
+                distanceField = createNumberField(2.0f, "distance", "drift", "extent", tokenTable);
+
+                tokenTable.row();
+                intensityField = createNumberField(1.0f, "extent", "distance", "drift", tokenTable);
+
+                tokenTable.row();
+                thresholdField = createNumberField(1.0f, "drift", "extent", "distance", tokenTable);
+
+                tokenTable.row();
+                insideButton = createBooleanField(false, "inside", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 2.0f;
+                    float extent = isNumeric(intensityField.getText()) ? Float.parseFloat(intensityField.getText()) : 1.0f;
+                    float drift = isNumeric(thresholdField.getText()) ? Float.parseFloat(thresholdField.getText()) : 1.0f;
+                    tagBegin = "{THINKING=" + distance + ";" + extent + ";" + drift + ";" + insideButton.isChecked() + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(intensityField, runnable);
+                onChange(thresholdField, runnable);
+                onChange(insideButton, runnable);
+                break;
             case "Trigger":
                 tagBegin = "{TRIGGER}";
                 tagEnd = "{ENDTRIGGER}";
