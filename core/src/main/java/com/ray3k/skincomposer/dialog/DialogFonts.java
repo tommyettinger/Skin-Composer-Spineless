@@ -389,7 +389,7 @@ public class DialogFonts extends Dialog {
                 });
                 button.add(settingsButton).padLeft(15.0f);
                 
-                TextTooltip toolTip = Main.fixTooltip(new TextTooltip("Font Settings", tooltipManager, getSkin()));
+                TextTooltip toolTip = new TextTooltip("Font Settings", tooltipManager, getSkin());
                 settingsButton.addListener(toolTip);
                 
                 LabelStyle style = new LabelStyle();
