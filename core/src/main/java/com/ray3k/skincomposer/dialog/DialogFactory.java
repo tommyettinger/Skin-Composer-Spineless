@@ -234,7 +234,7 @@ public class DialogFactory {
     }
 
     public void showDialogColorPicker(PopColorPickerListener listener) {
-        showDialogColorPicker(null, listener);
+        showDialogColorPicker(new Color(), listener);
     }
 
     public void showDialogColorPicker(Color previousColor, PopColorPickerListener listener) {
