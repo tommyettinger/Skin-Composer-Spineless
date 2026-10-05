@@ -59,7 +59,7 @@ public class PopTextraEffects extends PopTable {
                 "Black Outline", "White Outline", "Red Outline", "Blue Outline", "Yellow Outline", "Shiny",
                 "Drop Shadow", "Neon", "Halo", "Error", "Warn", "Note", "Context", "Suggest", "Jostle", "Small Caps",
 
-                "Wait", "Speed", "Slower", "Slow", "Normal", "Fast", "Faster", "Var", "Event"});
+                "Wait", "Speed", "Slower", "Slow", "Normal", "Fast", "Faster", "Var", "Event", "If"});
         effectSelectBox.setItems(items);
         effectSelectBox.getList().addListener(handListener);
         table.add(effectSelectBox);
@@ -112,7 +112,7 @@ public class PopTextraEffects extends PopTable {
         TextField distanceField, intensityField, frequencyField, speedField, durationField,
                 spreadField, rotationsField, likelihoodField, thresholdField, tiltField,
                 sizeXField, sizeYField, distanceXField, distanceYField, spacingField,
-                hueField, saturationField, lightnessField, rotateField;
+                hueField, saturationField, lightnessField, rotateField, varField;
         TextButton elasticButton, allButton, insideButton, underlineButton, strikethroughButton;
         Color color1, color2;
         PopColorPicker color1pop, color2pop;
@@ -1747,7 +1747,7 @@ public class PopTextraEffects extends PopTable {
                 typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
                 typingLabel.restart();
     
-                var varField = createTextField("", "var", "var", "var", tokenTable);
+                varField = createTextField("", "var", "var", "var", tokenTable);
     
                 runnable = () -> {
                     tagBegin = "{VAR=" + varField.getText() + "}";
@@ -1757,6 +1757,27 @@ public class PopTextraEffects extends PopTable {
                 };
     
                 onChange(varField, runnable);
+                break;
+            case "If":
+                tagBegin = "{IF=}";
+                tagEnd = "";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                varField = createTextField("MyVar", "var", "var", "var", tokenTable);
+
+                tokenTable.row();
+                var conditionField = createTextField("A=(when MyVar is A);B=(when MyVar is B);=(when anything else)", "var", "var", "var", tokenTable);
+
+                runnable = () -> {
+                    tagBegin = "{VAR=" + varField.getText() + ";" + conditionField.getText() + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(varField, runnable);
+                onChange(conditionField, runnable);
                 break;
             case "Event":
                 tagBegin = "{EVENT=}";
