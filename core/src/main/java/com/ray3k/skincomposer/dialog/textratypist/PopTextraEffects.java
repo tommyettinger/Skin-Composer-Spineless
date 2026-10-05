@@ -1418,6 +1418,39 @@ public class PopTextraEffects extends PopTable {
                 onChange(thresholdField, runnable);
                 onChange(insideButton, runnable);
                 break;
+            case "Throb":
+                tagBegin = "{THROB}";
+                tagEnd = "{ENDTHROB}";
+                typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                typingLabel.restart();
+
+                distanceField = createNumberField(1.0f, "distance", "duration", "speed", tokenTable);
+
+                tokenTable.row();
+                speedField = createNumberField(1.0f, "speed", "distance", "frequency", tokenTable);
+
+                tokenTable.row();
+                frequencyField = createNumberField(1.0f, "frequency", "speed", "duration", tokenTable);
+
+                tokenTable.row();
+                durationField = createNumberField(-1.0f, "duration", "frequency", "distance", tokenTable);
+
+                runnable = () -> {
+                    float distance = isNumeric(distanceField.getText()) ? Float.parseFloat(distanceField.getText()) : 1.0f;
+                    float speed = isNumeric(speedField.getText()) ? Float.parseFloat(speedField.getText()) : 1.0f;
+                    float frequency = isNumeric(frequencyField.getText()) ? Float.parseFloat(frequencyField.getText()) : 1.0f;
+                    float duration = isNumeric(durationField.getText()) ? Float.parseFloat(durationField.getText()) : -1f;
+                    tagBegin = "{THROB=" + distance + ";" + speed + ";" + frequency + ";" + (duration >= 0f ? duration : "_") + "}";
+
+                    typingLabel.setText(tagBegin + TEST_STRING + tagEnd);
+                    typingLabel.restart();
+                };
+
+                onChange(distanceField, runnable);
+                onChange(speedField, runnable);
+                onChange(frequencyField, runnable);
+                onChange(durationField, runnable);
+                break;
             case "Trigger":
                 tagBegin = "{TRIGGER}";
                 tagEnd = "{ENDTRIGGER}";
