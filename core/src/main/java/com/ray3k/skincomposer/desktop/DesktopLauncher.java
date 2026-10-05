@@ -40,7 +40,6 @@ import com.badlogic.gdx.utils.Json;
 import com.ray3k.skincomposer.*;
 import com.ray3k.skincomposer.utils.Utils;
 import org.lwjgl.PointerBuffer;
-import org.lwjgl.util.nfd.NFDPathSet;
 import org.lwjgl.util.nfd.NativeFileDialog;
 
 import javax.swing.*;
@@ -68,7 +67,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
     private static final int OPEN=2;
     private static final int SAVE=3;
     //flag for use swing JFileChooser
-    private static boolean useSwing;
+//    private static boolean useSwing;
 
 
     public DesktopLauncher() {
@@ -213,108 +212,108 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
 
     @Override
     public List<File> openMultipleDialog(String title, String defaultPath, String filterPatterns, String filterDescription) {
-        if (useSwing) {
+//        if (useSwing) {
             var result = showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
             return result.size() > 0 ? result : null;
-        }
-        NFDPathSet outPaths = NFDPathSet.calloc();
-    
-        //fix file path characters
-        if (Utils.isWindows()) {
-            defaultPath = defaultPath.replace("/", "\\");
-        } else {
-            defaultPath = defaultPath.replace("\\", "/");
-        }
-    
-        try {
-            var status = NativeFileDialog.NFD_OpenDialogMultiple(filterPatterns, defaultPath, outPaths);
-        
-            if (status == NativeFileDialog.NFD_CANCEL) return null;
-        
-            if (status != NativeFileDialog.NFD_OKAY) {
-                var result = showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
-                return result.size() > 0 ? result : null;
-            }
-        
-            ArrayList<File> list = new ArrayList<>();
-            long count = NativeFileDialog.NFD_PathSet_GetCount(outPaths);
-            for (long i = 0; i < count; i++) {
-                String path = NativeFileDialog.NFD_PathSet_GetPath(outPaths, i);
-                list.add(new File(path));
-            }
-            NativeFileDialog.NFD_PathSet_Free(outPaths);
-            return list;
-        } catch (Exception e) {
-            return showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
-        }
+//        }
+//        NFDPathSet outPaths = NFDPathSet.calloc();
+//
+//        //fix file path characters
+//        if (Utils.isWindows()) {
+//            defaultPath = defaultPath.replace("/", "\\");
+//        } else {
+//            defaultPath = defaultPath.replace("\\", "/");
+//        }
+//
+//        try {
+//            var status = NativeFileDialog.NFD_OpenDialogMultiple(filterPatterns, defaultPath, outPaths);
+//
+//            if (status == NativeFileDialog.NFD_CANCEL) return null;
+//
+//            if (status != NativeFileDialog.NFD_OKAY) {
+//                var result = showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
+//                return result.size() > 0 ? result : null;
+//            }
+//
+//            ArrayList<File> list = new ArrayList<>();
+//            long count = NativeFileDialog.NFD_PathSet_GetCount(outPaths);
+//            for (long i = 0; i < count; i++) {
+//                String path = NativeFileDialog.NFD_PathSet_GetPath(outPaths, i);
+//                list.add(new File(path));
+//            }
+//            NativeFileDialog.NFD_PathSet_Free(outPaths);
+//            return list;
+//        } catch (Exception e) {
+//            return showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
+//        }
     }
 
     @Override
     public File openDialog(String title, String defaultPath, String filterPatterns, String filterDescription) {
-        if (useSwing) {
+//        if (useSwing) {
             var result = showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription);
             return result.size() > 0 ? result.get(0) : null;
-        }
+//        }
     
-        PointerBuffer outPath = memAllocPointer(1);
-        
-        //fix file path characters
-        if (Utils.isWindows()) {
-            defaultPath = defaultPath.replace("/", "\\");
-        } else {
-            defaultPath = defaultPath.replace("\\", "/");
-        }
-    
-        try {
-            var status = NativeFileDialog.NFD_OpenDialog(filterPatterns, defaultPath, outPath);
-    
-            if (status == NativeFileDialog.NFD_CANCEL) return null;
-    
-            if (status != NativeFileDialog.NFD_OKAY) {
-                var result = showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription);
-                return result.size() > 0 ? result.get(0) : null;
-            }
-    
-            String result = outPath.getStringUTF8();
-            NativeFileDialog.nNFD_Free(outPath.get(0));
-            return new File(result);
-        } catch (Exception e) {
-            return showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription).get(0);
-        }
+//        PointerBuffer outPath = memAllocPointer(1);
+//
+//        //fix file path characters
+//        if (Utils.isWindows()) {
+//            defaultPath = defaultPath.replace("/", "\\");
+//        } else {
+//            defaultPath = defaultPath.replace("\\", "/");
+//        }
+//
+//        try {
+//            var status = NativeFileDialog.NFD_OpenDialog(filterPatterns, defaultPath, outPath);
+//
+//            if (status == NativeFileDialog.NFD_CANCEL) return null;
+//
+//            if (status != NativeFileDialog.NFD_OKAY) {
+//                var result = showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription);
+//                return result.size() > 0 ? result.get(0) : null;
+//            }
+//
+//            String result = outPath.getStringUTF8();
+//            NativeFileDialog.nNFD_Free(outPath.get(0));
+//            return new File(result);
+//        } catch (Exception e) {
+//            return showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription).get(0);
+//        }
     }
     
     @Override
     public File saveDialog(String title, String defaultPath, String filterPatterns, String filterDescription) {
-        if (useSwing) {
+//        if (useSwing) {
             var result = showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription);
             return result.size() > 0 ? result.get(0) : null;
-        }
+//        }
     
-        PointerBuffer outPath = memAllocPointer(1);
-    
-        //fix file path characters
-        if (Utils.isWindows()) {
-            defaultPath = defaultPath.replace("/", "\\");
-        } else {
-            defaultPath = defaultPath.replace("\\", "/");
-        }
-    
-        try {
-            var status = NativeFileDialog.NFD_SaveDialog(filterPatterns, defaultPath, outPath);
-        
-            if (status == NativeFileDialog.NFD_CANCEL) return null;
-        
-            if (status != NativeFileDialog.NFD_OKAY) {
-                var result = showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription);
-                return result.size() > 0 ? result.get(0) : null;
-            }
-        
-            String result = outPath.getStringUTF8();
-            NativeFileDialog.nNFD_Free(outPath.get(0));
-            return new File(result);
-        } catch (Exception e) {
-            return showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription).get(0);
-        }
+//        PointerBuffer outPath = memAllocPointer(1);
+//
+//        //fix file path characters
+//        if (Utils.isWindows()) {
+//            defaultPath = defaultPath.replace("/", "\\");
+//        } else {
+//            defaultPath = defaultPath.replace("\\", "/");
+//        }
+//
+//        try {
+//            var status = NativeFileDialog.NFD_SaveDialog(filterPatterns, defaultPath, outPath);
+//
+//            if (status == NativeFileDialog.NFD_CANCEL) return null;
+//
+//            if (status != NativeFileDialog.NFD_OKAY) {
+//                var result = showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription);
+//                return result.size() > 0 ? result.get(0) : null;
+//            }
+//
+//            String result = outPath.getStringUTF8();
+//            NativeFileDialog.nNFD_Free(outPath.get(0));
+//            return new File(result);
+//        } catch (Exception e) {
+//            return showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription).get(0);
+//        }
     }
 
 	/* Opens a swing JFileChooser
@@ -456,14 +455,14 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
             return;
         }
         
-        //setting a flag for use JFileChooser if "-swingfd" arg is in commandline 
-        useSwing=false;
-        for (var arg: args){
-            if ("-swingfd".equals(arg)){
-                useSwing=true;
-                break;
-            }
-        }
+//        //setting a flag for use JFileChooser if "-swingfd" arg is in commandline
+//        useSwing=false;
+//        for (var arg: args){
+//            if ("-swingfd".equals(arg)){
+//                useSwing=true;
+//                break;
+//            }
+//        }
 
         var config = new Lwjgl3ApplicationConfiguration();
         config.setResizable(true);
