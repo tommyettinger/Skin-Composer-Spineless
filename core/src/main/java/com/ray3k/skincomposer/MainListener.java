@@ -261,7 +261,7 @@ public class MainListener extends RootTableListener {
                 downloadUpdate();
                 break;
             case CHECK_FOR_UPDATES_COMPLETE:
-                rootTable.findActor("downloadButton").setVisible(!Main.VERSION.equals(Main.newVersion));
+                rootTable.findActor("downloadButton").setVisible(Main.VERSION.compareTo(Main.newVersion) < 0);
                 break;
         }
     }

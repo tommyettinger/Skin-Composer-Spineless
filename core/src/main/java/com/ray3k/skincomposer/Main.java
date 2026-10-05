@@ -57,8 +57,6 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Null;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.tommyettinger.freetypist.FreeTypistSkin;
-import com.github.tommyettinger.textra.Font;
-import com.github.tommyettinger.textra.KnownFonts;
 import com.ray3k.skincomposer.data.AtlasData;
 import com.ray3k.skincomposer.data.JsonData;
 import com.ray3k.skincomposer.data.ProjectData;
@@ -364,34 +362,26 @@ public class Main extends ApplicationAdapter {
     }
 
     public static void checkForUpdates(Main main) {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                HttpRequestBuilder requestBuilder = new HttpRequestBuilder();
-                HttpRequest httpRequest = requestBuilder.newRequest().method(HttpMethods.GET).url("https://raw.githubusercontent.com/raeleus/skin-composer/master/version").build();
-                Gdx.net.sendHttpRequest(httpRequest, new Net.HttpResponseListener() {
-                    @Override
-                    public void handleHttpResponse(Net.HttpResponse httpResponse) {
-                        newVersion = httpResponse.getResultAsString();
-                        Gdx.app.postRunnable(new Runnable() {
-                            @Override
-                            public void run() {
-                                main.rootTable.fire(new RootTable.RootTableEvent(RootTable.RootTableEnum.CHECK_FOR_UPDATES_COMPLETE));
-                            }
-                        });
-                    }
+        Thread thread = new Thread(() -> {
+            HttpRequestBuilder requestBuilder = new HttpRequestBuilder();
+            HttpRequest httpRequest = requestBuilder.newRequest().method(HttpMethods.GET).url("https://raw.githubusercontent.com/tommyettinger/Skin-Composer-Spineless/refs/heads/main/version").build();
+            Gdx.net.sendHttpRequest(httpRequest, new Net.HttpResponseListener() {
+                @Override
+                public void handleHttpResponse(Net.HttpResponse httpResponse) {
+                    newVersion = httpResponse.getResultAsString();
+                    Gdx.app.postRunnable(() -> Main.rootTable.fire(new RootTable.RootTableEvent(RootTable.RootTableEnum.CHECK_FOR_UPDATES_COMPLETE)));
+                }
 
-                    @Override
-                    public void failed(Throwable t) {
-                        newVersion = VERSION;
-                    }
+                @Override
+                public void failed(Throwable t) {
+                    newVersion = VERSION;
+                }
 
-                    @Override
-                    public void cancelled() {
-                        newVersion = VERSION;
-                    }
-                });
-            }
+                @Override
+                public void cancelled() {
+                    newVersion = VERSION;
+                }
+            });
         });
         
         thread.start();
