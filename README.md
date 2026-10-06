@@ -3,7 +3,7 @@
 ### ![Logo](docs/images/logo.png) ###
 
 * Use Skin Composer to create skins for libGDX's Scene2D.UI!
-* Version 58
+* Version 61
 * Live preview of all widgets with configurable options
 * Specify tinted, tiled, and custom created Drawables right in the editor
 * Includes BitmapFont editor and Image font generator like Shoebox
@@ -13,10 +13,11 @@
 * Include [TinyVG](https://github.com/lyze237/gdx-TinyVG) for SVG-like vector graphics and unlimited scaling
 * Implement your own classes allowing for extended Skin functionality
 * Create basic Scene2D layouts with Scene Composer
-* Implements a rich text editor for [TextraTypist](https://github.com/tommyettinger/textratypist#textratypist) TypingLabel
+* Implements a rich text editor for [TextraTypist](https://github.com/tommyettinger/textratypist) TypingLabel
 * VisUI template and sample projects included
+* Fork of [raeleus/skin-composer](https://github.com/raeleus/skin-composer) with the non-FLOSS Spine dependency removed
 
-# [DOWNLOAD HERE](https://github.com/raeleus/skin-composer/releases) #
+# [DOWNLOAD HERE](https://github.com/tommyettinger/Skin-Composer-Spineless/releases) #
 
 ![Skins Preview](docs/images/skins-preview.png)
 
@@ -24,8 +25,9 @@ See more examples and sample code at [Ray3k](https://ray3k.wordpress.com/artwork
 
 ### Contact ###
 
-* This project is maintained by Raymond "Raeleus" Buckley
+* This project is maintained by Tommy Ettinger and Raymond "Raeleus" Buckley
 * http://ray3k.wordpress.com
+* tommy.ettinger (at) gmail.com
 * raymond.ray3k (at) gmail.com
 
 ### Notes ###
@@ -36,22 +38,21 @@ If you are unable to run the Windows installer, use the JAR version with JDK ver
 
 To run Skin Composer on OSX, please see the [wiki](https://github.com/raeleus/skin-composer/wiki/Getting-Started-With-Mac "Getting Started With Mac") for details.
 
-If you are unable to open file dialogs on your platform, try the commandline option -swingfd to switch to Swing dialogs.
+If you are unable to open file dialogs on your platform, try version 60 or lower.
+Version 61 always uses Swing file dialogs due to changes in the NFD (Native File Dialog) library that haven't yet
+been addressable. Future versions may be able to use native dialogs again.
 
 Video tutorials are available on [YouTube](https://www.youtube.com/playlist?list=PLl-_-0fPSXFfHiRAFpmLCuQup10MUJwcA).
 
 ### Contributors and Forking ###
 
-Skin Composer requires the Spine Runtime. The Spine Runtime requires a Spine license to redistribute. Please see the [Spine Editor License](http://esotericsoftware.com/spine-editor-license).
-
-The installer/uninstaller depends on mt.exe (to give the executable admin rights) and WinRAR (to collect the files into a single executable EXE). You need to install the [WinRAR (x64)](https://www.rarlab.com/download.htm) and the [Windows 10 SDK](https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/) with the options "Windows SDK Signing Tools for Desktop Apps" and "Windows SDK for UWP Managed Apps". Run the task ":installer:jpackageZip" on a Windows 10 host computer. The final distributable zip is created in /installer/build/winrar
-
-If you have trouble compiling or running the app from source, try using JDK 13.
+If you have trouble compiling or running the app from source, try using JDK 21.
 
 ### License ###
 MIT License
 
 Copyright (c) 2024 Raymond Buckley
+Copyright (c) 2026 Tommy Ettinger
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
