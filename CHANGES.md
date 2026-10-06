@@ -1,5 +1,10 @@
 ### Skin Composer *Spineless* Version 61 ###
 * Updated TextraTypist to 2.5.0 .
+* Added or updated over 20 TypingLabel Effects and modes, accessible via the FX button in TextraTypist Playground.
+* Update LWJGL to 3.4.3 .
+* Force Swing for file dialogs because of breaking changes in NFD (or LWJGL3's bindings to it).
+* Fix some tooltips that were very narrow.
+* The new version check should work again.
 
 ### Skin Composer *Spineless* Version 60 ###
 * Updated TextraTypist to 2.2.11 .
