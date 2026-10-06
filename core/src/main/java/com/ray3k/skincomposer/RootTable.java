@@ -835,7 +835,7 @@ public class RootTable extends Table {
 
                     table.row();
                     if (styleProperty.getValue() instanceof Float) {
-                        styleProperty.setValue((double) (float) styleProperty.getValue());
+                        styleProperty.setValue(((Number) styleProperty.getValue()).doubleValue());
                     }
                     Double value = 0.0;
                     if (styleProperty.getValue() instanceof Double) {
@@ -2134,11 +2134,11 @@ public class RootTable extends Table {
                             ((List) widget).setItems(items);
                             widget.addListener(handListener);
                         } else if (clazz.equals(ProgressBar.class)) {
-                            widget = new ProgressBar((float) (double) previewProperties.get("minimum"),
-                                    (float) (double) previewProperties.get("maximum"),
-                                    (float) (double) previewProperties.get("increment"),
+                            widget = new ProgressBar(((Number) previewProperties.get("minimum")).floatValue(),
+                                    ((Number) previewProperties.get("maximum")).floatValue(),
+                                    ((Number) previewProperties.get("increment")).floatValue(),
                                     (boolean) previewProperties.get("orientation"), (ProgressBarStyle) style);
-                            ((ProgressBar) widget).setValue((float) (double) previewProperties.get("value"));
+                            ((ProgressBar) widget).setValue(((Number) previewProperties.get("value")).floatValue());
                             ((ProgressBar) widget).setDisabled((boolean) previewProperties.get("disabled"));
                         } else if (clazz.equals(ScrollPane.class)) {
                             Label label = new Label("", getSkin());
@@ -2172,9 +2172,10 @@ public class RootTable extends Table {
                             widget.addListener(handListener);
                             ((SelectBox) widget).getList().addListener(handListener);
                         } else if (clazz.equals(Slider.class)) {
-                            widget = new Slider((float) (double) previewProperties.get("minimum"),
-                                    (float) (double) previewProperties.get("maximum"),
-                                    (float) (double) previewProperties.get("increment"),
+                            widget = new Slider(
+                                    ((Number) previewProperties.get("minimum")).floatValue(),
+                                    ((Number) previewProperties.get("maximum")).floatValue(),
+                                    ((Number) previewProperties.get("increment")).floatValue(),
                                     (boolean) previewProperties.get("orientation"), (SliderStyle) style);
                             ((Slider) widget).setDisabled((boolean) previewProperties.get("disabled"));
                             widget.addListener(handListener);
@@ -2424,7 +2425,7 @@ public class RootTable extends Table {
                                         customProperty.setValue(0.0);
                                     }
 
-                                    Label labelNumber = new Label(Double.toString((double) customProperty.getValue()), getSkin());
+                                    Label labelNumber = new Label(Double.toString(((Number) customProperty.getValue()).doubleValue()), getSkin());
                                     container.setActor(labelNumber);
                                     break;
                                 case BOOL:
@@ -2570,7 +2571,7 @@ public class RootTable extends Table {
                             }
                         }
                     } else if (field.getType().equals(Float.TYPE)) {
-                        field.set(instance, (float) (double) value);
+                        field.set(instance, ((Number) value).floatValue());
                     } else if (field.getType().equals(ListStyle.class)) {
                         Array<StyleData> datas = projectData.getJsonData().getClassStyleMap().get(List.class);
 
