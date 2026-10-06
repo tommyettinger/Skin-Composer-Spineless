@@ -129,7 +129,7 @@ public class Main extends ApplicationAdapter {
 
         appFolder = Gdx.files.external(".skincomposer/");
         
-        skin = new FreeTypistSkin(Gdx.files.internal("skin-composer-ui/skin-composer-ui.json"));
+        skin = new FreeTypistSkin(Gdx.files.internal("skin-composer-ui.json"));
         viewport = new ScreenViewport();
 //        viewport.setUnitsPerPixel(.5f);
         var batch = new PolygonSpriteBatch(SPINE_MAX_VERTS);

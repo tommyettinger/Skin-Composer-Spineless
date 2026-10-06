@@ -1,3 +1,6 @@
+### Skin Composer *Spineless* Version 62 ###
+* Fixed some simple bugs during distribution that prevented the JAR from running.
+
 ### Skin Composer *Spineless* Version 61 ###
 * Updated TextraTypist to 2.5.0 .
 * Added or updated over 20 TypingLabel Effects and modes, accessible via the FX button in TextraTypist Playground.
