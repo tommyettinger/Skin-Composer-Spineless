@@ -444,7 +444,7 @@ public class MainListener extends RootTableListener {
             if (file != null) {
                 Gdx.app.postRunnable(() -> {
                     FileHandle fileHandle = new FileHandle(file);
-                    if (fileHandle.extension() == null || !fileHandle.extension().equals(".scmp")) {
+                    if (fileHandle.extension() == null || !".scmp".equals(fileHandle.extension())) {
                         fileHandle = fileHandle.sibling(fileHandle.nameWithoutExtension() + ".scmp");
                     }
                     projectData.save(fileHandle);
@@ -682,7 +682,7 @@ public class MainListener extends RootTableListener {
         var validArgument = false;
         if (args != null && args.length > 0) {
             var fileHandle = Gdx.files.absolute(args[0]);
-            if (fileHandle.exists() && fileHandle.extension().toLowerCase(Locale.ROOT).equals("scmp")) {
+            if (fileHandle.exists() && "scmp".equals(fileHandle.extension().toLowerCase(Locale.ROOT))) {
                 validArgument = true;
                 openFile(fileHandle);
             }

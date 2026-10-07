@@ -84,9 +84,9 @@ public class DialogFonts extends Dialog {
             JsonValue val = reader.parse(defaultsFile);
 
             for (JsonValue child : val.iterator()) {
-                if (child.name.equals("maxWidth") && child.isNumber()) {
+                if ("maxWidth".equals(child.name) && child.isNumber()) {
                     maxTextureWidth = child.asInt();
-                } else if (child.name.equals("maxHeight") && child.isNumber()) {
+                } else if ("maxHeight".equals(child.name) && child.isNumber()) {
                     maxTextureHeight = child.asInt();
                 }
             }

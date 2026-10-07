@@ -13,7 +13,7 @@ public class VerticalGroupNameUndoable implements SceneComposerUndoable {
         this.name = name;
         dialog = DialogSceneComposer.dialog;
         verticalGroup = (DialogSceneComposerModel.SimVerticalGroup) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             this.name = null;
         }
         previousName = verticalGroup.name;

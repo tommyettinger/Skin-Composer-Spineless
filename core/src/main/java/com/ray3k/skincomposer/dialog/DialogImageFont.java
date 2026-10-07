@@ -870,11 +870,11 @@ public class DialogImageFont extends Dialog {
         previewStyle.background = ((NinePatchDrawable) previewStyle.background).tint(settings.previewBackgroundColor);
         previewStyle.focusedBackground = ((NinePatchDrawable) previewStyle.focusedBackground).tint(settings.previewBackgroundColor);
         
-        if (targetPath != null && !targetPath.equals("")) {
+        if (targetPath != null && !"".equals(targetPath)) {
             processSaveFile(targetPath);
         }
         
-        if (imagePath != null && !imagePath.equals("")) {
+        if (imagePath != null && !"".equals(imagePath)) {
             processSourceFile(Gdx.files.absolute(imagePath), false);
         }
     }

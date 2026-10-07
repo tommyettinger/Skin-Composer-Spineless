@@ -14,7 +14,7 @@ public class SelectBoxListUndoable implements SceneComposerUndoable {
         this.textList = new Array<>(textList);
         dialog = DialogSceneComposer.dialog;
         selectBox = (DialogSceneComposerModel.SimSelectBox) dialog.simActor;
-        if (textList != null && textList.equals("")) {
+        if ("".equals(textList)) {
             this.textList = null;
         }
         previousTextList = new Array<>(selectBox.list);

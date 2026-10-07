@@ -13,7 +13,7 @@ public class TreeNameUndoable implements SceneComposerUndoable {
         this.name = name;
         dialog = DialogSceneComposer.dialog;
         tree = (DialogSceneComposerModel.SimTree) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             this.name = null;
         }
         previousName = tree.name;

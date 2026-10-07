@@ -13,7 +13,7 @@ public class ImageNameUndoable implements SceneComposerUndoable {
         this.name = name;
         dialog = DialogSceneComposer.dialog;
         image = (DialogSceneComposerModel.SimImage) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             this.name = null;
         }
         previousName = image.name;

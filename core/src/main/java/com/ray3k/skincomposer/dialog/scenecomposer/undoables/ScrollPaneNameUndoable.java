@@ -13,7 +13,7 @@ public class ScrollPaneNameUndoable implements SceneComposerUndoable {
         this.name = name;
         dialog = DialogSceneComposer.dialog;
         scrollPane = (DialogSceneComposerModel.SimScrollPane) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             this.name = null;
         }
         previousName = scrollPane.name;

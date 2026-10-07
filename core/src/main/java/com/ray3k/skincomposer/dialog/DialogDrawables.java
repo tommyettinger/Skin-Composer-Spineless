@@ -308,7 +308,7 @@ public class DialogDrawables extends Dialog {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
                 if (keycode == Keys.ESCAPE) {
-                    if (filterOptions.name.equals("")) {
+                    if ("".equals(filterOptions.name)) {
                         result(null);
                         hide();
                     } else {
@@ -1682,7 +1682,7 @@ public class DialogDrawables extends Dialog {
             var drawable = iter.next();
             
             if (!filterOptions.regularExpression) {
-                if (!filterOptions.name.equals("") && !drawable.name.contains(filterOptions.name.toLowerCase(Locale.ROOT))) {
+                if (!"".equals(filterOptions.name) && !drawable.name.contains(filterOptions.name.toLowerCase(Locale.ROOT))) {
                     iter.remove();
                     continue;
                 }

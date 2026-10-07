@@ -13,7 +13,7 @@ public class StackNameUndoable implements SceneComposerUndoable {
         this.name = name;
         dialog = DialogSceneComposer.dialog;
         stack = (DialogSceneComposerModel.SimStack) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             this.name = null;
         }
         previousName = stack.name;

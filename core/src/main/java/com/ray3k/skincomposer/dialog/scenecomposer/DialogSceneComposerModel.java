@@ -210,7 +210,7 @@ public class DialogSceneComposerModel {
     }
     
     public static void saveToJson(FileHandle saveFile) {
-        if (!saveFile.extension().toLowerCase(Locale.ROOT).equals("json")) {
+        if (!"json".equals(saveFile.extension().toLowerCase(Locale.ROOT))) {
             saveFile = saveFile.sibling(saveFile.nameWithoutExtension() + ".json");
         }
         saveFile.writeString(json.prettyPrint(rootActor), false, "utf-8");
@@ -1374,7 +1374,7 @@ public class DialogSceneComposerModel {
         public SimButton() {
             var styles = Main.jsonData.getClassStyleMap().get(Button.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -1392,7 +1392,7 @@ public class DialogSceneComposerModel {
             style = null;
             var styles = Main.jsonData.getClassStyleMap().get(Button.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -1463,7 +1463,7 @@ public class DialogSceneComposerModel {
         public SimCheckBox() {
             var styles = Main.jsonData.getClassStyleMap().get(CheckBox.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -1481,7 +1481,7 @@ public class DialogSceneComposerModel {
             style = null;
             var styles = Main.jsonData.getClassStyleMap().get(CheckBox.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -1601,7 +1601,7 @@ public class DialogSceneComposerModel {
         public SimImageButton() {
             var styles = Main.jsonData.getClassStyleMap().get(ImageButton.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -1682,7 +1682,7 @@ public class DialogSceneComposerModel {
         public SimImageTextButton() {
             var styles = Main.jsonData.getClassStyleMap().get(ImageTextButton.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -1760,7 +1760,7 @@ public class DialogSceneComposerModel {
         public SimLabel() {
             var styles = Main.jsonData.getClassStyleMap().get(Label.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -1778,7 +1778,7 @@ public class DialogSceneComposerModel {
             style = null;
             var styles = Main.jsonData.getClassStyleMap().get(Label.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -1834,7 +1834,7 @@ public class DialogSceneComposerModel {
         public SimList() {
             var styles = Main.jsonData.getClassStyleMap().get(List.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -1855,7 +1855,7 @@ public class DialogSceneComposerModel {
             
             var styles = Main.jsonData.getClassStyleMap().get(List.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -1922,7 +1922,7 @@ public class DialogSceneComposerModel {
         public SimProgressBar() {
             var styles = Main.jsonData.getClassStyleMap().get(ProgressBar.class);
             for (var style : styles) {
-                if (style.name.equals("default-horizontal")) {
+                if ("default-horizontal".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -1953,7 +1953,7 @@ public class DialogSceneComposerModel {
     
             var styles = Main.jsonData.getClassStyleMap().get(ProgressBar.class);
             for (var style : styles) {
-                if (style.name.equals("default-horizontal")) {
+                if ("default-horizontal".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2011,7 +2011,7 @@ public class DialogSceneComposerModel {
         public SimSelectBox() {
             var styles = Main.jsonData.getClassStyleMap().get(SelectBox.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2038,7 +2038,7 @@ public class DialogSceneComposerModel {
     
             var styles = Main.jsonData.getClassStyleMap().get(SelectBox.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2104,7 +2104,7 @@ public class DialogSceneComposerModel {
         public SimSlider() {
             var styles = Main.jsonData.getClassStyleMap().get(Slider.class);
             for (var style : styles) {
-                if (style.name.equals("default-horizontal")) {
+                if ("default-horizontal".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2135,7 +2135,7 @@ public class DialogSceneComposerModel {
     
             var styles = Main.jsonData.getClassStyleMap().get(Slider.class);
             for (var style : styles) {
-                if (style.name.equals("default-horizontal")) {
+                if ("default-horizontal".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2197,7 +2197,7 @@ public class DialogSceneComposerModel {
         public SimTextButton() {
             var styles = Main.jsonData.getClassStyleMap().get(TextButton.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2216,7 +2216,7 @@ public class DialogSceneComposerModel {
             style = null;
             var styles = Main.jsonData.getClassStyleMap().get(TextButton.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2294,7 +2294,7 @@ public class DialogSceneComposerModel {
         public SimTextField() {
             var styles = Main.jsonData.getClassStyleMap().get(TextField.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2327,7 +2327,7 @@ public class DialogSceneComposerModel {
     
             var styles = Main.jsonData.getClassStyleMap().get(TextField.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2399,7 +2399,7 @@ public class DialogSceneComposerModel {
         public SimTextArea() {
             var styles = Main.jsonData.getClassStyleMap().get(TextField.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2433,7 +2433,7 @@ public class DialogSceneComposerModel {
     
             var styles = Main.jsonData.getClassStyleMap().get(TextField.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2482,7 +2482,7 @@ public class DialogSceneComposerModel {
         public SimTouchPad() {
             var styles = Main.jsonData.getClassStyleMap().get(Touchpad.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2504,7 +2504,7 @@ public class DialogSceneComposerModel {
     
             var styles = Main.jsonData.getClassStyleMap().get(Touchpad.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2802,7 +2802,7 @@ public class DialogSceneComposerModel {
         public SimScrollPane() {
             var styles = Main.jsonData.getClassStyleMap().get(ScrollPane.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2844,7 +2844,7 @@ public class DialogSceneComposerModel {
     
             var styles = Main.jsonData.getClassStyleMap().get(ScrollPane.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -2983,7 +2983,7 @@ public class DialogSceneComposerModel {
         public SimSplitPane() {
             var styles = Main.jsonData.getClassStyleMap().get(SplitPane.class);
             for (var style : styles) {
-                if (style.name.equals("default-horizontal")) {
+                if ("default-horizontal".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -3011,7 +3011,7 @@ public class DialogSceneComposerModel {
     
             var styles = Main.jsonData.getClassStyleMap().get(Stack.class);
             for (var style : styles) {
-                if (style.name.equals("default-horizontal")) {
+                if ("default-horizontal".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -3166,7 +3166,7 @@ public class DialogSceneComposerModel {
         public SimTree() {
             var styles = Main.jsonData.getClassStyleMap().get(Tree.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }
@@ -3194,7 +3194,7 @@ public class DialogSceneComposerModel {
     
             var styles = Main.jsonData.getClassStyleMap().get(Tree.class);
             for (var style : styles) {
-                if (style.name.equals("default")) {
+                if ("default".equals(style.name)) {
                     if (style.hasMandatoryFields() && !style.hasAllNullFields()) {
                         this.style = style;
                     }

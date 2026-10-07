@@ -13,7 +13,7 @@ public class TextButtonNameUndoable implements SceneComposerUndoable {
         this.name = name;
         dialog = DialogSceneComposer.dialog;
         textButton = (DialogSceneComposerModel.SimTextButton) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             this.name = null;
         }
         previousName = textButton.name;

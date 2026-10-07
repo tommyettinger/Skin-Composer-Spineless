@@ -14,7 +14,7 @@ public class ListListUndoable implements SceneComposerUndoable {
         this.textList = new Array<>(textList);
         dialog = DialogSceneComposer.dialog;
         list = (DialogSceneComposerModel.SimList) dialog.simActor;
-        if (textList != null && textList.equals("")) {
+        if (this.textList.isEmpty()) {
             this.textList = null;
         }
         previousTextList = new Array<>(list.list);

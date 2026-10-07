@@ -8,7 +8,7 @@ public class RootClassUndoable implements SceneComposerUndoable {
     
     public RootClassUndoable(String classString) {
         this.classString = classString;
-        if (classString != null && classString.equals("")) {
+        if ("".equals(classString)) {
             this.classString = null;
         }
         previousClassString = rootActor.classString;

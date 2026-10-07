@@ -134,7 +134,7 @@ public class DialogBitmapFont extends Dialog {
         filesDroppedListener = (Array<FileHandle> files) -> {
             if (files.size > 0) {
                 var extension = files.first().extension().toLowerCase(Locale.ROOT);
-                if (extension.equals("ttf") || extension.equals("otf")) {
+                if ("ttf".equals(extension) || "otf".equals(extension)) {
                     Runnable runnable = () -> {
                         Gdx.app.postRunnable(() -> {
                             loadTTFsource(files.first());
@@ -142,7 +142,7 @@ public class DialogBitmapFont extends Dialog {
                     };
 
                     dialogFactory.showDialogLoading(runnable);
-                } else if (extension.equals("scmp-font")) {
+                } else if ("scmp-font".equals(extension)) {
                     loadSettings(files.first());
                 }
             }
@@ -417,7 +417,7 @@ public class DialogBitmapFont extends Dialog {
                         break;
                 }
                 
-                data.characters = !data.characters.equals("") && !data.characters.contains("\u0000") ? "\u0000" + data.characters : data.characters;
+                data.characters = !"".equals(data.characters) && !data.characters.contains("\u0000") ? "\u0000" + data.characters : data.characters;
                 updatePreviewAndOK();
             }
         });
@@ -426,7 +426,7 @@ public class DialogBitmapFont extends Dialog {
             @Override
             public void changed(ChangeListener.ChangeEvent event, Actor actor) {
                 data.characters = charactersTextField.getText();
-                data.characters = !data.characters.equals("") && !data.characters.contains("\u0000") ? "\u0000" + data.characters : data.characters;
+                data.characters = !"".equals(data.characters) && !data.characters.contains("\u0000") ? "\u0000" + data.characters : data.characters;
                 updatePreviewAndOK();
 
                 if ("".equals(charactersTextField.getText())) {
@@ -1144,7 +1144,7 @@ public class DialogBitmapFont extends Dialog {
                 Gdx.app.postRunnable(() -> {
                     var fileHandle = new FileHandle(file);
 
-                    if (!fileHandle.extension().toLowerCase(Locale.ROOT).equals("scmp-font")) {
+                    if (!"scmp-font".equals(fileHandle.extension().toLowerCase(Locale.ROOT))) {
                         fileHandle = fileHandle.sibling(fileHandle.name() + ".scmp-font");
                     }
 

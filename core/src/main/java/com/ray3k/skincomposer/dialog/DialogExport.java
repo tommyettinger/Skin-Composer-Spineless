@@ -193,7 +193,7 @@ public class DialogExport extends Dialog {
         var file = desktopWorker.saveDialog("Export skin...", textField.getText(), "json", "Json files");
         if (file != null) {
             var fileHandle = new FileHandle(file);
-            if (fileHandle.extension().equals("")) {
+            if ("".equals(fileHandle.extension())) {
                 fileHandle = fileHandle.sibling(fileHandle.nameWithoutExtension() + ".json");
             }
             textField.setText(fileHandle.path());

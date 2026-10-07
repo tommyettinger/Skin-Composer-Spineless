@@ -8,7 +8,7 @@ public class RootSkinPathUndoable implements SceneComposerUndoable {
     
     public RootSkinPathUndoable(String skinPath) {
         this.skinPath = skinPath;
-        if (skinPath != null && skinPath.equals("")) {
+        if ("".equals(skinPath)) {
             this.skinPath = null;
         }
         previousSkinPath = rootActor.skinPath;

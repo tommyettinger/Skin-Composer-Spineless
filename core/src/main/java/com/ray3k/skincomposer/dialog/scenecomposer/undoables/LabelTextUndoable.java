@@ -13,7 +13,7 @@ public class LabelTextUndoable implements SceneComposerUndoable {
         this.text = text;
         dialog = DialogSceneComposer.dialog;
         label = (DialogSceneComposerModel.SimLabel) dialog.simActor;
-        if (text != null && text.equals("")) {
+        if ("".equals(text)) {
             this.text = null;
         }
         previousText = label.text;

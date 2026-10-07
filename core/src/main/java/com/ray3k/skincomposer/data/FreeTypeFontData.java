@@ -136,7 +136,7 @@ public class FreeTypeFontData implements Json.Serializable {
             parameter.borderGamma = borderGamma;
             parameter.borderStraight = borderStraight;
             parameter.borderWidth = borderWidth;
-            parameter.characters = characters.equals("") ? DEFAULT_CHARS : characters;
+            parameter.characters = "".equals(characters) ? DEFAULT_CHARS : characters;
             if (color != null) for (ColorData colorData : jsonData.getColors()) {
                 if (colorData.getName().equals(color)) {
                     parameter.color = colorData.color;
@@ -206,7 +206,7 @@ public class FreeTypeFontData implements Json.Serializable {
             parameter.borderGamma = borderGamma;
             parameter.borderStraight = borderStraight;
             parameter.borderWidth = borderWidth;
-            parameter.characters = characters.equals("") ? DEFAULT_CHARS : characters;
+            parameter.characters = "".equals(characters) ? DEFAULT_CHARS : characters;
             if (color != null) for (ColorData colorData : jsonData.getColors()) {
                 if (colorData.getName().equals(color)) {
                     parameter.color = colorData.color;

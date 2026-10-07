@@ -13,7 +13,7 @@ public class CheckBoxTextUndoable implements SceneComposerUndoable {
         this.text = text;
         dialog = DialogSceneComposer.dialog;
         checkBox = (DialogSceneComposerModel.SimCheckBox) dialog.simActor;
-        if (text != null && text.equals("")) {
+        if ("".equals(text)) {
             this.text = null;
         }
         previousText = checkBox.text;

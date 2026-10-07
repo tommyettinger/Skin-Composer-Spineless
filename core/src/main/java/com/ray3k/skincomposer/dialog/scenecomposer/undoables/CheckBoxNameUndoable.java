@@ -13,7 +13,7 @@ public class CheckBoxNameUndoable implements SceneComposerUndoable {
         this.name = name;
         dialog = DialogSceneComposer.dialog;
         checkBox = (DialogSceneComposerModel.SimCheckBox) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             this.name = null;
         }
         previousName = checkBox.name;

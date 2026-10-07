@@ -201,7 +201,7 @@ public class PopTextraEmoji extends PopTable {
         switch (lister) {
             case SMILEYS:
                 for (var child : jsonValue.iterator()) {
-                    if (child.getString("group").equals("Smileys & Emotion")) {
+                    if ("Smileys & Emotion".equals(child.getString("group"))) {
                         var text = child.getString("name");
                         var value = masterFont.nameLookup.get(text, -1);
                         if (value != -1) {
@@ -215,7 +215,7 @@ public class PopTextraEmoji extends PopTable {
                 break;
             case PEOPLE:
                 for (var child : jsonValue.iterator()) {
-                    if (child.getString("group").equals("People & Body")) {
+                    if ("People & Body".equals(child.getString("group"))) {
                         var text = child.getString("name");
                         var value = masterFont.nameLookup.get(text, -1);
                         if (value != -1) {
@@ -229,7 +229,7 @@ public class PopTextraEmoji extends PopTable {
                 break;
             case NATURE:
                 for (var child : jsonValue.iterator()) {
-                    if (child.getString("group").equals("Animals & Nature")) {
+                    if ("Animals & Nature".equals(child.getString("group"))) {
                         var text = child.getString("name");
                         var value = masterFont.nameLookup.get(text, -1);
                         if (value != -1) {
@@ -243,7 +243,7 @@ public class PopTextraEmoji extends PopTable {
                 break;
             case FOOD:
                 for (var child : jsonValue.iterator()) {
-                    if (child.getString("group").equals("Food & Drink")) {
+                    if ("Food & Drink".equals(child.getString("group"))) {
                         var text = child.getString("name");
                         var value = masterFont.nameLookup.get(text, -1);
                         if (value != -1) {
@@ -257,7 +257,7 @@ public class PopTextraEmoji extends PopTable {
                 break;
             case TRAVEL:
                 for (var child : jsonValue.iterator()) {
-                    if (child.getString("group").equals("Travel & Places")) {
+                    if ("Travel & Places".equals(child.getString("group"))) {
                         var text = child.getString("name");
                         var value = masterFont.nameLookup.get(text, -1);
                         if (value != -1) {
@@ -271,7 +271,7 @@ public class PopTextraEmoji extends PopTable {
                 break;
             case ACTIVITIES:
                 for (var child : jsonValue.iterator()) {
-                    if (child.getString("group").equals("Activities")) {
+                    if ("Activities".equals(child.getString("group"))) {
                         var text = child.getString("name");
                         var value = masterFont.nameLookup.get(text, -1);
                         if (value != -1) {
@@ -285,7 +285,7 @@ public class PopTextraEmoji extends PopTable {
                 break;
             case OBJECTS:
                 for (var child : jsonValue.iterator()) {
-                    if (child.getString("group").equals("Objects")) {
+                    if ("Objects".equals(child.getString("group"))) {
                         var text = child.getString("name");
                         var value = masterFont.nameLookup.get(text, -1);
                         if (value != -1) {
@@ -299,7 +299,7 @@ public class PopTextraEmoji extends PopTable {
                 break;
             case COMPONENT:
                 for (var child : jsonValue.iterator()) {
-                    if (child.getString("group").equals("Component")) {
+                    if ("Component".equals(child.getString("group"))) {
                         var text = child.getString("name");
                         var value = masterFont.nameLookup.get(text, -1);
                         if (value != -1) {
@@ -313,7 +313,7 @@ public class PopTextraEmoji extends PopTable {
                 break;
             case SYMBOLS:
                 for (var child : jsonValue.iterator()) {
-                    if (child.getString("group").equals("Symbols")) {
+                    if ("Symbols".equals(child.getString("group"))) {
                         var text = child.getString("name");
                         var value = masterFont.nameLookup.get(text, -1);
                         if (value != -1) {
@@ -327,7 +327,7 @@ public class PopTextraEmoji extends PopTable {
                 break;
             case FLAGS:
                 for (var child : jsonValue.iterator()) {
-                    if (child.getString("group").equals("Flags")) {
+                    if ("Flags".equals(child.getString("group"))) {
                         var text = child.getString("name");
                         var value = masterFont.nameLookup.get(text, -1);
                         if (value != -1) {
@@ -353,7 +353,7 @@ public class PopTextraEmoji extends PopTable {
     
                 var newList = new Array<ImageButton>();
                 for (var imageButton : imageButtons) {
-                    if (search.equals("") || ((String) imageButton.getUserObject()).contains(search)) {
+                    if ("".equals(search) || ((String) imageButton.getUserObject()).contains(search)) {
                         newList.add(imageButton);
                     }
                 }

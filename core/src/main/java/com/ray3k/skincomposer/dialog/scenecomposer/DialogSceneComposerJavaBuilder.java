@@ -157,7 +157,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("button", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(Button.class));
             builder.addStatement("$L = new $T(skin$L)", variableName, classNameGetter.get(Button.class),
-                    button.style.name.equals("default") ? "" : ", \"" + button.style.name + "\"");
+                    "default".equals(button.style.name) ? "" : ", \"" + button.style.name + "\"");
 
             addSetNameStatement(builder, variableName, button.name);
 
@@ -184,7 +184,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("checkBox", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(CheckBox.class));
             builder.addStatement("$L = new $T($S, skin$L)", variableName, classNameGetter.get(CheckBox.class), checkBox.text,
-                    checkBox.style.name.equals("default") ? "" : ", \"" + checkBox.style.name + "\"");
+                    "default".equals(checkBox.style.name) ? "" : ", \"" + checkBox.style.name + "\"");
 
             addSetNameStatement(builder, variableName, checkBox.name);
 
@@ -220,7 +220,7 @@ public class DialogSceneComposerJavaBuilder {
                 addSetTouchableStatement(builder, variableName, classNameGetter, image.touchable);
             }
 
-            if (image.scaling != null && !image.scaling.equals("stretch")) addSetScalingStatement(builder, variableName, classNameGetter, image.scaling);
+            if (image.scaling != null && !"stretch".equals(image.scaling)) addSetScalingStatement(builder, variableName, classNameGetter, image.scaling);
 
             return new WidgetNamePair(builder.build(), variableName);
         } else if (actor instanceof SimImageButton) {
@@ -231,7 +231,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("imageButton", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(ImageButton.class));
             builder.addStatement("$L = new $T(skin$L)", variableName, classNameGetter.get(ImageButton.class),
-                    imageButton.style.name.equals("default") ? "" : ", \"" + imageButton.style.name + "\"");
+                    "default".equals(imageButton.style.name) ? "" : ", \"" + imageButton.style.name + "\"");
 
             addSetNameStatement(builder, variableName, imageButton.name);
 
@@ -258,7 +258,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("imageTextButton", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(ImageTextButton.class));
             builder.addStatement("$L = new $T($S, skin$L)", variableName, classNameGetter.get(ImageTextButton.class), convertEscapedCharacters(imageTextButton.text),
-                    imageTextButton.style.name.equals("default") ? "" : ", \"" + imageTextButton.style.name + "\"");
+                    "default".equals(imageTextButton.style.name) ? "" : ", \"" + imageTextButton.style.name + "\"");
 
             addSetNameStatement(builder, variableName, imageTextButton.name);
 
@@ -285,7 +285,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("label", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(Label.class));
             builder.addStatement("$L = new $T($S, skin$L)", variableName, classNameGetter.get(Label.class), convertEscapedCharacters(label.text),
-                    label.style.name.equals("default") ? "" : ", \"" + label.style.name + "\"");
+                    "default".equals(label.style.name) ? "" : ", \"" + label.style.name + "\"");
 
             addSetNameStatement(builder, variableName, label.name);
 
@@ -298,7 +298,7 @@ public class DialogSceneComposerJavaBuilder {
             if (label.textAlignment != Align.left) addSetAlignmentStatement(builder, variableName, classNameGetter, label.textAlignment);
 
             if (label.ellipsis && label.ellipsisString != null) {
-                if (label.ellipsisString.equals("...")) addSetEllipsisStatement(builder, variableName, true);
+                if ("...".equals(label.ellipsisString)) addSetEllipsisStatement(builder, variableName, true);
                 else addSetEllipsisStatement(builder, variableName, label.ellipsisString);
             }
 
@@ -314,7 +314,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("list", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T<String> ", classNameGetter.get(List.class));
             builder.addStatement("$L = new $T<>(skin$L)", variableName, classNameGetter.get(List.class),
-                    list.style.name.equals("default") ? "" : ", \"" + list.style.name + "\"");
+                    "default".equals(list.style.name) ? "" : ", \"" + list.style.name + "\"");
 
             addSetNameStatement(builder, variableName, list.name);
 
@@ -344,7 +344,7 @@ public class DialogSceneComposerJavaBuilder {
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(ProgressBar.class));
             builder.addStatement("$L = new $T($Lf, $Lf, $Lf, $L, skin$L)", variableName, classNameGetter.get(ProgressBar.class),
                     progressBar.minimum, progressBar.maximum, progressBar.increment, progressBar.vertical,
-                    progressBar.style.name.equals("default-horizontal") || progressBar.style.name.equals("default-vertical") ? "" : ", \"" + progressBar.style.name + "\"");
+                    "default-horizontal".equals(progressBar.style.name) || "default-vertical".equals(progressBar.style.name) ? "" : ", \"" + progressBar.style.name + "\"");
 
             addSetNameStatement(builder, variableName, progressBar.name);
 
@@ -369,7 +369,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("selectBox", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T<String> ", classNameGetter.get(SelectBox.class));
             builder.addStatement("$L = new $T(skin$L)", variableName, classNameGetter.get(SelectBox.class),
-                    selectBox.style.name.equals("default") ? "" : ", \"" + selectBox.style.name + "\"");
+                    "default".equals(selectBox.style.name) ? "" : ", \"" + selectBox.style.name + "\"");
 
             addSetNameStatement(builder, variableName, selectBox.name);
 
@@ -409,7 +409,7 @@ public class DialogSceneComposerJavaBuilder {
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(Slider.class));
             builder.addStatement("$L = new $T($Lf, $Lf, $Lf, $L, skin$L)", variableName, classNameGetter.get(Slider.class),
                     slider.minimum, slider.maximum, slider.increment, slider.vertical,
-                    slider.style.name.equals("default") ? "" : ", \"" + slider.style.name + "\"");
+                    "default".equals(slider.style.name) ? "" : ", \"" + slider.style.name + "\"");
 
             addSetNameStatement(builder, variableName, slider.name);
 
@@ -435,7 +435,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("textButton", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(TextButton.class));
             builder.addStatement("$L = new $T($S, skin$L)", variableName, classNameGetter.get(TextButton.class), convertEscapedCharacters(textButton.text),
-                    textButton.style.name.equals("default") ? "" : ", \"" + textButton.style.name + "\"");
+                    "default".equals(textButton.style.name) ? "" : ", \"" + textButton.style.name + "\"");
 
             addSetNameStatement(builder, variableName, textButton.name);
 
@@ -462,7 +462,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("textField", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(TextField.class));
             builder.addStatement("$L = new $T($S, skin$L)", variableName, classNameGetter.get(TextField.class), convertEscapedCharacters(textField.text),
-                    textField.style.name.equals("default") ? "" : ", \"" + textField.style.name + "\"");
+                    "default".equals(textField.style.name) ? "" : ", \"" + textField.style.name + "\"");
 
             addSetNameStatement(builder, variableName, textField.name);
 
@@ -501,7 +501,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("textArea", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(TextArea.class));
             builder.addStatement("$L = new $T($S, skin$L)", variableName, classNameGetter.get(TextArea.class), convertEscapedCharacters(textArea.text),
-                    textArea.style.name.equals("default") ? "" : ", \"" + textArea.style.name + "\"");
+                    "default".equals(textArea.style.name) ? "" : ", \"" + textArea.style.name + "\"");
 
             addSetNameStatement(builder, variableName, textArea.name);
 
@@ -541,7 +541,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("touchPad", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(Touchpad.class));
             builder.addStatement("$L = new $T($Lf, skin$L)", variableName, classNameGetter.get(Touchpad.class), touchPad.deadZone,
-                    touchPad.style.name.equals("default") ? "" : ", \"" + touchPad.style.name + "\"");
+                    "default".equals(touchPad.style.name) ? "" : ", \"" + touchPad.style.name + "\"");
 
             addSetNameStatement(builder, variableName, touchPad.name);
 
@@ -650,7 +650,7 @@ public class DialogSceneComposerJavaBuilder {
             builder.add("$L = new $T(", variableName, classNameGetter.get(ScrollPane.class));
             if (pair != null) builder.add("$L, skin", pair.name);
             else builder.add("skin");
-            builder.addStatement("$L)", scrollPane.style.name.equals("default") ? "" : ", \"" + scrollPane.style.name + "\"");
+            builder.addStatement("$L)", "default".equals(scrollPane.style.name) ? "" : ", \"" + scrollPane.style.name + "\"");
 
             addSetNameStatement(builder, variableName, scrollPane.name);
 
@@ -734,7 +734,7 @@ public class DialogSceneComposerJavaBuilder {
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(SplitPane.class));
             builder.add("$L = new $T(", variableName, classNameGetter.get(SplitPane.class))
                     .add("$L, $L, $L, skin", pair1 == null? null : pair1.name, pair2 == null? null : pair2.name, splitPane.vertical)
-                    .addStatement("$L)", splitPane.style.name.equals("default-horizontal") || splitPane.style.name.equals("default-vertical") ? "" : ", \"" + splitPane.style.name + "\"");
+                    .addStatement("$L)", "default-horizontal".equals(splitPane.style.name) || "default-vertical".equals(splitPane.style.name) ? "" : ", \"" + splitPane.style.name + "\"");
 
             addSetNameStatement(builder, variableName, splitPane.name);
 
@@ -757,7 +757,7 @@ public class DialogSceneComposerJavaBuilder {
             var variableName = createVariableName("tree", variables);
             if (!usedVariables.contains(variableName)) builder.add("$T ", classNameGetter.get(Tree.class));
             builder.addStatement("$L = new $T(skin$L)", variableName, classNameGetter.get(Tree.class),
-                    tree.style.name.equals("default") ? "" : ", \"" + tree.style.name + "\"");
+                    "default".equals(tree.style.name) ? "" : ", \"" + tree.style.name + "\"");
 
             addSetNameStatement(builder, variableName, tree.name);
 

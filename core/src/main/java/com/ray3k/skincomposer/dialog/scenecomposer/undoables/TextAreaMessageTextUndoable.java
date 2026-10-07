@@ -13,7 +13,7 @@ public class TextAreaMessageTextUndoable implements SceneComposerUndoable {
         this.messageText = messageText;
         dialog = DialogSceneComposer.dialog;
         textArea = (DialogSceneComposerModel.SimTextArea) dialog.simActor;
-        if (messageText != null && messageText.equals("")) {
+        if ("".equals(messageText)) {
             this.messageText = null;
         }
         previousMessageText = textArea.messageText;

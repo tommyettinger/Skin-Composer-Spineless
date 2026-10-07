@@ -12,7 +12,7 @@ public class SliderNameUndoable implements  SceneComposerUndoable {
     public SliderNameUndoable(String name) {
         dialog = DialogSceneComposer.dialog;
         slider = (DialogSceneComposerModel.SimSlider) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             name = null;
         }
         this.name = name;

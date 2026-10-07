@@ -8,7 +8,7 @@ public class RootPackageUndoable implements SceneComposerUndoable {
     
     public RootPackageUndoable(String packageString) {
         this.packageString = packageString;
-        if (packageString != null && packageString.equals("")) {
+        if ("".equals(packageString)) {
             this.packageString = null;
         }
         previousPackageString = rootActor.packageString;

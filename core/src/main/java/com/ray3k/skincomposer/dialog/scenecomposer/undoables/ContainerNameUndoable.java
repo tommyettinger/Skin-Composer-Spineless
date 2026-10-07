@@ -13,7 +13,7 @@ public class ContainerNameUndoable implements SceneComposerUndoable {
         this.name = name;
         dialog = DialogSceneComposer.dialog;
         container = (DialogSceneComposerModel.SimContainer) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             this.name = null;
         }
         previousName = container.name;

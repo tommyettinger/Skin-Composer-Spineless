@@ -411,7 +411,7 @@ public class JsonData implements Json.Serializable {
                     for (JsonValue style : child.iterator()) {
                         StyleData data = newStyle(clazz, style.name);
                         for (JsonValue property : style.iterator()) {
-                            if (property.name.equals("parent")) {
+                            if ("parent".equals(property.name)) {
                                 data.parent = property.asString();
                             } else {
                                 StyleProperty styleProperty = data.properties.get(property.name);
@@ -453,7 +453,7 @@ public class JsonData implements Json.Serializable {
                             customClass.getStyles().removeValue(existingStyle, true);
                         }
                         
-                        if (customStyle.getName().equals("default")) {
+                        if ("default".equals(customStyle.getName())) {
                             customStyle.setDeletable(false);
                         }
                         
@@ -504,7 +504,7 @@ public class JsonData implements Json.Serializable {
                     
                     //ensure default style has all the template styles.
                     for (CustomStyle style : customClass.getStyles()) {
-                        if (style.getName().equals("default")) {
+                        if ("default".equals(style.getName())) {
                             for (CustomProperty templateProperty : customClass.getTemplateStyle().getProperties()) {
                                 boolean hasProperty = false;
                                 for (CustomProperty customProperty : style.getProperties()) {
@@ -739,7 +739,7 @@ public class JsonData implements Json.Serializable {
                     json.writeValue("hinting", font.hinting);
                     json.writeValue("minFilter", font.minFilter);
                     json.writeValue("magFilter", font.magFilter);
-                    json.writeValue("characters", font.characters.equals("") ? FreeTypeFontData.DEFAULT_CHARS : font.characters);
+                    json.writeValue("characters", "".equals(font.characters) ? FreeTypeFontData.DEFAULT_CHARS : font.characters);
                     json.writeObjectEnd();
                 }
             }
@@ -972,9 +972,9 @@ public class JsonData implements Json.Serializable {
                                 //only write value if it is valid
                                 if (customPropertyIsNotNull(customProperty)) {
                                     String fieldName = customProperty.getName();
-                                    if (fieldName.equals("scrollPaneStyle")
-                                            ||fieldName.equals("scrollStyle")
-                                            ||fieldName.equals("listStyle") ) {
+                                    if ("scrollPaneStyle".equals(fieldName)
+                                            || "scrollStyle".equals(fieldName)
+                                            || "listStyle".equals(fieldName) ) {
                                         customClass.setDeclareAfterUIclasses(true);
                                         break;
                                     }
@@ -1117,7 +1117,7 @@ public class JsonData implements Json.Serializable {
                 || customProperty.getValue() instanceof Double && customProperty.getType() == PropertyType.NUMBER
                 || customProperty.getValue() instanceof Boolean && customProperty.getType() == PropertyType.BOOL) {
             returnValue = true;
-        } else if (customProperty.getValue() instanceof String && !((String) customProperty.getValue()).equals("")) {
+        } else if (customProperty.getValue() instanceof String && !"".equals((String) customProperty.getValue())) {
             if (null != customProperty.getType()) switch (customProperty.getType()) {
                 case TEXT:
                 case RAW_TEXT:

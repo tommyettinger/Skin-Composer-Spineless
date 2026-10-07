@@ -13,7 +13,7 @@ public class TextFieldTextUndoable implements SceneComposerUndoable {
         this.text = text;
         dialog = DialogSceneComposer.dialog;
         textField = (DialogSceneComposerModel.SimTextField) dialog.simActor;
-        if (text != null && text.equals("")) {
+        if ("".equals(text)) {
             this.text = null;
         }
         previousText = textField.text;

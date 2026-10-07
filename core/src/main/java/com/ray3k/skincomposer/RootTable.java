@@ -125,7 +125,7 @@ public class RootTable extends Table {
         
         filesDroppedListener = (Array<FileHandle> files) -> {
             for (FileHandle fileHandle : files) {
-                if (fileHandle.extension().toLowerCase(Locale.ROOT).equals("scmp")) {
+                if ("scmp".equals(fileHandle.extension().toLowerCase(Locale.ROOT))) {
                     fire(new ScmpDroppedEvent(fileHandle));
                     break;
                 }
@@ -2384,7 +2384,7 @@ public class RootTable extends Table {
                     previewTable.add(label);
                 } else {
                     for (CustomProperty customProperty : customStyle.getProperties()) {
-                        if (customProperty.getValue() != null && !(customProperty.getValue() instanceof String) || customProperty.getValue() != null && !((String)customProperty.getValue()).equals("")) {
+                        if (customProperty.getValue() != null && !(customProperty.getValue() instanceof String) || customProperty.getValue() != null && !"".equals((String)customProperty.getValue())) {
                             showMessage = false;
                             break;
                         }

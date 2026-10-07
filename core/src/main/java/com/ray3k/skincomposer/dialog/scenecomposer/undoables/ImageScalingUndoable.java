@@ -13,7 +13,7 @@ public class ImageScalingUndoable implements SceneComposerUndoable {
         this.scaling = scaling;
         dialog = DialogSceneComposer.dialog;
         image = (DialogSceneComposerModel.SimImage) dialog.simActor;
-        if (scaling != null && scaling.equals("")) {
+        if ("".equals(scaling)) {
             this.scaling = null;
         }
         previousScaling = image.scaling;

@@ -192,10 +192,10 @@ public class DialogFreeTypeFont extends Dialog {
                 CheckBox checkBox = findActor("serializerCheckBox");
                 
                 var extension = files.first().extension().toLowerCase(Locale.ROOT);
-                if (extension.equals("ttf") || extension.equals("otf")) {
+                if ("ttf".equals(extension) || "otf".equals(extension)) {
                     checkBox.setChecked(true);
                     loadTTF(files.first());
-                } else if (extension.equals("scmp-font")) {
+                } else if ("scmp-font".equals(extension)) {
                     checkBox.setChecked(true);
                     loadSettings(files.first());
                 }
@@ -555,7 +555,7 @@ public class DialogFreeTypeFont extends Dialog {
                 TextField textField = (TextField) actor;
                 
                 data.characters = textField.getText();
-                data.characters = !data.characters.equals("") && !data.characters.contains("\u0000") ? "\u0000" + data.characters : data.characters;
+                data.characters = !"".equals(data.characters) && !data.characters.contains("\u0000") ? "\u0000" + data.characters : data.characters;
                 updateDisabledFields();
                 
                 var selectBox = (SelectBox<String>) findActor("character-select-box");
@@ -567,7 +567,7 @@ public class DialogFreeTypeFont extends Dialog {
         selectBox.setName("character-select-box");
         selectBox.setItems("default", "0-9", "a-zA-Z", "a-zA-Z0-9", "custom", "Load from file (UTF-8)...");
         table.add(selectBox);
-        if (!data.characters.equals("")) {
+        if (!"".equals(data.characters)) {
             selectBox.setSelected("custom");
         }
         
@@ -608,7 +608,7 @@ public class DialogFreeTypeFont extends Dialog {
                         break;
                 }
                 
-                data.characters = !data.characters.equals("") && !data.characters.contains("\u0000") ? "\u0000" + data.characters : data.characters;
+                data.characters = !"".equals(data.characters) && !data.characters.contains("\u0000") ? "\u0000" + data.characters : data.characters;
                 updateDisabledFields();
             }
         });
@@ -1403,7 +1403,7 @@ public class DialogFreeTypeFont extends Dialog {
                 Gdx.app.postRunnable(() -> {
                     var fileHandle = new FileHandle(file);
 
-                    if (!fileHandle.extension().toLowerCase(Locale.ROOT).equals("scmp-font")) {
+                    if (!"scmp-font".equals(fileHandle.extension().toLowerCase(Locale.ROOT))) {
                         fileHandle = fileHandle.sibling(fileHandle.name() + ".scmp-font");
                     }
 

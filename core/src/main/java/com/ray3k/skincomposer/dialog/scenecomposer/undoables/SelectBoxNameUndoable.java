@@ -13,7 +13,7 @@ public class SelectBoxNameUndoable implements SceneComposerUndoable {
         this.name = name;
         dialog = DialogSceneComposer.dialog;
         selectBox = (DialogSceneComposerModel.SimSelectBox) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             this.name = null;
         }
         previousName = selectBox.name;

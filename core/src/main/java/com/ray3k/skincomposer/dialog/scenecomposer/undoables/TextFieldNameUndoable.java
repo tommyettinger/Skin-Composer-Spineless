@@ -13,7 +13,7 @@ public class TextFieldNameUndoable implements SceneComposerUndoable {
         this.name = name;
         dialog = DialogSceneComposer.dialog;
         textField = (DialogSceneComposerModel.SimTextField) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             this.name = null;
         }
         previousName = textField.name;

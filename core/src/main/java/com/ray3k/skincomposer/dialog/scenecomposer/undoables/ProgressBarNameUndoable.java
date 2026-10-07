@@ -12,7 +12,7 @@ public class ProgressBarNameUndoable implements  SceneComposerUndoable {
     public ProgressBarNameUndoable(String name) {
         dialog = DialogSceneComposer.dialog;
         progressBar = (DialogSceneComposerModel.SimProgressBar) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             name = null;
         }
         this.name = name;

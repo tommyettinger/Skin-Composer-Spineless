@@ -13,7 +13,7 @@ public class LabelNameUndoable implements SceneComposerUndoable {
         this.name = name;
         dialog = DialogSceneComposer.dialog;
         label = (DialogSceneComposerModel.SimLabel) dialog.simActor;
-        if (name != null && name.equals("")) {
+        if ("".equals(name)) {
             this.name = null;
         }
         previousName = label.name;

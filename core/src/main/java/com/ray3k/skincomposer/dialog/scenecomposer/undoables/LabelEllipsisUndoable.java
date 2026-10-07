@@ -16,7 +16,7 @@ public class LabelEllipsisUndoable implements SceneComposerUndoable {
         this.ellipsisString = ellipsisString;
         dialog = DialogSceneComposer.dialog;
         label = (DialogSceneComposerModel.SimLabel) dialog.simActor;
-        if (ellipsisString != null && ellipsisString.equals("")) {
+        if ("".equals(ellipsisString)) {
             this.ellipsisString = null;
         }
         previousEllipsis = label.ellipsis;
