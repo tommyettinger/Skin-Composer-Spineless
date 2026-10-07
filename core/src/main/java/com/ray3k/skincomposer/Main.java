@@ -53,6 +53,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Touchpad.TouchpadStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Tree.TreeStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.tommyettinger.freetypist.FreeTypistSkin;
 import com.ray3k.skincomposer.data.AtlasData;
@@ -294,9 +295,8 @@ public class Main extends ApplicationAdapter {
     
     @Override
     public void render() {
-        Gdx.gl.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        
+        ScreenUtils.clear(1f, 1f, 1f, 1.0f);
+
         stage.act(Gdx.graphics.getDeltaTime());
         
         for (var tenPatch : skin.getAll(TenPatchDrawable.class)) {
