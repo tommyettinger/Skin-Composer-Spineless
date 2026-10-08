@@ -39,20 +39,25 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.ray3k.skincomposer.*;
 import com.ray3k.skincomposer.utils.Utils;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.util.nfd.NativeFileDialog;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static com.ray3k.skincomposer.Main.desktopWorker;
-import static org.lwjgl.system.MemoryUtil.memAllocPointer;
 
 /**
  *
@@ -67,7 +72,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
     private static final int OPEN=2;
     private static final int SAVE=3;
     //flag for use swing JFileChooser
-//    private static boolean useSwing;
+    private static boolean useSwing;
 
 
     public DesktopLauncher() {
@@ -212,10 +217,61 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
 
     @Override
     public List<File> openMultipleDialog(String title, String defaultPath, String filterPatterns, String filterDescription) {
-//        if (useSwing) {
+        if (useSwing) {
             var result = showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
             return result.size() > 0 ? result : null;
+        }
+        List<File> obtained = new ArrayList<>();
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            try (MemoryStack stack = MemoryStack.stackPush()) {
+                String[] extensions = filterPatterns.split(",");
+                PointerBuffer aFilterPatterns = stack.mallocPointer(extensions.length);
+                for (String ext : extensions) {
+                    aFilterPatterns.put(stack.UTF8("*." + ext));
+                }
+                aFilterPatterns.flip();
+
+                FileHandle dPath = Gdx.files.absolute(defaultPath);
+                FileHandle importPath = (!dPath.exists()) ?
+                        Gdx.files.absolute(System.getProperty("user.home")) : dPath;
+
+                String files = TinyFileDialogs.tinyfd_openFileDialog(title, importPath.path(), aFilterPatterns, filterDescription, true);
+                String[] filenames = files.split("\\|");
+                for(String fn : filenames){
+                    obtained.add(new File(fn));
+                }
+            }
+        });
+        // Pre-JDK-19 Executor.close()
+        boolean terminated = executor.isTerminated();
+        if (!terminated) {
+            executor.shutdown();
+            boolean interrupted = false;
+            while (!terminated) {
+                try {
+                    terminated = executor.awaitTermination(15L, TimeUnit.MINUTES);
+                } catch (InterruptedException e) {
+                    if (!interrupted) {
+                        executor.shutdownNow();
+                        interrupted = true;
+                    }
+                }
+            }
+            if (interrupted) {
+                Thread.currentThread().interrupt();
+                return showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
+            }
+        }
+//        try {
+//            executor.awaitTermination(1, TimeUnit.MINUTES);
+//        } catch (InterruptedException e) {
+//            return showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
+//        } finally {
+//            executor.shutdown();
 //        }
+        return obtained;
+
 //        NFDPathSet outPaths = NFDPathSet.calloc();
 //
 //        //fix file path characters
@@ -250,11 +306,59 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
 
     @Override
     public File openDialog(String title, String defaultPath, String filterPatterns, String filterDescription) {
-//        if (useSwing) {
+        if (useSwing) {
             var result = showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription);
             return result.size() > 0 ? result.get(0) : null;
+        }
+        File[] obtained = new File[1];
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            try (MemoryStack stack = MemoryStack.stackPush()) {
+                String[] extensions = filterPatterns.split(",");
+                PointerBuffer aFilterPatterns = stack.mallocPointer(extensions.length);
+                for (String ext : extensions) {
+                    aFilterPatterns.put(stack.UTF8("*." + ext));
+                }
+                aFilterPatterns.flip();
+
+                FileHandle dPath = Gdx.files.absolute(defaultPath);
+                FileHandle importPath = (!dPath.exists()) ?
+                        Gdx.files.absolute(System.getProperty("user.home")) : dPath;
+
+                String fn = TinyFileDialogs.tinyfd_openFileDialog(title, importPath.path(), aFilterPatterns, filterDescription, false);
+                if(fn != null)
+                    obtained[0] = new File(fn);
+            }
+        });
+        // Pre-JDK-19 Executor.close()
+        boolean terminated = executor.isTerminated();
+        if (!terminated) {
+            executor.shutdown();
+            boolean interrupted = false;
+            while (!terminated) {
+                try {
+                    terminated = executor.awaitTermination(15L, TimeUnit.MINUTES);
+                } catch (InterruptedException e) {
+                    if (!interrupted) {
+                        executor.shutdownNow();
+                        interrupted = true;
+                    }
+                }
+            }
+            if (interrupted) {
+                Thread.currentThread().interrupt();
+                return showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription).get(0);
+            }
+        }
+//        try {
+//            executor.awaitTermination(1, TimeUnit.MINUTES);
+//        } catch (InterruptedException e) {
+//            return showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription).get(0);
+//        } finally {
+//            executor.shutdown();
 //        }
-    
+        return obtained[0];
+
 //        PointerBuffer outPath = memAllocPointer(1);
 //
 //        //fix file path characters
@@ -284,11 +388,59 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
     
     @Override
     public File saveDialog(String title, String defaultPath, String filterPatterns, String filterDescription) {
-//        if (useSwing) {
+        if (useSwing) {
             var result = showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription);
             return result.size() > 0 ? result.get(0) : null;
+        }
+        File[] obtained = new File[1];
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            try (MemoryStack stack = MemoryStack.stackPush()) {
+                String[] extensions = filterPatterns.split(",");
+                PointerBuffer aFilterPatterns = stack.mallocPointer(extensions.length);
+                for (String ext : extensions) {
+                    aFilterPatterns.put(stack.UTF8("*." + ext));
+                }
+                aFilterPatterns.flip();
+
+                FileHandle dPath = Gdx.files.absolute(defaultPath);
+                FileHandle importPath = (!dPath.exists()) ?
+                        Gdx.files.absolute(System.getProperty("user.home")) : dPath;
+
+                String fn = TinyFileDialogs.tinyfd_saveFileDialog(title, importPath.path(), aFilterPatterns, filterDescription);
+                if(fn != null)
+                    obtained[0] = new File(fn);
+            }
+        });
+        // Pre-JDK-19 Executor.close()
+        boolean terminated = executor.isTerminated();
+        if (!terminated) {
+            executor.shutdown();
+            boolean interrupted = false;
+            while (!terminated) {
+                try {
+                    terminated = executor.awaitTermination(15L, TimeUnit.MINUTES);
+                } catch (InterruptedException e) {
+                    if (!interrupted) {
+                        executor.shutdownNow();
+                        interrupted = true;
+                    }
+                }
+            }
+            if (interrupted) {
+                Thread.currentThread().interrupt();
+                return showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription).get(0);
+            }
+        }
+//        try {
+//            executor.awaitTermination(1, TimeUnit.MINUTES);
+//        } catch (InterruptedException e) {
+//            return showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription).get(0);
+//        } finally {
+//            executor.shutdown();
 //        }
-    
+        return obtained[0];
+
 //        PointerBuffer outPath = memAllocPointer(1);
 //
 //        //fix file path characters
@@ -456,13 +608,13 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
         }
         
 //        //setting a flag for use JFileChooser if "-swingfd" arg is in commandline
-//        useSwing=false;
-//        for (var arg: args){
-//            if ("-swingfd".equals(arg)){
-//                useSwing=true;
-//                break;
-//            }
-//        }
+        useSwing=false;
+        for (var arg: args){
+            if ("-swingfd".equals(arg)){
+                useSwing=true;
+                break;
+            }
+        }
 
         var config = new Lwjgl3ApplicationConfiguration();
         config.setResizable(true);
