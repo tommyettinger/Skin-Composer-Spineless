@@ -32,7 +32,7 @@ if (JavaVersion.current().isJava9Compatible()) {
 }
 
 if (JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_22)) {
-    application.applicationDefaultJvmArgs += ["--sun-misc-unsafe-memory-access=allow"]
+    application.applicationDefaultJvmArgs += ["--sun-misc-unsafe-memory-access=deny"]
 }
 
 dependencies {
