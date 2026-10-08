@@ -213,8 +213,7 @@ public class ProjectData implements Json.Serializable {
     }
     
     public float getUiScale() {
-        var display = Gdx.graphics.getDisplayMode();
-        return generalPref.getFloat("uiScale", display.height >= 1440 ? 2 : 1);
+        return generalPref.getFloat("uiScale", Gdx.graphics.getBackBufferScale() >= 2f ? 2 : 1);
     }
     
     public void setCheckingForUpdates(boolean allow) {
