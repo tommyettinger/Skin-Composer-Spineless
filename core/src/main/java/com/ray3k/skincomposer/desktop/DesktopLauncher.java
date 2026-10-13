@@ -237,9 +237,11 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
                         Gdx.files.absolute(System.getProperty("user.home")) : dPath;
 
                 String files = TinyFileDialogs.tinyfd_openFileDialog(title, importPath.path(), aFilterPatterns, filterDescription, true);
-                String[] filenames = files.split("\\|");
-                for(String fn : filenames){
-                    obtained.add(new File(fn));
+                if(files != null) {
+                    String[] filenames = files.split("\\|");
+                    for (String fn : filenames) {
+                        obtained.add(new File(fn));
+                    }
                 }
             }
         });
@@ -250,7 +252,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
             boolean interrupted = false;
             while (!terminated) {
                 try {
-                    terminated = executor.awaitTermination(15L, TimeUnit.MINUTES);
+                    terminated = executor.awaitTermination(1L, TimeUnit.DAYS);
                 } catch (InterruptedException e) {
                     if (!interrupted) {
                         executor.shutdownNow();
@@ -263,45 +265,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
                 return showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
             }
         }
-//        try {
-//            executor.awaitTermination(1, TimeUnit.MINUTES);
-//        } catch (InterruptedException e) {
-//            return showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
-//        } finally {
-//            executor.shutdown();
-//        }
         return obtained;
-
-//        NFDPathSet outPaths = NFDPathSet.calloc();
-//
-//        //fix file path characters
-//        if (Utils.isWindows()) {
-//            defaultPath = defaultPath.replace("/", "\\");
-//        } else {
-//            defaultPath = defaultPath.replace("\\", "/");
-//        }
-//
-//        try {
-//            var status = NativeFileDialog.NFD_OpenDialogMultiple(filterPatterns, defaultPath, outPaths);
-//
-//            if (status == NativeFileDialog.NFD_CANCEL) return null;
-//
-//            if (status != NativeFileDialog.NFD_OKAY) {
-//                var result = showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
-//                return result.size() > 0 ? result : null;
-//            }
-//
-//            ArrayList<File> list = new ArrayList<>();
-//            long count = NativeFileDialog.NFD_PathSet_GetCount(outPaths);
-//            for (long i = 0; i < count; i++) {
-//                String path = NativeFileDialog.NFD_PathSet_GetPath(outPaths, i);
-//                list.add(new File(path));
-//            }
-//            NativeFileDialog.NFD_PathSet_Free(outPaths);
-//            return list;
-//        } catch (Exception e) {
-//            return showFileChooser(OPEN_MULTIPLE, title, defaultPath, filterPatterns, filterDescription);
-//        }
     }
 
     @Override
@@ -337,7 +301,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
             boolean interrupted = false;
             while (!terminated) {
                 try {
-                    terminated = executor.awaitTermination(15L, TimeUnit.MINUTES);
+                    terminated = executor.awaitTermination(1L, TimeUnit.DAYS);
                 } catch (InterruptedException e) {
                     if (!interrupted) {
                         executor.shutdownNow();
@@ -350,40 +314,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
                 return showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription).get(0);
             }
         }
-//        try {
-//            executor.awaitTermination(1, TimeUnit.MINUTES);
-//        } catch (InterruptedException e) {
-//            return showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription).get(0);
-//        } finally {
-//            executor.shutdown();
-//        }
         return obtained[0];
-
-//        PointerBuffer outPath = memAllocPointer(1);
-//
-//        //fix file path characters
-//        if (Utils.isWindows()) {
-//            defaultPath = defaultPath.replace("/", "\\");
-//        } else {
-//            defaultPath = defaultPath.replace("\\", "/");
-//        }
-//
-//        try {
-//            var status = NativeFileDialog.NFD_OpenDialog(filterPatterns, defaultPath, outPath);
-//
-//            if (status == NativeFileDialog.NFD_CANCEL) return null;
-//
-//            if (status != NativeFileDialog.NFD_OKAY) {
-//                var result = showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription);
-//                return result.size() > 0 ? result.get(0) : null;
-//            }
-//
-//            String result = outPath.getStringUTF8();
-//            NativeFileDialog.nNFD_Free(outPath.get(0));
-//            return new File(result);
-//        } catch (Exception e) {
-//            return showFileChooser(OPEN, title, defaultPath, filterPatterns, filterDescription).get(0);
-//        }
     }
     
     @Override
@@ -419,7 +350,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
             boolean interrupted = false;
             while (!terminated) {
                 try {
-                    terminated = executor.awaitTermination(15L, TimeUnit.MINUTES);
+                    terminated = executor.awaitTermination(1L, TimeUnit.DAYS);
                 } catch (InterruptedException e) {
                     if (!interrupted) {
                         executor.shutdownNow();
@@ -432,40 +363,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
                 return showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription).get(0);
             }
         }
-//        try {
-//            executor.awaitTermination(1, TimeUnit.MINUTES);
-//        } catch (InterruptedException e) {
-//            return showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription).get(0);
-//        } finally {
-//            executor.shutdown();
-//        }
         return obtained[0];
-
-//        PointerBuffer outPath = memAllocPointer(1);
-//
-//        //fix file path characters
-//        if (Utils.isWindows()) {
-//            defaultPath = defaultPath.replace("/", "\\");
-//        } else {
-//            defaultPath = defaultPath.replace("\\", "/");
-//        }
-//
-//        try {
-//            var status = NativeFileDialog.NFD_SaveDialog(filterPatterns, defaultPath, outPath);
-//
-//            if (status == NativeFileDialog.NFD_CANCEL) return null;
-//
-//            if (status != NativeFileDialog.NFD_OKAY) {
-//                var result = showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription);
-//                return result.size() > 0 ? result.get(0) : null;
-//            }
-//
-//            String result = outPath.getStringUTF8();
-//            NativeFileDialog.nNFD_Free(outPath.get(0));
-//            return new File(result);
-//        } catch (Exception e) {
-//            return showFileChooser(SAVE, title, defaultPath, filterPatterns, filterDescription).get(0);
-//        }
     }
 
 	/* Opens a swing JFileChooser
@@ -620,7 +518,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
         config.setResizable(true);
         config.useVsync(true);
         config.setWindowedMode(800, 800);
-        config.setBackBufferConfig(8, 8, 8, 8, 16, 2, 10);
+        config.setBackBufferConfig(8, 8, 8, 8, 16, 2, 4);
         config.disableAudio(true);
         var desktopLauncher = new DesktopLauncher();
         config.setWindowListener(desktopLauncher);
