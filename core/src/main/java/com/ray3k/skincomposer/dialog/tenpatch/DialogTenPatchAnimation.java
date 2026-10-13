@@ -16,10 +16,10 @@ import com.ray3k.skincomposer.dialog.DialogDrawables;
 import com.ray3k.skincomposer.dialog.DialogDrawables.FilterOptions;
 import com.ray3k.skincomposer.dialog.DialogFactory.ConfirmationListener;
 import com.ray3k.skincomposer.dialog.DialogListener;
+import com.ray3k.skincomposer.utils.NaturalTextComparator;
 import com.ray3k.stripe.Spinner;
 import com.ray3k.skincomposer.data.DrawableData;
 import com.ray3k.skincomposer.data.StyleProperty;
-import com.ray3k.skincomposer.utils.AlphanumComparator;
 import com.ray3k.tenpatch.TenPatchDrawable;
 
 import java.util.Comparator;
@@ -34,7 +34,7 @@ public class DialogTenPatchAnimation extends Dialog {
     private ObjectMap<DrawableData, TextureRegion> drawableToRegionMap;
     private ButtonGroup<Button> buttonGroup;
     private int lastClicked;
-    private static final AlphanumComparator alphanumComparator = new AlphanumComparator();
+    private static final NaturalTextComparator alphanumComparator = NaturalTextComparator.CASE_SENSITIVE;
     private TenPatchDrawable animatedDrawable;
     
     public DialogTenPatchAnimation(DrawableData drawableData) {

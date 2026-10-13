@@ -506,10 +506,10 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
         }
         
 //        //setting a flag for use JFileChooser if "-swingfd" arg is in commandline
-        useSwing=false;
+        useSwing = false;
         for (var arg: args){
             if ("-swingfd".equals(arg)){
-                useSwing=true;
+                useSwing = true;
                 break;
             }
         }
