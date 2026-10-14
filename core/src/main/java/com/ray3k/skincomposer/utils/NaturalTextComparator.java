@@ -17,7 +17,6 @@
 
 package com.ray3k.skincomposer.utils;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -28,7 +27,7 @@ import java.util.Comparator;
  * upper-case letters before any lower-case letters, in any language with case. You don't construct a new one of these; instead,
  * use {@link #CASE_SENSITIVE} or {@link #CASE_INSENSITIVE} to get a predefined immutable instance.
  */
-public class NaturalTextComparator implements Comparator<CharSequence> {
+public final class NaturalTextComparator implements Comparator<CharSequence> {
 	public static final NaturalTextComparator CASE_INSENSITIVE = new NaturalTextComparator(false);
 	public static final NaturalTextComparator CASE_SENSITIVE = new NaturalTextComparator(true);
 

@@ -62,7 +62,10 @@ import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-public class Utils {
+public final class Utils {
+    private Utils() {
+
+    }
     public static String os;
     public static Color averageColor(FileHandle file) {
         Pixmap pixmap = new Pixmap(file);

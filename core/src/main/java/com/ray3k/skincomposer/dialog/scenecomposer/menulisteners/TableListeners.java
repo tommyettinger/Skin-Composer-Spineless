@@ -3,6 +3,7 @@ package com.ray3k.skincomposer.dialog.scenecomposer.menulisteners;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
@@ -18,7 +19,6 @@ import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerEvents;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerEvents.WidgetType;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel;
 import com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel.SimActor;
-import com.ray3k.skincomposer.utils.IntPair;
 import static com.ray3k.skincomposer.Main.*;
 
 import static com.ray3k.skincomposer.dialog.scenecomposer.menulisteners.ListenersUtils.TEXT_FIELD_WIDTH;
@@ -500,7 +500,7 @@ public class TableListeners {
             for (int i = 0; i < 6; i++) {
                 var textButton = new Button(skin, "scene-table");
                 textButton.setProgrammaticChangeEvents(false);
-                textButton.setUserObject(new IntPair(i, j));
+                textButton.setUserObject(new GridPoint2(i, j));
                 table.add(textButton);
                 buttons[i][j] = textButton;
                 textButton.addListener(handListener);
@@ -508,14 +508,14 @@ public class TableListeners {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         popTable.hide();
-                        var intPair = (IntPair) textButton.getUserObject();
+                        var intPair = (GridPoint2) textButton.getUserObject();
                         events.tableSetCells(intPair.x + 1, intPair.y + 1);
                     }
                 });
                 textButton.addListener(new InputListener() {
                     @Override
                     public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                        var intPair = (IntPair) textButton.getUserObject();
+                        var intPair = (GridPoint2) textButton.getUserObject();
                         for (int y1 = 0; y1 < 6; y1++) {
                             for (int x1 = 0; x1 < 6; x1++) {
                                 buttons[x1][y1].setChecked(y1 <= intPair.y && x1 <= intPair.x);
