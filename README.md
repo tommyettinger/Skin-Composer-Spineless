@@ -3,7 +3,7 @@
 ### ![Logo](docs/images/logo.png) ###
 
 * Use Skin Composer to create skins for libGDX's Scene2D.UI!
-* Version 62
+* Version 63
 * Live preview of all widgets with configurable options
 * Specify tinted, tiled, and custom created Drawables right in the editor
 * Includes BitmapFont editor and Image font generator like Shoebox
@@ -38,9 +38,10 @@ If you are unable to run the Windows installer, use the JAR version with JDK ver
 
 To run Skin Composer on OSX, please see the [wiki](https://github.com/raeleus/skin-composer/wiki/Getting-Started-With-Mac "Getting Started With Mac") for details.
 
-If you are unable to open file dialogs on your platform, try version 60 or lower.
+If you are unable to open file dialogs on your platform, try version 63 or newer (or version 60).
 Version 62 always uses Swing file dialogs due to changes in the NFD (Native File Dialog) library that haven't yet
-been addressable. Future versions may be able to use native dialogs again.
+been addressable. Versions 63 (and later) use TinyFileDialogs and should work on all platforms.
+Versions 60 and older used NFD, but an older version that might work on the same platforms TinyFileDialogs does.
 
 There was no version 61. It never happened. Well, it wasn't usable, anyway.
 

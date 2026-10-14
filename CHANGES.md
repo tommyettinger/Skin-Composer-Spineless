@@ -1,3 +1,10 @@
+### Skin Composer *Spineless* Version 63 ###
+* Switched from Swing for file dialogs to TinyFD using an approach that works cross-platform, from Hyperlap2D.
+* Fix incorrect description in visibility tooltips.
+* Fix a crash that happened in PopColorPicker when a field was fully cleared.
+* Fix a crash caused by casting a boxed Float to a primitive double in RootTable.
+* Update Gradle to 9.8.1 .
+
 ### Skin Composer *Spineless* Version 62 ###
 * Fixed some simple bugs during distribution that prevented the JAR from running.
 
