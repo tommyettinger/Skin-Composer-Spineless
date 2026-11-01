@@ -45,6 +45,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.lwjgl.PointerBuffer;
+import org.lwjgl.glfw.GLFW;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.util.tinyfd.TinyFileDialogs;
 
@@ -504,7 +505,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
         if (StartupHelper.startNewJvmIfRequired()) {
             return;
         }
-        
+        GLFW.glfwInitHint(GLFW.GLFW_WAYLAND_LIBDECOR, GLFW.GLFW_WAYLAND_DISABLE_LIBDECOR);
 //        //setting a flag for use JFileChooser if "-swingfd" arg is in commandline
         useSwing = false;
         for (var arg: args){
