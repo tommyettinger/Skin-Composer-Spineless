@@ -203,7 +203,7 @@ construo {
             icon.set(file("../icons/logo.png"))
             jdkUrl.set("https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-25.0.4.1-windows-x64-b329.142.zip")
 //            jdkUrl.set("https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_x64_windows_hotspot_21.0.10_7.zip")
-            useConsole.set(true)
+            useConsole.set(false)
         }
     }
 }

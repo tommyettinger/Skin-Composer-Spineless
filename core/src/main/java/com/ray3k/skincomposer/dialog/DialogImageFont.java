@@ -1029,6 +1029,8 @@ public class DialogImageFont extends Dialog {
                     }
                 }
             }
+            if(lookingForBreak)
+                yBreaks.add(fontPixmap.getHeight());
             
             if (yBreaks.size < 2) {
                 throw new InvalidFontImageException();
@@ -1045,7 +1047,7 @@ public class DialogImageFont extends Dialog {
             int nameCounter = 0;
             
             //find characters for each row
-            for (int i = 0; i < yBreaks.size && !failure; i += 2) {
+            for (int i = 0; i < yBreaks.size - 1 && !failure; i += 2) {
                 BitmapCharacter bitmapCharacter = null;
                 lookingForBreak = false;
 
@@ -1075,6 +1077,7 @@ public class DialogImageFont extends Dialog {
                             bitmapCharacter.x = x;
                             bitmapCharacter.y = yBreaks.get(i);
                             bitmapCharacter.height = yBreaks.get(i + 1) - bitmapCharacter.y;
+                            bitmapCharacter.cropHeight = bitmapCharacter.height;
                             lookingForBreak = true;
                         }
                     } else {
@@ -1135,7 +1138,7 @@ public class DialogImageFont extends Dialog {
         }
         
         for (var character : bitmapCharacters) {
-            for (int y = character.cropY + character.height; y >= character.cropY; y--) {
+            for (int y = character.y + character.height; y >= character.cropY; y--) {
                 var lineEmpty = true;
                 for (int x = character.x; x < character.x + character.width; x++) {
                     tempColor.set(fontPixmap.getPixel(x, y));
@@ -1301,7 +1304,7 @@ public class DialogImageFont extends Dialog {
         int height;
         int cropY;
         int cropHeight;
-        int yoffset;
+        int yoffset = 0;
         String name;
         char character;
         int baseline;
