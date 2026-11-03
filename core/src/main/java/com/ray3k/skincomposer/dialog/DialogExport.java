@@ -28,9 +28,11 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.ray3k.skincomposer.Main;
 import com.ray3k.skincomposer.data.DrawableData;
@@ -39,6 +41,7 @@ import com.ray3k.skincomposer.data.FontData;
 import com.ray3k.skincomposer.data.FreeTypeFontData;
 import com.ray3k.skincomposer.data.JsonData.ExportFormat;
 
+import java.io.File;
 import java.nio.file.Paths;
 
 import static com.ray3k.skincomposer.Main.*;
@@ -79,13 +82,14 @@ public class DialogExport extends Dialog {
                 textButton.setDisabled(!checkPath());
             }
         });
+        textField.setProgrammaticChangeEvents(false);
         
         var textButton = new TextButton("Browse...", skin);
         table.add(textButton);
         textButton.addListener(handListener);
-        textButton.addListener(new ChangeListener() {
+        textButton.addListener(new ClickListener() {
             @Override
-            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+            public void clicked(InputEvent event, float x, float y) {
                 showFileBrowser();
             }
         });
@@ -188,20 +192,56 @@ public class DialogExport extends Dialog {
         key(Keys.ENTER, true).key(Keys.NUMPAD_ENTER, true).key(Keys.ESCAPE, false);
     }
     
+//    private void showFileBrowser() {
+//        TextField textField  = findActor("path");
+//        var file = desktopWorker.saveDialog("Export skin...", textField.getText(), "json", "Json files");
+//        if (file != null) {
+//            var fileHandle = new FileHandle(file);
+//            if ("".equals(fileHandle.extension())) {
+//                fileHandle = fileHandle.sibling(fileHandle.nameWithoutExtension() + ".json");
+//            }
+//            textField.setText(fileHandle.path());
+//            textField.setCursorPosition(Math.max(0, textField.getText().length() - 1));
+//            TextButton textButton = findActor("export");
+//            textButton.setDisabled(!checkPath());
+//        }
+//    }
+
+    /**
+     * There's something wrong with
+     * {@link com.ray3k.skincomposer.desktop.DesktopLauncher#saveDialog(String, String, String, String)} .
+     * It never finishes here, though it does in other places.
+     */
     private void showFileBrowser() {
-        TextField textField  = findActor("path");
-        var file = desktopWorker.saveDialog("Export skin...", textField.getText(), "json", "Json files");
-        if (file != null) {
-            var fileHandle = new FileHandle(file);
-            if ("".equals(fileHandle.extension())) {
-                fileHandle = fileHandle.sibling(fileHandle.nameWithoutExtension() + ".json");
-            }
-            textField.setText(fileHandle.path());
-            textField.setCursorPosition(Math.max(0, textField.getText().length() - 1));
-            TextButton textButton = findActor("export");
-            textButton.setDisabled(!checkPath());
-        }
+//        Runnable runnable = () -> {
+            Gdx.app.postRunnable(() -> {
+                final TextField textField = findActor("path");
+                System.out.println(textField);
+                final String path = textField.getText();
+                System.out.println(path);
+                // the next line never completes...
+                File file = desktopWorker.saveDialog("Export skin...", path, "json", "Json files");
+                // this line never prints.
+                System.out.println("Found file! " + file);
+                if (file != null) {
+                    var fileHandle = new FileHandle(file);
+                    if ("".equals(fileHandle.extension())) {
+                        fileHandle = fileHandle.sibling(fileHandle.nameWithoutExtension() + ".json");
+                    }
+
+                    textField.setText(fileHandle.path());
+                    textField.setCursorPosition(Math.max(0, textField.getText().length() - 1));
+                    TextButton textButton = findActor("export");
+                    System.out.println(textButton);
+                    textButton.setDisabled(!checkPath());
+                    System.out.println(textButton.isDisabled());
+                }
+            });
+//        };
+//
+//        dialogFactory.showDialogLoading(runnable);
     }
+
 
     @Override
     protected void result(Object object) {
