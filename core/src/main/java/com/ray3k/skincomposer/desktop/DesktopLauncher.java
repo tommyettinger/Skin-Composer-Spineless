@@ -33,6 +33,7 @@ import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.PixmapPacker;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.scenes.scene2d.utils.UIUtils;
 import com.badlogic.gdx.tools.bmfont.BitmapFontWriter;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.badlogic.gdx.utils.Array;
@@ -505,7 +506,10 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
         if (StartupHelper.startNewJvmIfRequired()) {
             return;
         }
-        GLFW.glfwInitHint(GLFW.GLFW_WAYLAND_LIBDECOR, GLFW.GLFW_WAYLAND_DISABLE_LIBDECOR);
+        if (UIUtils.isLinux && System.getenv("DISPLAY") != null && !"".equals(System.getenv("DISPLAY"))) {
+            GLFW.glfwInitHint(GLFW.GLFW_PLATFORM, GLFW.GLFW_PLATFORM_X11);
+        }
+//        GLFW.glfwInitHint(GLFW.GLFW_WAYLAND_LIBDECOR, GLFW.GLFW_WAYLAND_DISABLE_LIBDECOR);
 //        //setting a flag for use JFileChooser if "-swingfd" arg is in commandline
         useSwing = false;
         for (var arg: args){
