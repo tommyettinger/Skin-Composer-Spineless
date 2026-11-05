@@ -213,7 +213,7 @@ public class ProjectData implements Json.Serializable {
     }
     
     public float getUiScale() {
-        return generalPref.getFloat("uiScale", Gdx.graphics.getBackBufferScale() >= 2f ? 2 : 1);
+        return generalPref.getFloat("uiScale", Gdx.graphics.getDensity() > 0.5f ? 2 : 1);
     }
     
     public void setCheckingForUpdates(boolean allow) {
