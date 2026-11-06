@@ -340,7 +340,11 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
                 FileHandle importPath = (!dPath.exists()) ?
                         Gdx.files.absolute(System.getProperty("user.home")) : dPath;
 
-                String fn = TinyFileDialogs.tinyfd_saveFileDialog(title, importPath.path(), aFilterPatterns, filterDescription);
+                String path = importPath.path();
+                if(File.separatorChar != '/') path = path.replace('/', File.separatorChar);
+                System.out.println("Opening Save File Dialog with default path: " + path);
+                String fn = TinyFileDialogs.tinyfd_saveFileDialog(title, path, aFilterPatterns, filterDescription);
+                System.out.println("Dialog finished with result: " + fn);
                 if(fn != null)
                     obtained[0] = new File(fn);
             }
