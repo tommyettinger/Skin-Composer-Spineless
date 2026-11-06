@@ -784,7 +784,7 @@ public class ProjectData implements Json.Serializable {
     }
     
     public boolean areResourcesRelative() {
-        return (boolean) preferences.get("resources-relative", false);
+        return (boolean) preferences.get("resources-relative", true);
     }
     
     public void setResourcesRelative(boolean resourcesRelative) {
@@ -792,7 +792,7 @@ public class ProjectData implements Json.Serializable {
     }
     
     public boolean isUsingSimpleNames() {
-        return (boolean) preferences.get("simple-names", false);
+        return (boolean) preferences.get("simple-names", true);
     }
     
     public void setUsingSimpleNames(boolean useSimpleNames) {
