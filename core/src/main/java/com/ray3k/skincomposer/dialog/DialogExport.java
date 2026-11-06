@@ -213,17 +213,12 @@ public class DialogExport extends Dialog {
      * It never finishes here, though it does in other places.
      */
     private void showFileBrowser() {
-//        Runnable runnable = () -> {
-            Gdx.app.postRunnable(() -> {
-                final TextField textField = findActor("path");
-                System.out.println(textField);
-                final String path = textField.getText();
-                System.out.println(path);
-                // the next line never completes...
-                File file = desktopWorker.saveDialog("Export skin...", path, "json", "Json files");
-                // this line never prints.
-                System.out.println("Found file! " + file);
-                if (file != null) {
+        dialogFactory.showDialogLoading(() -> {
+            final TextField textField = findActor("path");
+            final String path = textField.getText();
+            File file = desktopWorker.saveDialog("Export skin...", path, "json", "Json files");
+            if (file != null) {
+                Gdx.app.postRunnable(() -> {
                     var fileHandle = new FileHandle(file);
                     if ("".equals(fileHandle.extension())) {
                         fileHandle = fileHandle.sibling(fileHandle.nameWithoutExtension() + ".json");
@@ -232,14 +227,10 @@ public class DialogExport extends Dialog {
                     textField.setText(fileHandle.path());
                     textField.setCursorPosition(Math.max(0, textField.getText().length() - 1));
                     TextButton textButton = findActor("export");
-                    System.out.println(textButton);
                     textButton.setDisabled(!checkPath());
-                    System.out.println(textButton.isDisabled());
-                }
-            });
-//        };
-//
-//        dialogFactory.showDialogLoading(runnable);
+                });
+            }
+        });
     }
 
 
