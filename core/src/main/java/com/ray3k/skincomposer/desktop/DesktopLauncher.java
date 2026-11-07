@@ -512,6 +512,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
             String display = System.getenv("DISPLAY");
             if (display != null && !display.isEmpty()) GLFW.glfwInitHint(GLFW.GLFW_PLATFORM, GLFW.GLFW_PLATFORM_X11);
         }
+
 //        //setting a flag for use JFileChooser if "-swingfd" arg is in commandline
         useSwing = false;
         for (var arg: args){
