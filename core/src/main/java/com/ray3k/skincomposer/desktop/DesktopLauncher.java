@@ -504,12 +504,14 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
     public static void main(String[] args) {
         if (StartupHelper.startNewJvmIfRequired()) return;
 
-        // Prefer X11 when on Linux, there is a display, and the user hasn't intentionally selected something else.
-        if (UIUtils.isLinux
-                && System.getenv("DISPLAY") != null && !"".equals(System.getenv("DISPLAY"))
-                && (System.getenv("XDG_SESSION_TYPE") == null || "".equals(System.getenv("XDG_SESSION_TYPE"))))
-            GLFW.glfwInitHint(GLFW.GLFW_PLATFORM, GLFW.GLFW_PLATFORM_X11);
-
+        if (UIUtils.isLinux){
+            // Prefer X11 when on Linux and there is a display.
+            // This is only useful when lwjgl3Version is greater than 3.3.3 .
+            // Doing this may be required to Snap-package this application or to publish via Steam.
+            // It may require XWayland, a compatibility layer, on machines using Wayland.
+            String display = System.getenv("DISPLAY");
+            if (display != null && !display.isEmpty()) GLFW.glfwInitHint(GLFW.GLFW_PLATFORM, GLFW.GLFW_PLATFORM_X11);
+        }
 //        //setting a flag for use JFileChooser if "-swingfd" arg is in commandline
         useSwing = false;
         for (var arg: args){
