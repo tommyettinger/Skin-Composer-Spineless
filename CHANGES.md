@@ -1,3 +1,11 @@
+### Skin Composer *Spineless* Version 64 ###
+* Fixed a bug in save dialogs where it would often default to the user home directory.
+* Fixed a freezing bug in the Export dialog's browse for files button.
+* Fixed, as best I can, a bug in image font loading. Image fonts need some padding at the edges, still.
+* Default to X11 compatibility on Wayland even while using LWJGL 3.4.3 . This sharply reduces the amount of warnings.
+* Make the TextraTypist Playground much more legible when the font is zoomed.
+* Update Gradle to 9.9.0 .
+
 ### Skin Composer *Spineless* Version 63 ###
 * Switched from Swing for file dialogs to TinyFD using an approach that works cross-platform, from Hyperlap2D.
 * Fix incorrect description in visibility tooltips.
