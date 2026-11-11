@@ -26,6 +26,7 @@ package com.ray3k.skincomposer.dialog;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Colors;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
@@ -33,6 +34,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Sort;
+import com.github.tommyettinger.textra.utils.Palette;
 import com.ray3k.skincomposer.Main;
 import com.ray3k.skincomposer.UndoableManager;
 import com.ray3k.skincomposer.UndoableManager.ColorUndoable;
@@ -40,6 +42,7 @@ import com.ray3k.skincomposer.UndoableManager.CustomColorUndoable;
 import com.ray3k.skincomposer.data.*;
 import com.ray3k.skincomposer.utils.Utils;
 import com.ray3k.stripe.PopColorPicker.PopColorPickerAdapter;
+import com.ray3k.stripe.Yam4RGBPalette;
 
 import java.util.Comparator;
 
@@ -165,7 +168,15 @@ public class DialogColors extends Dialog {
         dialogFactory.showDialogColorPicker(new PopColorPickerAdapter() {
             @Override
             public void picked(Color color) {
-                final TextField field = new TextField("RGBA_" + (int) (color.r * 255) + "_" + (int) (color.g * 255) + "_" + (int) (color.b * 255) + "_" + (int) (color.a * 255), getSkin());
+                int rgba8888 = Color.rgba8888(color);
+                String colorName = Colors.getColors().findKey(color, false);
+                if(colorName == null) colorName = Palette.NAMED.findKey(rgba8888);
+                if(colorName == null) colorName = Yam4RGBPalette.NAMED.findKey(rgba8888);
+                final TextField field = new TextField(
+                        colorName != null
+                                ? colorName
+                                : String.format("RGBA_%08X", rgba8888)
+                        , getSkin());
                 final Dialog dialog = new Dialog("Color name...", getSkin(), "bg") {
                     @Override
                     protected void result(Object object) {
