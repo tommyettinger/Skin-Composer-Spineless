@@ -72,11 +72,11 @@ dependencies {
     implementation 'com.github.tommyettinger:gdx-TinyVG:83004a633e'
 //    implementation 'com.github.lyze237:gdx-TinyVG:41f408420c'
 //        implementation "com.github.tommyettinger:textratypist:2.0.1"
-    implementation("com.github.tommyettinger:freetypist:2.5.0.0") {
+    implementation("com.github.tommyettinger:freetypist:2.6.1.0") {
         exclude group: 'com.github.tommyettinger', module: 'textratypist'
     }
-    implementation "com.github.tommyettinger:textratypist:2.5.0"
-    implementation "com.github.tommyettinger:regexodus:0.1.21"
+    implementation "com.github.tommyettinger:textratypist:2.6.1"
+    implementation "com.github.tommyettinger:regexodus:0.1.22"
 
     if (enableGraalNative == 'true') {
         implementation "io.github.berstanio:gdx-svmhelper-backend-lwjgl3:$graalHelperVersion"
