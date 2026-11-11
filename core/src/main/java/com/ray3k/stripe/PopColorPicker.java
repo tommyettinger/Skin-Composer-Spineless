@@ -210,7 +210,7 @@ public class PopColorPicker extends PopTable {
         scrollPane.setFadeScrollBars(false);
         bottomTable.add(scrollPane).grow();
 
-        label = new Label("Simple", style.labelStyle);
+        label = new Label("libGDX", style.labelStyle);
         table.add(label).left().spaceTop(5);
 
         table.row();
@@ -219,65 +219,40 @@ public class PopColorPicker extends PopTable {
         horizontalGroup.rowAlign(Align.left);
         table.add(horizontalGroup).growX();
 
-        addSwatch("000000ff", "black", false, horizontalGroup);
-        addSwatch("7d8183ff", "gray", false, horizontalGroup);
-        addSwatch("7d8183ff", "grey", false, horizontalGroup);
-        addSwatch("b3b8b9ff", "silver", false, horizontalGroup);
-        addSwatch("fbffffff", "white", false, horizontalGroup);
-        addSwatch("8f1739ff", "raspberry", false, horizontalGroup);
-        addSwatch("fc6565ff", "coral", false, horizontalGroup);
-        addSwatch("fc6565ff", "salmon", false, horizontalGroup);
-        addSwatch("d2564fff", "brick", false, horizontalGroup);
-        addSwatch("fe0e13ff", "red", false, horizontalGroup);
-        addSwatch("f25d32ff", "ember", false, horizontalGroup);
-        addSwatch("8c593fff", "brown", false, horizontalGroup);
-        addSwatch("67381cff", "chocolate", false, horizontalGroup);
-        addSwatch("d26a22ff", "cinnamon", false, horizontalGroup);
-        addSwatch("fd801bff", "orange", false, horizontalGroup);
-        addSwatch("fcc182ff", "peach", false, horizontalGroup);
-        addSwatch("fcc182ff", "skin", false, horizontalGroup);
-        addSwatch("ffa92cff", "apricot", false, horizontalGroup);
-        addSwatch("ffa92cff", "sand", false, horizontalGroup);
-        addSwatch("cfb692ff", "tan", false, horizontalGroup);
-        addSwatch("ca9037ff", "bronze", false, horizontalGroup);
-        addSwatch("f9d821ff", "gold", false, horizontalGroup);
-        addSwatch("f9d821ff", "saffron", false, horizontalGroup);
-        addSwatch("fef48cff", "butter", false, horizontalGroup);
-        addSwatch("fbff25ff", "yellow", false, horizontalGroup);
-        addSwatch("7c8212ff", "olive", false, horizontalGroup);
-        addSwatch("cfe531ff", "pear", false, horizontalGroup);
-        addSwatch("c2ff47ff", "chartreuse", false, horizontalGroup);
-        addSwatch("8ed41eff", "lime", false, horizontalGroup);
-        addSwatch("1d4609ff", "moss", false, horizontalGroup);
-        addSwatch("27a011ff", "cactus", false, horizontalGroup);
-        addSwatch("4b7946ff", "fern", false, horizontalGroup);
-        addSwatch("7bff75ff", "celery", false, horizontalGroup);
-        addSwatch("00ff17ff", "green", false, horizontalGroup);
-        addSwatch("2dc147ff", "jade", false, horizontalGroup);
-        addSwatch("a7e5c6ff", "sage", false, horizontalGroup);
-        addSwatch("7dffd5ff", "mint", false, horizontalGroup);
-        addSwatch("12d8cbff", "turquoise", false, horizontalGroup);
-        addSwatch("007f81ff", "ocean", false, horizontalGroup);
-        addSwatch("007f81ff", "teal", false, horizontalGroup);
-        addSwatch("00ffffff", "cyan", false, horizontalGroup);
-        addSwatch("00c1e2ff", "azure", false, horizontalGroup);
-        addSwatch("00c1e2ff", "sky", false, horizontalGroup);
-        addSwatch("2c89baff", "denim", false, horizontalGroup);
-        addSwatch("0045afff", "cobalt", false, horizontalGroup);
-        addSwatch("0045afff", "sapphire", false, horizontalGroup);
-        addSwatch("000081ff", "navy", false, horizontalGroup);
-        addSwatch("0000ffff", "blue", false, horizontalGroup);
-        addSwatch("5008e3ff", "indigo", false, horizontalGroup);
-        addSwatch("b593ffff", "lavender", false, horizontalGroup);
-        addSwatch("8e40f1ff", "violet", false, horizontalGroup);
-        addSwatch("bf00ffff", "purple", false, horizontalGroup);
-        addSwatch("aa73aeff", "mauve", false, horizontalGroup);
-        addSwatch("aa73aeff", "puce", false, horizontalGroup);
-        addSwatch("bd04c9ff", "plum", false, horizontalGroup);
-        addSwatch("f311f8ff", "magenta", false, horizontalGroup);
-        addSwatch("fca1e5ff", "pink", false, horizontalGroup);
-        addSwatch("e3237dff", "rose", false, horizontalGroup);
-
+        addSwatch(Color.CLEAR, "CLEAR", false, horizontalGroup);
+        addSwatch(Color.BLACK, "BLACK", false, horizontalGroup);
+        addSwatch(Color.DARK_GRAY, "DARK_GRAY", false, horizontalGroup);
+        addSwatch(Color.GRAY, "GRAY", false, horizontalGroup);
+        addSwatch(Color.LIGHT_GRAY, "LIGHT_GRAY", false, horizontalGroup);
+        addSwatch(Color.WHITE, "WHITE", false, horizontalGroup);
+        addSwatch(Color.RED, "RED", false, horizontalGroup);
+        addSwatch(Color.ORANGE, "ORANGE", false, horizontalGroup);
+        addSwatch(Color.YELLOW, "YELLOW", false, horizontalGroup);
+        addSwatch(Color.GREEN, "GREEN", false, horizontalGroup);
+        addSwatch(Color.BLUE, "BLUE", false, horizontalGroup);
+        addSwatch(Color.VIOLET, "VIOLET", false, horizontalGroup);
+        addSwatch(Color.PURPLE, "PURPLE", false, horizontalGroup);
+        addSwatch(Color.FIREBRICK, "FIREBRICK", false, horizontalGroup);
+        addSwatch(Color.SCARLET, "SCARLET", false, horizontalGroup);
+        addSwatch(Color.SALMON, "SALMON", false, horizontalGroup);
+        addSwatch(Color.CORAL, "CORAL", false, horizontalGroup);
+        addSwatch(Color.BROWN, "BROWN", false, horizontalGroup);
+        addSwatch(Color.TAN, "TAN", false, horizontalGroup);
+        addSwatch(Color.GOLDENROD, "GOLDENROD", false, horizontalGroup);
+        addSwatch(Color.GOLD, "GOLD", false, horizontalGroup);
+        addSwatch(Color.OLIVE, "OLIVE", false, horizontalGroup);
+        addSwatch(Color.CHARTREUSE, "CHARTREUSE", false, horizontalGroup);
+        addSwatch(Color.LIME, "LIME", false, horizontalGroup);
+        addSwatch(Color.FOREST, "FOREST", false, horizontalGroup);
+        addSwatch(Color.TEAL, "TEAL", false, horizontalGroup);
+        addSwatch(Color.CYAN, "CYAN", false, horizontalGroup);
+        addSwatch(Color.SKY, "SKY", false, horizontalGroup);
+        addSwatch(Color.ROYAL, "ROYAL", false, horizontalGroup);
+        addSwatch(Color.NAVY, "NAVY", false, horizontalGroup);
+        addSwatch(Color.SLATE, "SLATE", false, horizontalGroup);
+        addSwatch(Color.MAGENTA, "MAGENTA", false, horizontalGroup);
+        addSwatch(Color.PINK, "PINK", false, horizontalGroup);
+        addSwatch(Color.MAROON, "MAROON", false, horizontalGroup);
 
 //        addSwatch("595d5fff", "lightest dullest black", false, horizontalGroup);
 //        addSwatch("acb0b2ff", "lightest dullest gray", false, horizontalGroup);
@@ -336,6 +311,75 @@ public class PopColorPicker extends PopTable {
 //        addSwatch("c78ed2ff", "lightest dullest plum", false, horizontalGroup);
 //        addSwatch("e49deeff", "lightest dullest magenta", false, horizontalGroup);
 //        addSwatch("f1cfefff", "lightest dullest pink", false, horizontalGroup);
+
+        table.row();
+        label = new Label("Simple", style.labelStyle);
+        table.add(label).left().spaceTop(5);
+
+        table.row();
+        horizontalGroup = new HorizontalGroup();
+        horizontalGroup.wrap();
+        horizontalGroup.rowAlign(Align.left);
+        table.add(horizontalGroup).growX();
+
+        addSwatch("000000FF", "black", false, horizontalGroup);
+        addSwatch("808080FF", "gray", false, horizontalGroup);
+        addSwatch("B6B6B6FF", "silver", false, horizontalGroup);
+        addSwatch("FFFFFFFF", "white", false, horizontalGroup);
+        addSwatch("FF0000FF", "red", false, horizontalGroup);
+        addSwatch("FF7F00FF", "orange", false, horizontalGroup);
+        addSwatch("FFFF00FF", "yellow", false, horizontalGroup);
+        addSwatch("00FF00FF", "green", false, horizontalGroup);
+        addSwatch("0000FFFF", "blue", false, horizontalGroup);
+        addSwatch("520FE0FF", "indigo", false, horizontalGroup);
+        addSwatch("9040EFFF", "violet", false, horizontalGroup);
+        addSwatch("C000FFFF", "purple", false, horizontalGroup);
+        addSwatch("8F573BFF", "brown", false, horizontalGroup);
+        addSwatch("FFA0E0FF", "pink", false, horizontalGroup);
+        addSwatch("F500F5FF", "magenta", false, horizontalGroup);
+        addSwatch("D5524AFF", "brick", false, horizontalGroup);
+        addSwatch("F55A32FF", "ember", false, horizontalGroup);
+        addSwatch("FF6262FF", "salmon", false, horizontalGroup);
+        addSwatch("683818FF", "chocolate", false, horizontalGroup);
+        addSwatch("D2B48CFF", "tan", false, horizontalGroup);
+        addSwatch("CE8E31FF", "bronze", false, horizontalGroup);
+        addSwatch("D2691DFF", "cinnamon", false, horizontalGroup);
+        addSwatch("FFA828FF", "apricot", false, horizontalGroup);
+        addSwatch("FFBF81FF", "peach", false, horizontalGroup);
+        addSwatch("D3E330FF", "pear", false, horizontalGroup);
+        addSwatch("FFD510FF", "saffron", false, horizontalGroup);
+        addSwatch("FFF288FF", "butter", false, horizontalGroup);
+        addSwatch("C8FF41FF", "chartreuse", false, horizontalGroup);
+        addSwatch("30A000FF", "cactus", false, horizontalGroup);
+        addSwatch("93D300FF", "lime", false, horizontalGroup);
+        addSwatch("818000FF", "olive", false, horizontalGroup);
+        addSwatch("4E7942FF", "fern", false, horizontalGroup);
+        addSwatch("204608FF", "moss", false, horizontalGroup);
+        addSwatch("7DFF73FF", "celery", false, horizontalGroup);
+        addSwatch("ABE3C5FF", "sage", false, horizontalGroup);
+        addSwatch("3FBF3FFF", "jade", false, horizontalGroup);
+        addSwatch("00FFFFFF", "cyan", false, horizontalGroup);
+        addSwatch("7FFFD4FF", "mint", false, horizontalGroup);
+        addSwatch("007F7FFF", "teal", false, horizontalGroup);
+        addSwatch("2ED6C9FF", "turquoise", false, horizontalGroup);
+        addSwatch("10C0E0FF", "sky", false, horizontalGroup);
+        addSwatch("0046ABFF", "cobalt", false, horizontalGroup);
+        addSwatch("3088B8FF", "denim", false, horizontalGroup);
+        addSwatch("000080FF", "navy", false, horizontalGroup);
+        addSwatch("B991FFFF", "lavender", false, horizontalGroup);
+        addSwatch("BE0DC6FF", "plum", false, horizontalGroup);
+        addSwatch("AB73ABFF", "mauve", false, horizontalGroup);
+        addSwatch("E61E78FF", "rose", false, horizontalGroup);
+        addSwatch("911437FF", "raspberry", false, horizontalGroup);
+        addSwatch("808080FF", "grey", false, horizontalGroup);
+        addSwatch("FF6262FF", "coral", false, horizontalGroup);
+        addSwatch("FFA828FF", "sand", false, horizontalGroup);
+        addSwatch("FFBF81FF", "skin", false, horizontalGroup);
+        addSwatch("FFD510FF", "gold", false, horizontalGroup);
+        addSwatch("007F7FFF", "ocean", false, horizontalGroup);
+        addSwatch("10C0E0FF", "azure", false, horizontalGroup);
+        addSwatch("0046ABFF", "sapphire", false, horizontalGroup);
+        addSwatch("AB73ABFF", "puce", false, horizontalGroup);
 
         table.row();
         label = new Label("Detailed", style.labelStyle);
@@ -543,24 +587,9 @@ public class PopColorPicker extends PopTable {
         hexTextField.setTextFieldFilter(new TextFieldFilter() {
             @Override
             public boolean acceptChar(TextField textField, char c) {
-                if (Character.isDigit(c)) return true;
-                else switch (c) {
-                    case 'a':
-                    case 'b':
-                    case 'c':
-                    case 'd':
-                    case 'e':
-                    case 'f':
-                    case 'A':
-                    case 'B':
-                    case 'C':
-                    case 'D':
-                    case 'E':
-                    case 'F':
-                        return true;
-                    default:
-                        return false;
-                }
+                if (c >= '0' && c <= '9') return true;
+                if (c >= 'a' && c <= 'f') return true;
+                return c >= 'A' && c <= 'F';
             }
         });
         table.add(hexTextField).width(80);
@@ -1498,24 +1527,9 @@ public class PopColorPicker extends PopTable {
         hexTextField.setTextFieldFilter(new TextFieldFilter() {
             @Override
             public boolean acceptChar(TextField textField, char c) {
-                if (Character.isDigit(c)) return true;
-                else switch (c) {
-                    case 'a':
-                    case 'b':
-                    case 'c':
-                    case 'd':
-                    case 'e':
-                    case 'f':
-                    case 'A':
-                    case 'B':
-                    case 'C':
-                    case 'D':
-                    case 'E':
-                    case 'F':
-                        return true;
-                    default:
-                        return false;
-                }
+                if (c >= '0' && c <= '9') return true;
+                if (c >= 'a' && c <= 'f') return true;
+                return c >= 'A' && c <= 'F';
             }
         });
         table.add(hexTextField).width(80);
