@@ -65,10 +65,10 @@ dependencies {
     implementation "space.earlygrey:shapedrawer:2.6.0"
     implementation 'com.squareup:javapoet:1.12.1'
     implementation "com.github.raeleus.stripe:stripe:2.0.0"
-    implementation ('com.github.raeleus.stripe:colorpicker:2.0.0') {
-        exclude group: 'com.github.tommyettinger', module: 'textratypist'
-    }
-    implementation 'com.github.raeleus.stripe:freetype:2.0.0'
+//    implementation ('com.github.raeleus.stripe:colorpicker:2.0.0') {
+//        exclude group: 'com.github.tommyettinger', module: 'textratypist'
+//    }
+//    implementation 'com.github.raeleus.stripe:freetype:2.0.0'
     implementation 'com.github.tommyettinger:gdx-TinyVG:83004a633e'
 //    implementation 'com.github.lyze237:gdx-TinyVG:41f408420c'
 //        implementation "com.github.tommyettinger:textratypist:2.0.1"
@@ -88,13 +88,32 @@ def os = System.properties['os.name'].toLowerCase()
 
 run {
     workingDir = file('assets').path
-
-// The next two jvmArgs additions help LWJGL3 on JDK 24 and higher.
-    jvmArgs += "--enable-native-access=ALL-UNNAMED"
-    jvmArgs += "--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED"
     if (os.contains('mac')) jvmArgs += "-XstartOnFirstThread"
 }
 
+// ---- Java 25 LWJGL3 warning suppression / compatibility JVM args ----
+// Thanks to https://github.com/tehnewb/Valthorne/blob/2d5bd29e5950f30be5d25b581b954802e6529be2/build.gradle#L79-L101 !
+if (JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_25)) {
+    def openArgs = [
+            // Required for Java 21+ restricted native access warnings
+            "--enable-native-access=ALL-UNNAMED"
+            // May be needed by Fory on newer JVMs.
+            , "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED"
+            , "--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED"
+            // Makes LWJGL 3.4.3 actually use FFM APIs, which avoids printing warnings.
+            , "--sun-misc-unsafe-memory-access=deny"
+    ]
+
+// Apply to any JavaExec tasks (e.g., application plugin's run task, custom runners)
+    tasks.withType(JavaExec).configureEach {
+        jvmArgs += openArgs
+    }
+
+// Apply to all tests
+    tasks.withType(Test).configureEach {
+        jvmArgs += openArgs
+    }
+}
 jar {
 // sets the name of the .jar file this produces to the name of the game or app, with the version after.
     archiveFileName.set("${appName}-${projectVersion}.jar")
