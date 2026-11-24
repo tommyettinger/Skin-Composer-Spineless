@@ -238,7 +238,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
                 FileHandle importPath = (!dPath.exists()) ?
                         Gdx.files.absolute(System.getProperty("user.home")) : dPath;
 
-                String files = TinyFileDialogs.tinyfd_openFileDialog(title, importPath.path(), aFilterPatterns, filterDescription, true);
+                String files = TinyFileDialogs.tinyfd_openFileDialog(title, importPath.path().replace('/', File.separatorChar), aFilterPatterns, filterDescription, true);
                 if(files != null) {
                     String[] filenames = files.split("\\|");
                     for (String fn : filenames) {
@@ -291,7 +291,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
                 FileHandle importPath = (!dPath.exists()) ?
                         Gdx.files.absolute(System.getProperty("user.home")) : dPath;
 
-                String fn = TinyFileDialogs.tinyfd_openFileDialog(title, importPath.path(), aFilterPatterns, filterDescription, false);
+                String fn = TinyFileDialogs.tinyfd_openFileDialog(title, importPath.path().replace('/', File.separatorChar), aFilterPatterns, filterDescription, false);
                 if(fn != null)
                     obtained[0] = new File(fn);
             }
@@ -338,7 +338,7 @@ public class DesktopLauncher implements DesktopWorker, Lwjgl3WindowListener {
 
                 FileHandle dPath = Gdx.files.absolute(defaultPath);
 
-                String path = dPath.path();
+                String path = dPath.path().replace('/', File.separatorChar);
                 String fn = TinyFileDialogs.tinyfd_saveFileDialog(title, path, aFilterPatterns, filterDescription);
                 if(fn != null)
                     obtained[0] = new File(fn);
