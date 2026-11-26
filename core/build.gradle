@@ -4,7 +4,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath "io.github.fourlastor:construo:2.2.4"
+        classpath "io.github.fourlastor:construo:2.3.0"
         if(enableGraalNative == 'true') {
             classpath "org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:0.9.28"
         }
@@ -65,13 +65,7 @@ dependencies {
     implementation "space.earlygrey:shapedrawer:2.6.0"
     implementation 'com.squareup:javapoet:1.12.1'
     implementation "com.github.raeleus.stripe:stripe:2.0.0"
-//    implementation ('com.github.raeleus.stripe:colorpicker:2.0.0') {
-//        exclude group: 'com.github.tommyettinger', module: 'textratypist'
-//    }
-//    implementation 'com.github.raeleus.stripe:freetype:2.0.0'
     implementation 'com.github.tommyettinger:gdx-TinyVG:83004a633e'
-//    implementation 'com.github.lyze237:gdx-TinyVG:41f408420c'
-//        implementation "com.github.tommyettinger:textratypist:2.0.1"
     implementation("com.github.tommyettinger:freetypist:2.6.1.0") {
         exclude group: 'com.github.tommyettinger', module: 'textratypist'
     }
@@ -196,13 +190,14 @@ construo {
     targets.configure {
         register("linuxX64", Target.Linux) {
             architecture.set(Target.Architecture.X86_64)
-            jdkUrl.set("https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-25.0.4.1-linux-x64-b329.142.tar.gz")
-//            jdkUrl.set("https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_x64_linux_hotspot_21.0.10_7.tar.gz")
+            jdkUrl.set("https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-25.0.5.1-linux-x64-b635.102.tar.gz")
+//      jdkUrl.set("https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13.1%2B2/OpenJDK21U-jdk_x64_linux_hotspot_21.0.13.1_2.tar.gz")
+            // Linux does not currently have a way to set the icon on the executable
         }
         register("macM1", Target.MacOs) {
             architecture.set(Target.Architecture.AARCH64)
-            jdkUrl.set("https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-25.0.4.1-osx-aarch64-b329.142.tar.gz")
-//            jdkUrl.set("https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_aarch64_mac_hotspot_21.0.10_7.tar.gz")
+            jdkUrl.set("https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-25.0.5.1-osx-aarch64-b635.102.tar.gz")
+//            jdkUrl.set("https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13.1%2B2/OpenJDK21U-jdk_aarch64_mac_hotspot_21.0.13.1_2.tar.gz")
             // macOS needs an identifier
             identifier.set("com.ray3k.skincomposer." + appName)
             // Optional: icon for macOS
@@ -210,8 +205,8 @@ construo {
         }
         register("macX64", Target.MacOs) {
             architecture.set(Target.Architecture.X86_64)
-            jdkUrl.set("https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-25.0.4.1-osx-x64-b329.142.tar.gz")
-//            jdkUrl.set("https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_x64_mac_hotspot_21.0.10_7.tar.gz")
+            jdkUrl.set("https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-25.0.5.1-osx-x64-b635.102.tar.gz")
+//            jdkUrl.set("https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13.1%2B2/OpenJDK21U-jdk_x64_mac_hotspot_21.0.13.1_2.tar.gz")
             // macOS needs an identifier
             identifier.set("com.ray3k.skincomposer." + appName)
             // Optional: icon for macOS
@@ -219,10 +214,12 @@ construo {
         }
         register("winX64", Target.Windows) {
             architecture.set(Target.Architecture.X86_64)
+            jdkUrl.set("https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-25.0.5.1-windows-x64-b635.102.zip")
+//      jdkUrl.set("https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13.1%2B2/OpenJDK21U-jdk_x64_windows_hotspot_21.0.13.1_2.zip")
+            // Optional: icon for Windows, as a PNG
             icon.set(file("../icons/logo.png"))
-            jdkUrl.set("https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-25.0.4.1-windows-x64-b329.142.zip")
-//            jdkUrl.set("https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.10%2B7/OpenJDK21U-jdk_x64_windows_hotspot_21.0.10_7.zip")
-            useConsole.set(false)
+            // Uncomment the next line to show a console when the game runs, to print messages.
+            //useConsole.set(true)
         }
     }
 }
